@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F05A375F27745978000F3033 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A375E27745978000F3033 /* Network.swift */; };
+		F05A376127745A3C000F3033 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376027745A3C000F3033 /* Movie.swift */; };
+		F05A376327745AFE000F3033 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376227745AFE000F3033 /* Actor.swift */; };
+		F05A376A27746A41000F3033 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376927746A41000F3033 /* PopularViewController.swift */; };
+		F05A376C27746A63000F3033 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376B27746A63000F3033 /* UpcomingViewController.swift */; };
+		F05A376E27747BF3000F3033 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376D27747BF3000F3033 /* MainView.swift */; };
+		F05A377127747C46000F3033 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F05A377027747C46000F3033 /* SnapKit */; };
+		F05A377327747C99000F3033 /* MoviesHorisontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A377227747C99000F3033 /* MoviesHorisontalCollectionView.swift */; };
+		F05A377527747DD1000F3033 /* MovieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A377427747DD1000F3033 /* MovieCellView.swift */; };
 		F0A4194C27730512007112E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194B27730512007112E4 /* AppDelegate.swift */; };
 		F0A4194E27730512007112E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194D27730512007112E4 /* SceneDelegate.swift */; };
 		F0A4195027730512007112E4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194F27730512007112E4 /* MainViewController.swift */; };
@@ -16,6 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F05A375E27745978000F3033 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		F05A376027745A3C000F3033 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		F05A376227745AFE000F3033 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		F05A376927746A41000F3033 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
+		F05A376B27746A63000F3033 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
+		F05A376D27747BF3000F3033 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F05A377227747C99000F3033 /* MoviesHorisontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesHorisontalCollectionView.swift; sourceTree = "<group>"; };
+		F05A377427747DD1000F3033 /* MovieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellView.swift; sourceTree = "<group>"; };
 		F0A4194827730512007112E4 /* TraVa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraVa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A4194B27730512007112E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0A4194D27730512007112E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,12 +48,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05A377127747C46000F3033 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F05A376427745BA4000F3033 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F05A376027745A3C000F3033 /* Movie.swift */,
+				F05A376227745AFE000F3033 /* Actor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F05A3765277469A6000F3033 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F0A4194F27730512007112E4 /* MainViewController.swift */,
+				F05A376D27747BF3000F3033 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F05A3766277469B3000F3033 /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				F05A376927746A41000F3033 /* PopularViewController.swift */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		F05A3767277469BC000F3033 /* Upcoming */ = {
+			isa = PBXGroup;
+			children = (
+				F05A376B27746A63000F3033 /* UpcomingViewController.swift */,
+			);
+			path = Upcoming;
+			sourceTree = "<group>";
+		};
+		F05A3768277469E6000F3033 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F05A375E27745978000F3033 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		F0A4193F27730512007112E4 = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +118,17 @@
 			children = (
 				F0A4194B27730512007112E4 /* AppDelegate.swift */,
 				F0A4194D27730512007112E4 /* SceneDelegate.swift */,
-				F0A4194F27730512007112E4 /* MainViewController.swift */,
 				F0A4195F27730616007112E4 /* TabBarController.swift */,
+				F05A3765277469A6000F3033 /* Main */,
+				F05A3766277469B3000F3033 /* Popular */,
+				F05A3767277469BC000F3033 /* Upcoming */,
+				F05A3768277469E6000F3033 /* Network */,
 				F0A4195427730514007112E4 /* Assets.xcassets */,
 				F0A4195627730514007112E4 /* LaunchScreen.storyboard */,
 				F0A4195927730514007112E4 /* Info.plist */,
+				F05A377227747C99000F3033 /* MoviesHorisontalCollectionView.swift */,
+				F05A377427747DD1000F3033 /* MovieCellView.swift */,
+				F05A376427745BA4000F3033 /* Models */,
 			);
 			path = TraVa;
 			sourceTree = "<group>";
@@ -83,6 +149,9 @@
 			dependencies = (
 			);
 			name = TraVa;
+			packageProductDependencies = (
+				F05A377027747C46000F3033 /* SnapKit */,
+			);
 			productName = TraVa;
 			productReference = F0A4194827730512007112E4 /* TraVa.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +180,9 @@
 				Base,
 			);
 			mainGroup = F0A4193F27730512007112E4;
+			packageReferences = (
+				F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F0A4194927730512007112E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,10 +209,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05A376A27746A41000F3033 /* PopularViewController.swift in Sources */,
+				F05A377527747DD1000F3033 /* MovieCellView.swift in Sources */,
+				F05A375F27745978000F3033 /* Network.swift in Sources */,
 				F0A4195027730512007112E4 /* MainViewController.swift in Sources */,
+				F05A376E27747BF3000F3033 /* MainView.swift in Sources */,
+				F05A376C27746A63000F3033 /* UpcomingViewController.swift in Sources */,
+				F05A376127745A3C000F3033 /* Movie.swift in Sources */,
+				F05A376327745AFE000F3033 /* Actor.swift in Sources */,
 				F0A4196027730616007112E4 /* TabBarController.swift in Sources */,
 				F0A4194C27730512007112E4 /* AppDelegate.swift in Sources */,
 				F0A4194E27730512007112E4 /* SceneDelegate.swift in Sources */,
+				F05A377327747C99000F3033 /* MoviesHorisontalCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +434,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F05A377027747C46000F3033 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F0A4194027730512007112E4 /* Project object */;
 }
