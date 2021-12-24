@@ -10,8 +10,8 @@ import SnapKit
 
 final internal class MoviesHorisontalCollectionView: UIView {
 
-	private var moviesCollectionView: UICollectionView?
-	private var contentModel: [Movie]?
+	internal var moviesCollectionView: UICollectionView?
+	private var contentModel: [Movie]? = Movie.sampleData
 
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -24,6 +24,7 @@ final internal class MoviesHorisontalCollectionView: UIView {
 
 	internal func setContent(model: [Movie]) {
 		self.contentModel = model
+		print(model.count)
 		self.moviesCollectionView?.reloadData()
 	}
 
@@ -39,14 +40,19 @@ final internal class MoviesHorisontalCollectionView: UIView {
 	}
 
 	private func setConfig() {
+
 		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
 		layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-		layout.itemSize = CGSize(width: 162, height: 190)
+		layout.itemSize = CGSize(width: 120, height: 190)
 		layout.scrollDirection = .horizontal
 		self.moviesCollectionView = UICollectionView(frame: self.frame, collectionViewLayout: layout)
 		self.moviesCollectionView?.register(MovieCellView.self, forCellWithReuseIdentifier: "\(MovieCellView.self)")
 		self.moviesCollectionView?.backgroundColor = .white
 		self.moviesCollectionView?.showsHorizontalScrollIndicator = false
+//		self.moviesCollectionView?.delegate = self
+//		self.moviesCollectionView?.dataSource = self
+
+		self.moviesCollectionView?.backgroundColor = UIColor.red
 	}
 
 	private func setConstraint() {
@@ -65,9 +71,10 @@ extension MoviesHorisontalCollectionView: UICollectionViewDataSource {
 						cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let myCell = collectionView.dequeueReusableCell(withReuseIdentifier:
 															"\(MovieCellView.self)", for: indexPath) as? MovieCellView
-//		if let event = self.contentModel?[indexPath.row] {
-//			myCell?.set(event: event)
-//		}
+		if let movie = self.contentModel?[indexPath.row] {
+			myCell?.set(movie: movie)
+			print(movie.id)
+		}
 		return myCell ?? UICollectionViewCell()
 	}
 }

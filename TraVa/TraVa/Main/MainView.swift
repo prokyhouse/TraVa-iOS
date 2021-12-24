@@ -10,15 +10,17 @@ import SnapKit
 
 class MainView: UIView {
 
+	internal var movies : [Movie]? = Movie.sampleData
+
 	struct MainScreenContent {
-		internal let PopularText = "Популярное"
-		internal let UpcomingText = "Скоро в кино"
+		internal let PopularText: String = "Популярное"
+		internal let UpcomingText: String = "Скоро в кино"
 	}
 
 	private let contentView = UIView()
 	private let scrollView = UIScrollView()
 	private let popularLabel = UILabel()
-	private let popularCollectionView = MoviesHorisontalCollectionView()
+	internal let popularCollectionView = MoviesHorisontalCollectionView()
 
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -30,7 +32,6 @@ class MainView: UIView {
 	}
 
 	internal func setContent() {
-
 		self.updateConstraint()
 	}
 
@@ -50,7 +51,7 @@ class MainView: UIView {
 	}
 
 	private func setConfig() {
-
+		self.popularLabel.text = "Популярное"
 	}
 
 	private func updateConstraint() {

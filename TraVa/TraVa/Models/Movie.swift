@@ -21,23 +21,23 @@
 import Foundation
 
 // MARK: - Movie
-struct Movie: Codable {
+struct Movie: Decodable {
 	let adult: Bool
-	let backdropPath: String
+	let backdropPath: String?
 	let belongsToCollection: JSONNull?
-	let budget: Int
-	let genres: [Genre]
-	let homepage: String
+	let budget: Int?
+	let genres: [Genre]?
+	let homepage: String?
 	let id: Int
-	let imdbID, originalLanguage, originalTitle, overview: String
+	let imdbID, originalLanguage, originalTitle, overview: String?
 	let popularity: Double
 	let posterPath: String
-	let productionCompanies: [ProductionCompany]
-	let productionCountries: [ProductionCountry]
-	let releaseDate: String
-	let revenue, runtime: Int
-	let spokenLanguages: [SpokenLanguage]
-	let status, tagline, title: String
+	let productionCompanies: [ProductionCompany]?
+	let productionCountries: [ProductionCountry]?
+	let releaseDate: String?
+	let revenue, runtime: Int?
+	let spokenLanguages: [SpokenLanguage]?
+	let status, tagline, title: String?
 	let video: Bool
 	let voteAverage: Double
 	let voteCount: Int
@@ -60,6 +60,14 @@ struct Movie: Codable {
 		case status, tagline, title, video
 		case voteAverage = "vote_average"
 		case voteCount = "vote_count"
+	}
+}
+
+extension Movie {
+	static var sampleData: [Self] {
+		let movie = Movie(adult: false, backdropPath: "/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg", belongsToCollection: nil, budget: nil, genres: nil, homepage: nil, id: 634649, imdbID: nil, originalLanguage: "en", originalTitle: "Spider-Man: No Way Home", overview: "Действие фильма «Человек-паук: Нет пути домой» начинает своё развитие в тот момент, когда Мистерио удаётся выяснить истинную личность Человека-паука. С этого момента жизнь Питера Паркера становится невыносимой. Если ранее он мог успешно переключаться между своими амплуа, то сейчас это сделать невозможно. Переворачивается с ног на голову не только жизнь Человека-пауку, но и репутация.  Понимая, что так жить невозможно, главный герой фильма «Человек-паук: Нет пути домой» принимает решение обратиться за помощью к своему давнему знакомому Стивену Стрэнджу. Питер Паркер надеется, что с помощью магии он сможет восстановить его анонимность. Стрэндж соглашается помочь.", popularity: 18227.93, posterPath: "/3hLU5V1XDF0oHT9YUHvYC4j0Ix5.jpg", productionCompanies: nil, productionCountries: nil, releaseDate: "2021-12-15", revenue: nil, runtime: nil, spokenLanguages: nil, status: nil, tagline: nil, title: "Человек-паук: Нет пути домой", video: false, voteAverage: 8.6, voteCount: 2025)
+
+		return [movie]
 	}
 }
 
@@ -162,23 +170,7 @@ func newJSONEncoder() -> JSONEncoder {
 	return encoder
 }
 
-// MARK: - URLSession response handlers
 
-extension URLSession {
-	fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-		return self.dataTask(with: url) { data, response, error in
-			guard let data = data, error == nil else {
-				completionHandler(nil, response, error)
-				return
-			}
-			completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
-		}
-	}
-
-	func movieTask(with url: URL, completionHandler: @escaping (Movie?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-		return self.codableTask(with: url, completionHandler: completionHandler)
-	}
-}
 
 // MARK: - Encode/decode helpers
 
