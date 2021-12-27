@@ -80,10 +80,9 @@ final class UpcomingViewController: UIViewController {
 
 extension UpcomingViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//		let detailVC = DetailViewController.init()
-//		guard let post = self.news?[indexPath.item] else { return }
-//		detailVC.model.setPost(post: post)
-//		self.navigationController?.pushViewController(detailVC, animated: true)
+		guard let movie = self.movies?[indexPath.item] else { return }
+		let movieVC = MovieViewController(movie: movie)
+		self.navigationController?.pushViewController(movieVC, animated: true)
 	}
 
 	func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

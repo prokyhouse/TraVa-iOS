@@ -7,23 +7,27 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainViewDelegate {
+	func pushVC(vc: UIViewController) {
+		self.navigationController?.pushViewController(vc, animated: true)
+	}
+
 
 	private var mainView: MainView = MainView()
 	private let networkService = NetworkService()
+	private var movies : [Movie]?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.view.backgroundColor = UIColor.systemBackground
-		//self.loadData()
-		//self.view = self.mainView
+		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: "AccentColor") ?? .systemPurple]
 	}
 
 	override func loadView() {
+		self.loadData()
+		self.mainView.delegate = self
 		self.view = self.mainView
+		self.view.backgroundColor = UIColor.systemBackground
 	}
-
-	private var movies : [Movie]? = Movie.sampleData
 
 	func loadData() {
 
@@ -34,9 +38,8 @@ class MainViewController: UIViewController {
 				print("[NETWORK] model is: \(model)")
 				self.movies = model.results
 				DispatchQueue.main.async {
-					self.mainView.movies = Movie.sampleData
-					//self.mainView.popularCollectionView.setContent(model: self.movies ?? [])
-					self.mainView.popularCollectionView.moviesCollectionView?.reloadData()
+					self.mainView.setMovies(movies: self.movies)
+					self.mainView.popularCollectionView.reloadData()
 				}
 			case .failure(let error):
 				print("[NETWORK] error is: \(error)")
@@ -46,4 +49,7 @@ class MainViewController: UIViewController {
 			}
 		}
 	}
+
+	
 }
+

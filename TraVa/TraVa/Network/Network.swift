@@ -16,13 +16,16 @@ import Foundation
 final class NetworkService {
 
 	private static var API_KEY = "api_key=2e774b038b2dc15a1db7397f1b6b63a7"
+
 	private static var POPULAR_URL = "https://api.themoviedb.org/3/movie/popular?"
 	private static var UPCOMING_URL = "https://api.themoviedb.org/3/movie/upcoming?"
+
 	private static var language = "&language=ru-RU"
 	private static var page = "&page=1"
 
 	private var requestURL = POPULAR_URL + API_KEY + language + page
 	private var upcomingRequestURL = UPCOMING_URL + API_KEY + language + page
+
 	private let session: URLSession
 	private let upcomingSession: URLSession
 
@@ -106,4 +109,10 @@ final class NetworkService {
 //			}
 //		}
 //	}
+}
+
+final class URLBuilder {
+	enum Parameters: String {
+		case language = ""
+	}
 }
