@@ -24,7 +24,7 @@ import Foundation
 struct Movie: Decodable {
 	let adult: Bool
 	let backdropPath: String?
-	let belongsToCollection: JSONNull?
+	let belongsToCollection: BelongsToCollection?
 	let budget: Int?
 	let genres: [Genre]?
 	let homepage: String?
@@ -41,6 +41,7 @@ struct Movie: Decodable {
 	let video: Bool
 	let voteAverage: Double
 	let voteCount: Int
+	let credits: Credits?
 
 	enum CodingKeys: String, CodingKey {
 		case adult
@@ -60,12 +61,13 @@ struct Movie: Decodable {
 		case status, tagline, title, video
 		case voteAverage = "vote_average"
 		case voteCount = "vote_count"
+		case credits
 	}
 }
 
 extension Movie {
 	static var sampleData: [Self] {
-		let movie = Movie(adult: false, backdropPath: "/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg", belongsToCollection: nil, budget: nil, genres: nil, homepage: nil, id: 634649, imdbID: nil, originalLanguage: "en", originalTitle: "Spider-Man: No Way Home", overview: "Действие фильма «Человек-паук: Нет пути домой» начинает своё развитие в тот момент, когда Мистерио удаётся выяснить истинную личность Человека-паука. С этого момента жизнь Питера Паркера становится невыносимой. Если ранее он мог успешно переключаться между своими амплуа, то сейчас это сделать невозможно. Переворачивается с ног на голову не только жизнь Человека-пауку, но и репутация.  Понимая, что так жить невозможно, главный герой фильма «Человек-паук: Нет пути домой» принимает решение обратиться за помощью к своему давнему знакомому Стивену Стрэнджу. Питер Паркер надеется, что с помощью магии он сможет восстановить его анонимность. Стрэндж соглашается помочь.", popularity: 18227.93, posterPath: "/3hLU5V1XDF0oHT9YUHvYC4j0Ix5.jpg", productionCompanies: nil, productionCountries: nil, releaseDate: "2021-12-15", revenue: nil, runtime: nil, spokenLanguages: nil, status: nil, tagline: nil, title: "Человек-паук: Нет пути домой", video: false, voteAverage: 8.6, voteCount: 2025)
+		let movie = Movie(adult: false, backdropPath: "/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg", belongsToCollection: nil, budget: nil, genres: nil, homepage: nil, id: 634649, imdbID: nil, originalLanguage: "en", originalTitle: "Spider-Man: No Way Home", overview: "Действие фильма «Человек-паук: Нет пути домой» начинает своё развитие в тот момент, когда Мистерио удаётся выяснить истинную личность Человека-паука. С этого момента жизнь Питера Паркера становится невыносимой. Если ранее он мог успешно переключаться между своими амплуа, то сейчас это сделать невозможно. Переворачивается с ног на голову не только жизнь Человека-пауку, но и репутация.  Понимая, что так жить невозможно, главный герой фильма «Человек-паук: Нет пути домой» принимает решение обратиться за помощью к своему давнему знакомому Стивену Стрэнджу. Питер Паркер надеется, что с помощью магии он сможет восстановить его анонимность. Стрэндж соглашается помочь.", popularity: 18227.93, posterPath: "/3hLU5V1XDF0oHT9YUHvYC4j0Ix5.jpg", productionCompanies: nil, productionCountries: nil, releaseDate: "2021-12-15", revenue: nil, runtime: nil, spokenLanguages: nil, status: nil, tagline: nil, title: "Человек-паук: Нет пути домой", video: false, voteAverage: 8.6, voteCount: 2025, credits: Credits(cast: [], crew: []))
 
 		return [movie]
 	}
@@ -86,6 +88,69 @@ struct Genre: Codable {
 	let id: Int
 	let name: String
 }
+
+// MARK: - BelongsToCollection
+struct BelongsToCollection: Codable {
+	let id: Int?
+	let name, posterPath, backdropPath: String?
+
+	enum CodingKeys: String, CodingKey {
+		case id, name
+		case posterPath = "poster_path"
+		case backdropPath = "backdrop_path"
+	}
+}
+
+// MARK: - Credits
+struct Credits: Codable {
+	let cast, crew: [Cast]?
+}
+
+
+// MARK: - Cast
+struct Cast: Codable {
+	let adult: Bool?
+	let gender, id: Int?
+	let knownForDepartment: Department?
+	let name, originalName: String?
+	let popularity: Double?
+	let profilePath: String?
+	let castID: Int?
+	let character: String?
+	let creditID: String?
+	let order: Int?
+	let department: Department?
+	let job: String?
+
+	enum CodingKeys: String, CodingKey {
+		case adult, gender, id
+		case knownForDepartment = "known_for_department"
+		case name
+		case originalName = "original_name"
+		case popularity
+		case profilePath = "profile_path"
+		case castID = "cast_id"
+		case character
+		case creditID = "credit_id"
+		case order, department, job
+	}
+}
+
+enum Department: String, Codable {
+	case acting = "Acting"
+	case art = "Art"
+	case camera = "Camera"
+	case costumeMakeUp = "Costume & Make-Up"
+	case crew = "Crew"
+	case directing = "Directing"
+	case editing = "Editing"
+	case production = "Production"
+	case sound = "Sound"
+	case visualEffects = "Visual Effects"
+	case writing = "Writing"
+}
+
+
 
 //
 // To read values from URLs:

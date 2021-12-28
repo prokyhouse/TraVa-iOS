@@ -31,6 +31,7 @@
 		F0A4195527730514007112E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195427730514007112E4 /* Assets.xcassets */; };
 		F0A4195827730514007112E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195627730514007112E4 /* LaunchScreen.storyboard */; };
 		F0A4196027730616007112E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4195F27730616007112E4 /* TabBarController.swift */; };
+		F0C7ABDA277A1A9A00FB4662 /* ActorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7ABD9277A1A9A00FB4662 /* ActorCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		F0A4195727730514007112E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0A4195927730514007112E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0A4195F27730616007112E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F0C7ABD9277A1A9A00FB4662 /* ActorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				F0790F612776E8CD00ECA372 /* MovieView.swift */,
 				F0790F652777735E00ECA372 /* MovieViewController.swift */,
+				F0C7ABD9277A1A9A00FB4662 /* ActorCellView.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				F0790F5D2774EFCC00ECA372 /* UpcomingMovieCell.swift in Sources */,
 				F05A376C27746A63000F3033 /* UpcomingViewController.swift in Sources */,
 				F0790F6827778E9000ECA372 /* UIView+Blur.swift in Sources */,
+				F0C7ABDA277A1A9A00FB4662 /* ActorCellView.swift in Sources */,
 				F0790F622776E8CD00ECA372 /* MovieView.swift in Sources */,
 				F0790F592774C23700ECA372 /* MovieCell.swift in Sources */,
 				F05A376127745A3C000F3033 /* Movie.swift in Sources */,

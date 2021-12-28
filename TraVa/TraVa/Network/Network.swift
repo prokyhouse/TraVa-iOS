@@ -15,15 +15,16 @@ import Foundation
 //
 final class NetworkService {
 
-	private static var API_KEY = "api_key=2e774b038b2dc15a1db7397f1b6b63a7"
+	static var API_KEY = "api_key=2e774b038b2dc15a1db7397f1b6b63a7"
 
 	private static var POPULAR_URL = "https://api.themoviedb.org/3/movie/popular?"
 	private static var UPCOMING_URL = "https://api.themoviedb.org/3/movie/upcoming?"
+	static var MOVIE_URL = "https://api.themoviedb.org/3/movie/"
 
 	private static var language = "&language=ru-RU"
 	private static var page = "&page=1"
 
-	private var requestURL = POPULAR_URL + API_KEY + language + page
+	private var requestURL = POPULAR_URL + API_KEY + language + page 
 	private var upcomingRequestURL = UPCOMING_URL + API_KEY + language + page
 
 	private let session: URLSession
@@ -53,7 +54,7 @@ final class NetworkService {
 			if let data = data {
 				do {
 					let result = try JSONDecoder().decode(T.self, from: data)
-					print("[NETWORK] \(response)")
+					print("[NETWORK] \(String(describing: response))")
 					completion(.success(result))
 				}
 				catch {
@@ -86,29 +87,32 @@ final class NetworkService {
 		}.resume()
 	}
 
-//	func loadRandomImage(completion: @escaping (Result<Data, Error>) -> Void) {
-//		self.loadData { (result: Result<UrlModelDTO, Error>) in
-//			switch result {
-//			case .success(let model):
-//				guard let url = URL(string: model.url) else { fatalError() }
-//				let request = URLRequest(url: url)
-//				//		guard let url = URL(string: "https://thatcopy.github.io/catAPI/imgs/jpg/4ca6ff3.jpg") else { assert(false, "Кривой УРЛ") } // fatalError ЗАПРЕЩЕН!
-//
-//				self.session.downloadTask(with: request) { url, response, error in
-//					if let error = error {
-//						completion(.failure(error))
-//					}
-//
-//					if let url = url {
-//						if let result = try? Data(contentsOf: url) {
-//							completion(.success(result))
-//						}
-//					}
-//				}.resume()
-//			default: return
-//			}
-//		}
-//	}
+	func setMovieUrl(id: Int) {
+		NetworkService.MOVIE_URL = "https://api.themoviedb.org/3/movie/" + "\(id)?api_key=2e774b038b2dc15a1db7397f1b6b63a7&language=ru-RU&append_to_response=credits"
+	}
+
+	func loadActors<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
+		guard let url = URL(string: NetworkService.MOVIE_URL) else { fatalError("Некорректный URL") }
+
+		print("Movie request is: " + requestURL)
+
+		let request = URLRequest(url: url)
+		self.upcomingSession.dataTask(with: request) { data, response, error in
+			if let error = error {
+				completion(.failure(error))
+			}
+			if let data = data {
+				do {
+					let result = try JSONDecoder().decode(T.self, from: data)
+					print("[NETWORK // MOVIE] \(response)")
+					completion(.success(result))
+				}
+				catch {
+					completion(.failure(error))
+				}
+			}
+		}.resume()
+	}
 }
 
 final class URLBuilder {
