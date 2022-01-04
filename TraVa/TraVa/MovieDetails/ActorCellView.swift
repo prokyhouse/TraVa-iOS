@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 
 final class ActorCellView: UICollectionViewCell {
-	
+
 	private enum Metrics {
 		static let spaceBetweenComponents: CGFloat = 9
 	}
-	
+
 	static let identifier = "ActorCell"
-	
+
 	private let imageView = UIImageView()
-	
+
 	var actor: Cast? {
 		didSet {
 			guard let actor = actor else { return }
@@ -30,7 +30,7 @@ final class ActorCellView: UICollectionViewCell {
 			self.imageView.clipsToBounds = true
 		}
 	}
-	
+
 	override var isHighlighted: Bool {
 		didSet {
 			UIView.animate(withDuration: 0.25) {
@@ -38,39 +38,39 @@ final class ActorCellView: UICollectionViewCell {
 			}
 		}
 	}
-	
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.configure()
 	}
-	
+
 	@available(*, unavailable)
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	private func configure() {
 		self.setConfig()
 		self.addSubviews()
 		self.setConstraints()
 	}
-	
+
 	private func setConfig() {
-		
+
 		self.imageView.contentMode = .scaleAspectFill
 		self.imageView.clipsToBounds = true
-		
+
 		self.imageView.layer.cornerRadius = 12
-		
+
 		self.layer.cornerRadius = 10
 	}
-	
+
 	private func addSubviews() {
 		self.addSubview(imageView)
 	}
-	
+
 	private func setConstraints() {
-		
+
 		self.imageView.snp.makeConstraints { make in
 			make.left.right.top.equalToSuperview()
 			make.width.equalToSuperview()

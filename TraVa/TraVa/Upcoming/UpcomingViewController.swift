@@ -12,10 +12,10 @@ import UIKit
 import SnapKit
 
 final class UpcomingViewController: UIViewController {
-	
+
 	private let networkService = NetworkService()
 	private let activityIndicator = UIActivityIndicatorView(style: .medium)
-	
+
 	private lazy var collectionView: UICollectionView = {
 		let flowLayout = UpcomingFlowLayout()
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -25,12 +25,12 @@ final class UpcomingViewController: UIViewController {
 		collectionView.dataSource = self
 		return collectionView
 	}()
-	
+
 	private var movies: [Movie]?
-	
+
 	func loadUpcomingData() {
 		self.activityIndicator.startAnimating()
-		
+
 		self.networkService.loadUpcomingMovies { (result: Result<UpcomingMoviesPage, Error>) in
 			switch result {
 			case .success(let model):
@@ -49,7 +49,7 @@ final class UpcomingViewController: UIViewController {
 			}
 		}
 	}
-	
+
 	override func loadView() {
 		self.loadUpcomingData()
 		self.view = self.collectionView
@@ -59,7 +59,7 @@ final class UpcomingViewController: UIViewController {
 			maker.centerY.equalToSuperview()
 		}
 	}
-	
+
 	override func viewDidLoad() {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.view.backgroundColor = UIColor.systemBackground
@@ -68,7 +68,7 @@ final class UpcomingViewController: UIViewController {
 		self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "AccentColor") ?? .systemPurple]
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 	}
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.tabBarController?.tabBar.isHidden = false
@@ -81,7 +81,7 @@ extension UpcomingViewController: UICollectionViewDelegate {
 		let movieVC = MovieViewController(movie: movie)
 		self.navigationController?.pushViewController(movieVC, animated: true)
 	}
-	
+
 	func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
 		return true
 	}
@@ -91,7 +91,7 @@ extension UpcomingViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		self.movies?.count ?? 0
 	}
-	
+
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMovieCell.identifier, for: indexPath) as! UpcomingMovieCell
 		cell.movie = self.movies?[indexPath.item]

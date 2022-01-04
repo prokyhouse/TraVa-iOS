@@ -10,17 +10,17 @@ import UIKit
 import SnapKit
 
 final class MovieCell: UICollectionViewCell {
-	
+
 	private enum Metrics {
 		static let spaceBetweenComponents: CGFloat = 9
 	}
-	
+
 	static let identifier = "MovieCell"
-	
+
 	let imageView = UIImageView()
 	let nameLabel = UILabel()
 	let overviewLabel = UILabel()
-	
+
 	var movie: Movie? {
 		didSet {
 			guard let movie = movie else { return }
@@ -30,7 +30,7 @@ final class MovieCell: UICollectionViewCell {
 			self.overviewLabel.text = movie.overview
 		}
 	}
-	
+
 	override var isHighlighted: Bool {
 		didSet {
 			UIView.animate(withDuration: 0.25) {
@@ -38,53 +38,53 @@ final class MovieCell: UICollectionViewCell {
 			}
 		}
 	}
-	
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.configure()
 	}
-	
+
 	@available(*, unavailable)
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	private func configure() {
 		self.setConfig()
 		self.addSubviews()
 		self.setConstraints()
 	}
-	
+
 	private func setConfig() {
 		self.imageView.contentMode = .scaleAspectFill
 		self.imageView.clipsToBounds = true
 		self.imageView.layer.cornerRadius = 12
-		
+
 		self.overviewLabel.textColor = .systemGray
 		self.overviewLabel.numberOfLines = 2
-		
+
 		self.nameLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
 		self.nameLabel.numberOfLines = 2
-		
+
 		self.backgroundColor = UIColor(named: "SecondColor")
 		self.layer.cornerRadius = 12
 		self.clipsToBounds = true
 	}
-	
+
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.layer.cornerRadius = 12
 		self.layer.masksToBounds = true
 	}
-	
+
 	private func addSubviews() {
 		self.addSubview(imageView)
 		self.addSubview(nameLabel)
 		self.addSubview(overviewLabel)
 	}
-	
+
 	private func setConstraints() {
-		
+
 		self.imageView.snp.makeConstraints { make in
 			make.left.top.bottom.equalToSuperview()
 			make.width.equalTo(60)
