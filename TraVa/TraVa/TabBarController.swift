@@ -32,7 +32,7 @@ class TabBarController: UITabBarController {
 		let upcomingNavVC = UINavigationController(rootViewController: upcomingVC)
 		upcomingVC.tabBarItem = self.createUpcomingTab()
 
-		viewControllers = [mainNavVC,popularNavVC, upcomingNavVC]
+		viewControllers = [mainNavVC, popularNavVC, upcomingNavVC]
 		self.viewControllers = viewControllers
 	}
 

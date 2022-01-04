@@ -106,7 +106,6 @@ struct Credits: Codable {
 	let cast, crew: [Cast]?
 }
 
-
 // MARK: - Cast
 struct Cast: Codable {
 	let adult: Bool?
@@ -149,8 +148,6 @@ enum Department: String, Codable {
 	case visualEffects = "Visual Effects"
 	case writing = "Writing"
 }
-
-
 
 //
 // To read values from URLs:
@@ -234,8 +231,6 @@ func newJSONEncoder() -> JSONEncoder {
 	}
 	return encoder
 }
-
-
 
 // MARK: - Encode/decode helpers
 

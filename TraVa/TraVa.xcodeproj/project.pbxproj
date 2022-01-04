@@ -15,6 +15,7 @@
 		F05A376E27747BF3000F3033 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376D27747BF3000F3033 /* MainView.swift */; };
 		F05A377127747C46000F3033 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F05A377027747C46000F3033 /* SnapKit */; };
 		F05A377527747DD1000F3033 /* MovieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A377427747DD1000F3033 /* MovieCellView.swift */; };
+		F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F05AF4A02782EBCD00BC0572 /* SkeletonView */; };
 		F0790F552774AE2400ECA372 /* MoviesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F542774AE2400ECA372 /* MoviesPage.swift */; };
 		F0790F572774C20D00ECA372 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F562774C20D00ECA372 /* FlowLayout.swift */; };
 		F0790F592774C23700ECA372 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F582774C23700ECA372 /* MovieCell.swift */; };
@@ -32,6 +33,8 @@
 		F0A4195827730514007112E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195627730514007112E4 /* LaunchScreen.storyboard */; };
 		F0A4196027730616007112E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4195F27730616007112E4 /* TabBarController.swift */; };
 		F0C7ABDA277A1A9A00FB4662 /* ActorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7ABD9277A1A9A00FB4662 /* ActorCellView.swift */; };
+		F0C7ABDE277AF29F00FB4662 /* ActorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7ABDD277AF29F00FB4662 /* ActorView.swift */; };
+		F0C7ABE0277AF2AD00FB4662 /* ActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7ABDF277AF2AD00FB4662 /* ActorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,9 @@
 		F0A4195927730514007112E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0A4195F27730616007112E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F0C7ABD9277A1A9A00FB4662 /* ActorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCellView.swift; sourceTree = "<group>"; };
+		F0C7ABDD277AF29F00FB4662 /* ActorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorView.swift; sourceTree = "<group>"; };
+		F0C7ABDF277AF2AD00FB4662 /* ActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewController.swift; sourceTree = "<group>"; };
+		F0C7ABE1277B0DAD00FB4662 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */,
 				F05A377127747C46000F3033 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,22 +160,40 @@
 		F0A4194A27730512007112E4 /* TraVa */ = {
 			isa = PBXGroup;
 			children = (
-				F0790F632776E98A00ECA372 /* UIView+Gradient.swift */,
-				F0790F602776E8AD00ECA372 /* MovieDetails */,
 				F0A4194B27730512007112E4 /* AppDelegate.swift */,
 				F0A4194D27730512007112E4 /* SceneDelegate.swift */,
 				F0A4195F27730616007112E4 /* TabBarController.swift */,
 				F05A3765277469A6000F3033 /* Main */,
 				F05A3766277469B3000F3033 /* Popular */,
 				F05A3767277469BC000F3033 /* Upcoming */,
+				F0790F602776E8AD00ECA372 /* MovieDetails */,
 				F05A3768277469E6000F3033 /* Network */,
-				F0A4195427730514007112E4 /* Assets.xcassets */,
+				F0C7ABDC277AF27E00FB4662 /* Actor */,
+				F0C7ABDB277AF20500FB4662 /* Extensions */,
 				F0A4195627730514007112E4 /* LaunchScreen.storyboard */,
+				F0A4195427730514007112E4 /* Assets.xcassets */,
 				F0A4195927730514007112E4 /* Info.plist */,
 				F05A376427745BA4000F3033 /* Models */,
-				F0790F6727778E9000ECA372 /* UIView+Blur.swift */,
 			);
 			path = TraVa;
+			sourceTree = "<group>";
+		};
+		F0C7ABDB277AF20500FB4662 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F0790F6727778E9000ECA372 /* UIView+Blur.swift */,
+				F0790F632776E98A00ECA372 /* UIView+Gradient.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F0C7ABDC277AF27E00FB4662 /* Actor */ = {
+			isa = PBXGroup;
+			children = (
+				F0C7ABDD277AF29F00FB4662 /* ActorView.swift */,
+				F0C7ABDF277AF2AD00FB4662 /* ActorViewController.swift */,
+			);
+			path = Actor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +214,7 @@
 			name = TraVa;
 			packageProductDependencies = (
 				F05A377027747C46000F3033 /* SnapKit */,
+				F05AF4A02782EBCD00BC0572 /* SkeletonView */,
 			);
 			productName = TraVa;
 			productReference = F0A4194827730512007112E4 /* TraVa.app */;
@@ -216,10 +242,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F0A4193F27730512007112E4;
 			packageReferences = (
 				F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = F0A4194927730512007112E4 /* Products */;
 			projectDirPath = "";
@@ -249,6 +277,7 @@
 			files = (
 				F05A376A27746A41000F3033 /* PopularViewController.swift in Sources */,
 				F0790F5F2774FC8000ECA372 /* UpcomingMoviesPage.swift in Sources */,
+				F0C7ABDE277AF29F00FB4662 /* ActorView.swift in Sources */,
 				F05A377527747DD1000F3033 /* MovieCellView.swift in Sources */,
 				F05A375F27745978000F3033 /* Network.swift in Sources */,
 				F0790F552774AE2400ECA372 /* MoviesPage.swift in Sources */,
@@ -258,6 +287,7 @@
 				F0790F662777735E00ECA372 /* MovieViewController.swift in Sources */,
 				F0790F5D2774EFCC00ECA372 /* UpcomingMovieCell.swift in Sources */,
 				F05A376C27746A63000F3033 /* UpcomingViewController.swift in Sources */,
+				F0C7ABE0277AF2AD00FB4662 /* ActorViewController.swift in Sources */,
 				F0790F6827778E9000ECA372 /* UIView+Blur.swift in Sources */,
 				F0C7ABDA277A1A9A00FB4662 /* ActorCellView.swift in Sources */,
 				F0790F622776E8CD00ECA372 /* MovieView.swift in Sources */,
@@ -279,6 +309,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F0A4195727730514007112E4 /* Base */,
+				F0C7ABE1277B0DAD00FB4662 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -290,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -351,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -492,6 +525,14 @@
 				version = 5.0.1;
 			};
 		};
+		F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -499,6 +540,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		F05AF4A02782EBCD00BC0572 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
