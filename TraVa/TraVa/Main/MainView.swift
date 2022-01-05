@@ -34,7 +34,7 @@ class MainView: UIView {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.isScrollEnabled = true
 		collectionView.showsHorizontalScrollIndicator = false
-		// collectionView.alwaysBounceHorizontal = true
+		collectionView.alwaysBounceHorizontal = true
 		collectionView.register(MovieCellView.self, forCellWithReuseIdentifier: MovieCellView.identifier)
 		return collectionView
 	}()
@@ -111,6 +111,9 @@ class MainView: UIView {
 		self.randomMovieView.layer.cornerRadius = 12
 		self.randomMovieView.clipsToBounds = true
 		self.randomMovieView.backgroundColor = .systemBackground
+
+		self.popularCollectionView.backgroundColor = .systemBackground
+		self.upcomingCollectionView.backgroundColor = .systemBackground
 	}
 
 	private func setConstraint() {

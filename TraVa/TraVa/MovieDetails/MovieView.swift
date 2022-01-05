@@ -61,7 +61,6 @@ final class MovieView: UIView {
 			let imagePath: String = movie.backdropPath ?? movie.posterPath
 			self.photoView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/" + imagePath)
 			self.backdrop = photoView.image
-			// self.imageView.image = UIImage(named: movie.title)
 			self.photoView.clipsToBounds = true
 			self.titleLabel.text = movie.title
 			self.descriptionLabel.text = movie.overview
@@ -121,7 +120,6 @@ final class MovieView: UIView {
 		self.instagramButton.titleLabel?.adjustsFontSizeToFitWidth = true
 		self.instagramButton.layer.cornerRadius = 10
 
-		// MARK: TEST
 		self.photoView.contentMode = .scaleAspectFill
 
 		self.titleLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
@@ -133,6 +131,8 @@ final class MovieView: UIView {
 
 		self.castLabel.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold)
 		self.castLabel.text = "В ролях"
+
+		
 	}
 
 	private func addSubviews() {
@@ -203,8 +203,6 @@ extension MovieView: UICollectionViewDelegate {
 		guard let actor = self.actors?[indexPath.item] else { return }
 		let actorVC = ActorViewController(actor: actor)
 		delegate?.pushActorVC(vc: actorVC)
-		print("pushed")
-		// self.navigationController?.pushViewController(actorVC, animated: true)
 	}
 
 	func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
