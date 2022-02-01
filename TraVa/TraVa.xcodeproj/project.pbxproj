@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00C7F9F27A97D6000C0D8E6 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F00C7F9E27A97D6000C0D8E6 /* Moya */; };
+		F00C7FA227A97DCB00C0D8E6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F00C7FA127A97DCB00C0D8E6 /* Kingfisher */; };
 		F05A375F27745978000F3033 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A375E27745978000F3033 /* Network.swift */; };
 		F05A376127745A3C000F3033 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376027745A3C000F3033 /* Movie.swift */; };
 		F05A376327745AFE000F3033 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376227745AFE000F3033 /* Actor.swift */; };
@@ -15,7 +17,6 @@
 		F05A376E27747BF3000F3033 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376D27747BF3000F3033 /* MainView.swift */; };
 		F05A377127747C46000F3033 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F05A377027747C46000F3033 /* SnapKit */; };
 		F05A377527747DD1000F3033 /* MovieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A377427747DD1000F3033 /* MovieCellView.swift */; };
-		F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F05AF4A02782EBCD00BC0572 /* SkeletonView */; };
 		F05AF4A327856E8A00BC0572 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05AF4A227856E8A00BC0572 /* UIImageView+URL.swift */; };
 		F0790F552774AE2400ECA372 /* MoviesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F542774AE2400ECA372 /* MoviesPage.swift */; };
 		F0790F572774C20D00ECA372 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F562774C20D00ECA372 /* FlowLayout.swift */; };
@@ -76,7 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */,
+				F00C7FA227A97DCB00C0D8E6 /* Kingfisher in Frameworks */,
+				F00C7F9F27A97D6000C0D8E6 /* Moya in Frameworks */,
 				F05A377127747C46000F3033 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,7 +219,8 @@
 			name = TraVa;
 			packageProductDependencies = (
 				F05A377027747C46000F3033 /* SnapKit */,
-				F05AF4A02782EBCD00BC0572 /* SkeletonView */,
+				F00C7F9E27A97D6000C0D8E6 /* Moya */,
+				F00C7FA127A97DCB00C0D8E6 /* Kingfisher */,
 			);
 			productName = TraVa;
 			productReference = F0A4194827730512007112E4 /* TraVa.app */;
@@ -250,7 +253,8 @@
 			mainGroup = F0A4193F27730512007112E4;
 			packageReferences = (
 				F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				F00C7F9D27A97D6000C0D8E6 /* XCRemoteSwiftPackageReference "Moya" */,
+				F00C7FA027A97DCB00C0D8E6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F0A4194927730512007112E4 /* Products */;
 			projectDirPath = "";
@@ -521,6 +525,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F00C7F9D27A97D6000C0D8E6 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F00C7FA027A97DCB00C0D8E6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -529,26 +549,23 @@
 				version = 5.0.1;
 			};
 		};
-		F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.9.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F00C7F9E27A97D6000C0D8E6 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F00C7F9D27A97D6000C0D8E6 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		F00C7FA127A97DCB00C0D8E6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F00C7FA027A97DCB00C0D8E6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F05A377027747C46000F3033 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		F05AF4A02782EBCD00BC0572 /* SkeletonView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */;
-			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
