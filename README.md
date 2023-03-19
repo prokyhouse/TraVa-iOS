@@ -23,6 +23,7 @@ Android версия (Java) на [GitHub](https://github.com/prokyhouse/TraVa)
 *Победитель конкурса «Школа VR 360» 2018*   
 *Участник Лаборатории ШИФТ 2020/21 по направлению iOS Development*  
 *Выпускник ЦФТ ШИФТ FocusStart 2021 по направлению iOS Development*  
+*Призёр (3 место) Хакатона Альфа-Банка x НГУ по мобильной разработке*  
 
 E-mail:  k.prokofev1@g.nsu.ru
 
