@@ -8,46 +8,101 @@
 import Foundation
 import UIKit
 
-class TabBarController: UITabBarController {
+public final class TabBarController: UITabBarController {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
+}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		self.set()
-	}
+// MARK: - Private methods
 
-	func set() {
-		let viewControllers: [UIViewController]
-		let mainVC = MainViewController()
-		mainVC.title = "Главная"
-		let mainNavVC = UINavigationController(rootViewController: mainVC)
-		mainVC.tabBarItem = self.createMainTab()
+private extension TabBarController {
+    func setup() {
+        let mainNavVC = makeMain()
+        let popularNavVC = makePopular()
+        let upcomingNavVC = makeUpcoming()
+        viewControllers = [mainNavVC, popularNavVC, upcomingNavVC]
+    }
 
-		let popularVC = PopularViewController()
-		popularVC.title = "Популярное"
-		let popularNavVC = UINavigationController(rootViewController: popularVC)
-		popularVC.tabBarItem = self.createPopularTab()
+    func makeMain() -> UINavigationController {
+        let mainVC = MainViewController()
+        mainVC.title = Constants.main.fullTitle
+        mainVC.tabBarItem = createMainTab()
 
-		let upcomingVC = UpcomingViewController()
-		upcomingVC.title = "Скоро в кино"
-		let upcomingNavVC = UINavigationController(rootViewController: upcomingVC)
-		upcomingVC.tabBarItem = self.createUpcomingTab()
+        return UINavigationController(rootViewController: mainVC)
+    }
 
-		viewControllers = [mainNavVC, popularNavVC, upcomingNavVC]
-		self.viewControllers = viewControllers
-	}
+    func makePopular() -> UINavigationController {
+        let popularVC = PopularViewController()
+        popularVC.title = Constants.popular.fullTitle
+        popularVC.tabBarItem = createPopularTab()
 
-	func createMainTab() -> UITabBarItem {
-		let item = UITabBarItem(title: "Главная", image: UIImage(systemName: "house.fill"), tag: 0)
-		return item
-	}
+        return UINavigationController(rootViewController: popularVC)
+    }
 
-	func createPopularTab() -> UITabBarItem {
-		let item = UITabBarItem(title: "Популярное", image: UIImage(systemName: "hand.thumbsup.fill"), tag: 1)
-		return item
-	}
+    func makeUpcoming() -> UINavigationController {
+        let upcomingVC = UpcomingViewController()
+        upcomingVC.title = Constants.upcoming.fullTitle
+        upcomingVC.tabBarItem = createUpcomingTab()
 
-	func createUpcomingTab() -> UITabBarItem {
-		let item = UITabBarItem(title: "Скоро", image: UIImage(systemName: "hourglass"), tag: 2)
-		return item
-	}
+        return UINavigationController(rootViewController: upcomingVC)
+    }
+
+    func createMainTab() -> UITabBarItem {
+        let item = UITabBarItem(
+            title: Constants.main.title,
+            image: Constants.main.icon,
+            tag: 0
+        )
+        return item
+    }
+
+    func createPopularTab() -> UITabBarItem {
+        let item = UITabBarItem(
+            title: Constants.popular.title,
+            image: Constants.popular.icon,
+            tag: 1
+        )
+        return item
+    }
+
+    func createUpcomingTab() -> UITabBarItem {
+        let item = UITabBarItem(
+            title: Constants.upcoming.title,
+            image: Constants.upcoming.icon,
+            tag: 2
+        )
+        return item
+    }
+}
+
+// MARK: - Constants
+
+private extension TabBarController {
+    enum Constants {
+        static let main: TabSection = .init(
+            title: "Главная",
+            fullTitle: "Главная",
+            icon: UIImage(systemName: "house.fill")
+        )
+        static let popular: TabSection = .init(
+            title: "Популярное",
+            fullTitle: "Популярно сейчас",
+            icon: UIImage(systemName: "hand.thumbsup.fill")
+        )
+        static let upcoming: TabSection = .init(
+            title: "Скоро",
+            fullTitle: "Скоро в кино",
+            icon: UIImage(systemName: "hourglass")
+        )
+    }
+}
+
+// MARK: - TabSection
+
+private struct TabSection {
+    let title: String
+    let fullTitle: String
+    let icon: UIImage?
 }
