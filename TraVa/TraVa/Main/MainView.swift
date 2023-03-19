@@ -9,203 +9,290 @@ import UIKit
 import SnapKit
 
 protocol MainViewDelegate {
-	func pushVC(vc: UIViewController)
+    func pushVC(vc: UIViewController)
 }
 
-class MainView: UIView {
+public final class MainView: UIView {
+    // MARK: - Internal properties
 
-	internal var popularMovies: [Movie]?
-	internal var upcomingMovies: [Movie]?
-	internal var delegate: MainViewDelegate?
+    internal var popularMovies: [Movie]?
+    internal var upcomingMovies: [Movie]?
+    internal var delegate: MainViewDelegate?
 
-	private let scrollView = UIScrollView()
-	let contentView = UIView()
-	let popularLabel = UILabel()
-	let upcomingLabel = UILabel()
-	let recommendationLabel = UILabel()
-	let randomMovieView = MovieCell()
+    // MARK: - Views
 
-	var popularCollectionView: UICollectionView = {
-		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-		layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-		layout.itemSize = CGSize(width: 120, height: 190)
-		layout.scrollDirection = .horizontal
+    private let scrollView = UIScrollView()
+    let contentView = UIView()
+    let popularLabel = UILabel()
+    let upcomingLabel = UILabel()
+    let recommendationLabel = UILabel()
+    let randomMovieView = MovieCell()
 
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		collectionView.isScrollEnabled = true
-		collectionView.showsHorizontalScrollIndicator = false
-		collectionView.alwaysBounceHorizontal = true
-		collectionView.register(MovieCellView.self, forCellWithReuseIdentifier: MovieCellView.identifier)
-		return collectionView
-	}()
+    private(set) lazy var popularCollectionView: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(
+            top: .zero,
+            left: Constants.collectionsHorizontalInsets,
+            bottom: .zero,
+            right: Constants.collectionsHorizontalInsets
+        )
+        layout.itemSize = CGSize(
+            width: Constants.cellWidth,
+            height: Constants.collectionsHeight
+        )
+        layout.scrollDirection = .horizontal
 
-	var upcomingCollectionView: UICollectionView = {
-		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-		layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-		layout.itemSize = CGSize(width: 120, height: 190)
-		layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        collectionView.isScrollEnabled = true
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(
+            MovieCellView.self,
+            forCellWithReuseIdentifier: MovieCellView.identifier
+        )
+        return collectionView
+    }()
 
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		collectionView.isScrollEnabled = true
-		collectionView.showsHorizontalScrollIndicator = false
-		collectionView.register(MovieCellView.self, forCellWithReuseIdentifier: MovieCellView.identifier)
-		return collectionView
-	}()
+    private(set) lazy var upcomingCollectionView: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(
+            top: .zero,
+            left: Constants.collectionsHorizontalInsets,
+            bottom: .zero,
+            right: Constants.collectionsHorizontalInsets
+        )
+        layout.itemSize = CGSize(
+            width: Constants.cellWidth,
+            height: Constants.collectionsHeight
+        )
+        layout.scrollDirection = .horizontal
 
-	internal func setPopularMovies(popularMovies: [Movie]?) {
-		self.popularMovies = popularMovies
-		self.randomMovieView.movie = popularMovies?.randomElement()
-		self.popularCollectionView.reloadData()
-	}
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        collectionView.isScrollEnabled = true
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(
+            MovieCellView.self,
+            forCellWithReuseIdentifier: MovieCellView.identifier
+        )
+        return collectionView
+    }()
 
-	internal func setUpcomingMovies(upcomingMovies: [Movie]?) {
-		self.upcomingMovies = upcomingMovies
-		self.upcomingCollectionView.reloadData()
-	}
+    internal func setPopularMovies(popularMovies: [Movie]?) {
+        self.popularMovies = popularMovies
+        randomMovieView.movie = popularMovies?.randomElement()
+        popularCollectionView.reloadData()
+    }
 
-	public override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.configure()
-	}
+    internal func setUpcomingMovies(upcomingMovies: [Movie]?) {
+        self.upcomingMovies = upcomingMovies
+        upcomingCollectionView.reloadData()
+    }
 
-	public required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+    // MARK: - Lifecycle
 
-	private func configure() {
-		self.setConfig()
-		self.addSubviews()
-		self.addDelegate()
-		self.setConstraint()
-	}
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubviews()
+        setupConstraints()
+        configure()
+    }
 
-	private func addDelegate() {
-		self.popularCollectionView.dataSource = self
-		self.popularCollectionView.delegate = self
-
-		self.upcomingCollectionView.dataSource = self
-		self.upcomingCollectionView.delegate = self
-	}
-
-	private func addSubviews() {
-		self.addSubview(self.scrollView)
-		self.scrollView.addSubview(self.contentView)
-		self.contentView.addSubview(self.popularLabel)
-		self.contentView.addSubview(self.popularCollectionView)
-		self.contentView.addSubview(self.recommendationLabel)
-		self.contentView.addSubview(self.randomMovieView)
-		self.contentView.addSubview(self.upcomingLabel)
-		self.contentView.addSubview(self.upcomingCollectionView)
-	}
-
-	private func setConfig() {
-		self.popularLabel.text = "Популярное"
-		self.popularLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
-
-		self.upcomingLabel.text = "Скоро в кино"
-		self.upcomingLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
-
-		self.recommendationLabel.text = "Может быть интересно"
-		self.recommendationLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
-
-		self.randomMovieView.layer.cornerRadius = 12
-		self.randomMovieView.clipsToBounds = true
-		self.randomMovieView.backgroundColor = .systemBackground
-
-		self.popularCollectionView.backgroundColor = .systemBackground
-		self.upcomingCollectionView.backgroundColor = .systemBackground
-	}
-
-	private func setConstraint() {
-
-		self.scrollView.snp.makeConstraints { (make) in
-			make.edges.equalToSuperview()
-		}
-
-		self.contentView.snp.makeConstraints { (make) in
-			make.edges.equalToSuperview()
-			make.width.equalToSuperview()
-			make.height.equalToSuperview()
-		}
-
-		self.popularLabel.snp.makeConstraints { make in
-			make.left.right.equalTo(self.contentView).inset(9)
-			make.top.equalTo(self.contentView.snp.top).offset(11)
-			make.height.equalTo(33)
-		}
-
-		self.popularCollectionView.snp.makeConstraints { make in
-			make.left.equalToSuperview()
-			make.right.equalToSuperview()
-			make.top.equalTo(self.popularLabel.snp.bottom).offset(11)
-			make.height.equalTo(190)
-		}
-
-		self.recommendationLabel.snp.makeConstraints { make in
-			make.left.right.equalTo(self.contentView).inset(9)
-			make.top.equalTo(self.popularCollectionView.snp.bottom).offset(11)
-			make.height.equalTo(33)
-		}
-
-		self.randomMovieView.snp.makeConstraints { make in
-			make.left.right.equalTo(self.contentView).inset(9)
-			make.top.equalTo(self.recommendationLabel.snp.bottom).offset(11)
-			make.height.equalTo(90)
-		}
-
-		self.upcomingLabel.snp.makeConstraints { make in
-			make.left.right.equalTo(self.contentView).inset(9)
-			make.top.equalTo(self.randomMovieView.snp.bottom).offset(11)
-			make.height.equalTo(33)
-		}
-
-		self.upcomingCollectionView.snp.makeConstraints { make in
-			make.left.equalToSuperview()
-			make.right.equalToSuperview()
-			make.top.equalTo(self.upcomingLabel.snp.bottom).offset(11)
-			make.height.equalTo(190)
-		}
-	}
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
+
+// MARK: - Private methods
+
+private extension MainView {
+    func addDelegate() {
+        popularCollectionView.dataSource = self
+        popularCollectionView.delegate = self
+
+        upcomingCollectionView.dataSource = self
+        upcomingCollectionView.delegate = self
+    }
+
+    func addSubviews() {
+        addSubview(scrollView)
+        [
+            contentView,
+            popularLabel,
+            popularCollectionView,
+            recommendationLabel,
+            randomMovieView,
+            upcomingLabel,
+            upcomingCollectionView
+        ].forEach {
+            scrollView.addSubview($0)
+        }
+    }
+
+    func configure() {
+        addDelegate()
+
+        popularLabel.text = Constants.popular
+        popularLabel.font = UIFont.systemFont(
+            ofSize: Constants.titleSize,
+            weight: Constants.titleWeight
+        )
+
+        upcomingLabel.text = Constants.soon
+        upcomingLabel.font = UIFont.systemFont(
+            ofSize: Constants.titleSize,
+            weight: Constants.titleWeight
+        )
+
+        recommendationLabel.text = Constants.recommendation
+        recommendationLabel.font = UIFont.systemFont(
+            ofSize: Constants.titleSize,
+            weight: Constants.titleWeight
+        )
+
+        randomMovieView.layer.cornerRadius = 12
+        randomMovieView.clipsToBounds = true
+        randomMovieView.backgroundColor = .systemBackground
+
+        popularCollectionView.backgroundColor = .systemBackground
+        upcomingCollectionView.backgroundColor = .systemBackground
+    }
+
+    func setupConstraints() {
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+        }
+        popularLabel.snp.makeConstraints { make in
+            make.left.right.equalTo(contentView).inset(Constants.horizontalSpacing)
+            make.top.equalTo(contentView.snp.top).offset(Constants.verticalSpacing)
+            make.height.equalTo(Constants.titleHeight)
+        }
+        popularCollectionView.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalTo(popularLabel.snp.bottom).offset(Constants.verticalSpacing)
+            make.height.equalTo(Constants.collectionsHeight)
+        }
+        recommendationLabel.snp.makeConstraints { make in
+            make.left.right.equalTo(contentView).inset(Constants.horizontalSpacing)
+            make.top.equalTo(popularCollectionView.snp.bottom).offset(Constants.verticalSpacing)
+            make.height.equalTo(Constants.titleHeight)
+        }
+        randomMovieView.snp.makeConstraints { make in
+            make.left.right.equalTo(contentView).inset(Constants.horizontalSpacing)
+            make.top.equalTo(recommendationLabel.snp.bottom).offset(Constants.verticalSpacing)
+            make.height.equalTo(90)
+        }
+        upcomingLabel.snp.makeConstraints { make in
+            make.left.right.equalTo(contentView).inset(Constants.horizontalSpacing)
+            make.top.equalTo(randomMovieView.snp.bottom).offset(Constants.verticalSpacing)
+            make.height.equalTo(Constants.titleHeight)
+        }
+        upcomingCollectionView.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalTo(upcomingLabel.snp.bottom).offset(Constants.verticalSpacing)
+            make.height.equalTo(Constants.collectionsHeight)
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
 
 extension MainView: UICollectionViewDelegate {
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		if collectionView == self.popularCollectionView {
-			guard let movie = self.popularMovies?[indexPath.item] else { return }
-			let movieVC = MovieViewController(movie: movie)
-			delegate?.pushVC(vc: movieVC)
-		} else {
-			guard let movie = self.upcomingMovies?[indexPath.item] else { return }
-			let movieVC = MovieViewController(movie: movie)
-			delegate?.pushVC(vc: movieVC)
-		}
-	}
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        if collectionView == self.popularCollectionView {
+            guard let movie = self.popularMovies?[indexPath.item] else { return }
 
-	func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-		return true
-	}
+            let movieVC = MovieViewController(movie: movie)
+            delegate?.pushVC(vc: movieVC)
+        } else {
+            guard let movie = self.upcomingMovies?[indexPath.item] else { return }
 
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: 120, height: 190)
-	}
+            let movieVC = MovieViewController(movie: movie)
+            delegate?.pushVC(vc: movieVC)
+        }
+    }
+
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        shouldHighlightItemAt indexPath: IndexPath
+    ) -> Bool {
+        return true
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(
+            width: Constants.cellWidth,
+            height: Constants.collectionsHeight
+        )
+    }
 }
 
-extension MainView: UICollectionViewDataSource {
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		if collectionView == self.popularCollectionView {
-			return self.popularMovies?.count ?? 0
-		} else {
-			return self.upcomingMovies?.count ?? 0
-		}
-	}
+// MARK: - UICollectionViewDataSource
 
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellView.identifier, for: indexPath) as! MovieCellView
-		if collectionView == self.popularCollectionView {
-			cell.movie = self.popularMovies?[indexPath.item]
-		} else {
-			cell.movie = self.upcomingMovies?[indexPath.item]
-		}
-		return cell
-	}
+extension MainView: UICollectionViewDataSource {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        if collectionView == self.popularCollectionView {
+            return self.popularMovies?.count ?? 0
+        } else {
+            return self.upcomingMovies?.count ?? 0
+        }
+    }
+
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MovieCellView.identifier,
+            for: indexPath
+        ) as! MovieCellView
+        if collectionView == self.popularCollectionView {
+            cell.movie = self.popularMovies?[indexPath.item]
+        } else {
+            cell.movie = self.upcomingMovies?[indexPath.item]
+        }
+        return cell
+    }
+}
+
+// MARK: - Constants
+
+private extension MainView {
+    enum Constants {
+        static let soon: String = "Скоро в кино"
+        static let popular: String = "Популярное"
+        static let recommendation: String = "Может быть интересно"
+
+        static let cellWidth: CGFloat = 120.0
+        static let titleSize: CGFloat = 28.0
+        static let titleHeight: CGFloat = 33.0
+        static let titleWeight: UIFont.Weight = .bold
+        static let verticalSpacing: CGFloat = 11.0
+        static let horizontalSpacing: CGFloat = 9.0
+        static let collectionsHeight: CGFloat = 190.0
+        static let collectionsHorizontalInsets: CGFloat = 10.0
+    }
 }
