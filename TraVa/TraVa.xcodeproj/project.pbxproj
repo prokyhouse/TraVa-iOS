@@ -40,12 +40,22 @@
 		F018DECD29C8120400325BC5 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376227745AFE000F3033 /* Actor.swift */; };
 		F018DECE29C8120400325BC5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376027745A3C000F3033 /* Movie.swift */; };
 		F018DECF29C8121000325BC5 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05AF4A227856E8A00BC0572 /* UIImageView+URL.swift */; };
-		F018DED029C8121000325BC5 /* UIView+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F6727778E9000ECA372 /* UIView+Blur.swift */; };
+		F018DED029C8121000325BC5 /* UIImage+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F6727778E9000ECA372 /* UIImage+Blur.swift */; };
 		F018DED129C8121000325BC5 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F632776E98A00ECA372 /* UIView+Gradient.swift */; };
 		F018DED429C8125C00325BC5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F018DED329C8125C00325BC5 /* SnapKit */; };
 		F018DED629C8136700325BC5 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F018DED529C8136700325BC5 /* SkeletonView */; };
 		F018DED729C8136C00325BC5 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEA029C8114200325BC5 /* Domain.framework */; };
 		F018DED829C8136C00325BC5 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEA029C8114200325BC5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F018DEE629C819F700325BC5 /* DesignBook.h in Headers */ = {isa = PBXBuildFile; fileRef = F018DEE529C819F700325BC5 /* DesignBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F018DEE929C819F700325BC5 /* DesignBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEE329C819F700325BC5 /* DesignBook.framework */; };
+		F018DEEA29C819F700325BC5 /* DesignBook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEE329C819F700325BC5 /* DesignBook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F018DEF029C81A5C00325BC5 /* BlurNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018DEEF29C81A5C00325BC5 /* BlurNavigationBar.swift */; };
+		F018DEF229C81BA600325BC5 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018DEF129C81BA600325BC5 /* BlurView.swift */; };
+		F018DEF429C81BCC00325BC5 /* NSLayoutConstraint+Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018DEF329C81BCC00325BC5 /* NSLayoutConstraint+Mask.swift */; };
+		F018DEF529C81CCE00325BC5 /* DesignBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEE329C819F700325BC5 /* DesignBook.framework */; };
+		F018DEF629C81CCE00325BC5 /* DesignBook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEE329C819F700325BC5 /* DesignBook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F018DEF929C833B800325BC5 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F018DE7E29C80F2900325BC5 /* Common.framework */; platformFilter = ios; };
+		F018DEFA29C833B800325BC5 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F018DE7E29C80F2900325BC5 /* Common.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F05A377127747C46000F3033 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F05A377027747C46000F3033 /* SnapKit */; };
 		F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F05AF4A02782EBCD00BC0572 /* SkeletonView */; };
 		F0A4194C27730512007112E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194B27730512007112E4 /* AppDelegate.swift */; };
@@ -90,6 +100,27 @@
 			remoteGlobalIDString = F018DE9F29C8114200325BC5;
 			remoteInfo = Domain;
 		};
+		F018DEE729C819F700325BC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A4194027730512007112E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F018DEE229C819F700325BC5;
+			remoteInfo = DesignBook;
+		};
+		F018DEF729C81CCE00325BC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A4194027730512007112E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F018DEE229C819F700325BC5;
+			remoteInfo = DesignBook;
+		};
+		F018DEFB29C833B800325BC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A4194027730512007112E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F018DE7D29C80F2900325BC5;
+			remoteInfo = Common;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +133,7 @@
 				F018DEA729C8114200325BC5 /* Domain.framework in Embed Frameworks */,
 				F018DE9629C8101200325BC5 /* Networking.framework in Embed Frameworks */,
 				F018DEB729C8116300325BC5 /* Presentation.framework in Embed Frameworks */,
+				F018DEEA29C819F700325BC5 /* DesignBook.framework in Embed Frameworks */,
 				F018DE8529C80F2900325BC5 /* Common.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -114,6 +146,18 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F018DED829C8136C00325BC5 /* Domain.framework in Embed Frameworks */,
+				F018DEF629C81CCE00325BC5 /* DesignBook.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F018DEFD29C833B800325BC5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F018DEFA29C833B800325BC5 /* Common.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +173,11 @@
 		F018DEA229C8114200325BC5 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		F018DEB029C8116300325BC5 /* Presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F018DEB229C8116300325BC5 /* Presentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presentation.h; sourceTree = "<group>"; };
+		F018DEE329C819F700325BC5 /* DesignBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F018DEE529C819F700325BC5 /* DesignBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesignBook.h; sourceTree = "<group>"; };
+		F018DEEF29C81A5C00325BC5 /* BlurNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurNavigationBar.swift; sourceTree = "<group>"; };
+		F018DEF129C81BA600325BC5 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		F018DEF329C81BCC00325BC5 /* NSLayoutConstraint+Mask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Mask.swift"; sourceTree = "<group>"; };
 		F05A375E27745978000F3033 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F05A376027745A3C000F3033 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F05A376227745AFE000F3033 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
@@ -146,7 +195,7 @@
 		F0790F612776E8CD00ECA372 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		F0790F632776E98A00ECA372 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		F0790F652777735E00ECA372 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
-		F0790F6727778E9000ECA372 /* UIView+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Blur.swift"; sourceTree = "<group>"; };
+		F0790F6727778E9000ECA372 /* UIImage+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Blur.swift"; sourceTree = "<group>"; };
 		F0A4194827730512007112E4 /* TraVa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraVa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A4194B27730512007112E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0A4194D27730512007112E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,8 +237,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F018DED729C8136C00325BC5 /* Domain.framework in Frameworks */,
+				F018DEF529C81CCE00325BC5 /* DesignBook.framework in Frameworks */,
 				F018DED629C8136700325BC5 /* SkeletonView in Frameworks */,
 				F018DED429C8125C00325BC5 /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F018DEE029C819F700325BC5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F018DEF929C833B800325BC5 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F018DEA629C8114200325BC5 /* Domain.framework in Frameworks */,
+				F018DEE929C819F700325BC5 /* DesignBook.framework in Frameworks */,
 				F018DE9529C8101200325BC5 /* Networking.framework in Frameworks */,
 				F018DEB629C8116300325BC5 /* Presentation.framework in Frameworks */,
 				F018DE8429C80F2900325BC5 /* Common.framework in Frameworks */,
@@ -284,6 +343,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F018DEE429C819F700325BC5 /* DesignBook */ = {
+			isa = PBXGroup;
+			children = (
+				F018DEE529C819F700325BC5 /* DesignBook.h */,
+				F018DEEE29C81A2400325BC5 /* ReusableViews */,
+			);
+			path = DesignBook;
+			sourceTree = "<group>";
+		};
+		F018DEEE29C81A2400325BC5 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				F018DEEF29C81A5C00325BC5 /* BlurNavigationBar.swift */,
+				F018DEF129C81BA600325BC5 /* BlurView.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
 		F05A376427745BA4000F3033 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,9 +416,10 @@
 			isa = PBXGroup;
 			children = (
 				F0A4194A27730512007112E4 /* TraVa */,
+				F018DEA129C8114200325BC5 /* Domain */,
 				F018DE7F29C80F2900325BC5 /* Common */,
 				F018DE9029C8101200325BC5 /* Networking */,
-				F018DEA129C8114200325BC5 /* Domain */,
+				F018DEE429C819F700325BC5 /* DesignBook */,
 				F018DEB129C8116300325BC5 /* Presentation */,
 				F0A4194927730512007112E4 /* Products */,
 				F018DED229C8125C00325BC5 /* Frameworks */,
@@ -356,6 +434,7 @@
 				F018DE8F29C8101200325BC5 /* Networking.framework */,
 				F018DEA029C8114200325BC5 /* Domain.framework */,
 				F018DEB029C8116300325BC5 /* Presentation.framework */,
+				F018DEE329C819F700325BC5 /* DesignBook.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,9 +451,10 @@
 		F0C7ABDB277AF20500FB4662 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F0790F6727778E9000ECA372 /* UIView+Blur.swift */,
+				F0790F6727778E9000ECA372 /* UIImage+Blur.swift */,
 				F0790F632776E98A00ECA372 /* UIView+Gradient.swift */,
 				F05AF4A227856E8A00BC0572 /* UIImageView+URL.swift */,
+				F018DEF329C81BCC00325BC5 /* NSLayoutConstraint+Mask.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -420,6 +500,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F018DEB329C8116300325BC5 /* Presentation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F018DEDE29C819F700325BC5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F018DEE629C819F700325BC5 /* DesignBook.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +582,7 @@
 			);
 			dependencies = (
 				F018DEDA29C8136C00325BC5 /* PBXTargetDependency */,
+				F018DEF829C81CCE00325BC5 /* PBXTargetDependency */,
 			);
 			name = Presentation;
 			packageProductDependencies = (
@@ -502,6 +591,26 @@
 			);
 			productName = Presentation;
 			productReference = F018DEB029C8116300325BC5 /* Presentation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F018DEE229C819F700325BC5 /* DesignBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F018DEEB29C819F800325BC5 /* Build configuration list for PBXNativeTarget "DesignBook" */;
+			buildPhases = (
+				F018DEDE29C819F700325BC5 /* Headers */,
+				F018DEDF29C819F700325BC5 /* Sources */,
+				F018DEE029C819F700325BC5 /* Frameworks */,
+				F018DEE129C819F700325BC5 /* Resources */,
+				F018DEFD29C833B800325BC5 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F018DEFC29C833B800325BC5 /* PBXTargetDependency */,
+			);
+			name = DesignBook;
+			productName = DesignBook;
+			productReference = F018DEE329C819F700325BC5 /* DesignBook.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F0A4194727730512007112E4 /* TraVa */ = {
@@ -520,6 +629,7 @@
 				F018DE9429C8101200325BC5 /* PBXTargetDependency */,
 				F018DEA529C8114200325BC5 /* PBXTargetDependency */,
 				F018DEB529C8116300325BC5 /* PBXTargetDependency */,
+				F018DEE829C819F700325BC5 /* PBXTargetDependency */,
 			);
 			name = TraVa;
 			packageProductDependencies = (
@@ -552,6 +662,10 @@
 					F018DEAF29C8116300325BC5 = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					F018DEE229C819F700325BC5 = {
+						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
+					};
 					F0A4194727730512007112E4 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -576,9 +690,10 @@
 			projectRoot = "";
 			targets = (
 				F0A4194727730512007112E4 /* TraVa */,
+				F018DE9F29C8114200325BC5 /* Domain */,
 				F018DE7D29C80F2900325BC5 /* Common */,
 				F018DE8E29C8101200325BC5 /* Networking */,
-				F018DE9F29C8114200325BC5 /* Domain */,
+				F018DEE229C819F700325BC5 /* DesignBook */,
 				F018DEAF29C8116300325BC5 /* Presentation */,
 			);
 		};
@@ -613,6 +728,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F018DEE129C819F700325BC5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0A4194627730512007112E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,7 +753,8 @@
 			files = (
 				F018DECF29C8121000325BC5 /* UIImageView+URL.swift in Sources */,
 				F018DED129C8121000325BC5 /* UIView+Gradient.swift in Sources */,
-				F018DED029C8121000325BC5 /* UIView+Blur.swift in Sources */,
+				F018DED029C8121000325BC5 /* UIImage+Blur.swift in Sources */,
+				F018DEF429C81BCC00325BC5 /* NSLayoutConstraint+Mask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +799,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F018DEDF29C819F700325BC5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F018DEF029C81A5C00325BC5 /* BlurNavigationBar.swift in Sources */,
+				F018DEF229C81BA600325BC5 /* BlurView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0A4194427730512007112E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,6 +844,22 @@
 			isa = PBXTargetDependency;
 			target = F018DE9F29C8114200325BC5 /* Domain */;
 			targetProxy = F018DED929C8136C00325BC5 /* PBXContainerItemProxy */;
+		};
+		F018DEE829C819F700325BC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F018DEE229C819F700325BC5 /* DesignBook */;
+			targetProxy = F018DEE729C819F700325BC5 /* PBXContainerItemProxy */;
+		};
+		F018DEF829C81CCE00325BC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F018DEE229C819F700325BC5 /* DesignBook */;
+			targetProxy = F018DEF729C81CCE00325BC5 /* PBXContainerItemProxy */;
+		};
+		F018DEFC29C833B800325BC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = F018DE7D29C80F2900325BC5 /* Common */;
+			targetProxy = F018DEFB29C833B800325BC5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -996,6 +1144,73 @@
 			};
 			name = Release;
 		};
+		F018DEEC29C819F800325BC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V4U2WRPNL2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.proko.TraVa.DesignBook;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F018DEED29C819F800325BC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V4U2WRPNL2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.proko.TraVa.DesignBook;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F0A4195A27730514007112E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1209,6 +1424,15 @@
 			buildConfigurations = (
 				F018DEB929C8116300325BC5 /* Debug */,
 				F018DEBA29C8116300325BC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F018DEEB29C819F800325BC5 /* Build configuration list for PBXNativeTarget "DesignBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F018DEEC29C819F800325BC5 /* Debug */,
+				F018DEED29C819F800325BC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

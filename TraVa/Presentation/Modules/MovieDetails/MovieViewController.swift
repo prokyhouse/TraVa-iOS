@@ -8,6 +8,7 @@
 import Domain
 import Networking
 import UIKit
+import DesignBook
 
 class MovieViewController: UIViewController, MovieViewDelegate {
 	func pushActorVC(vc: UIViewController) {
@@ -22,12 +23,14 @@ class MovieViewController: UIViewController, MovieViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.backgroundColor = UIColor.systemBackground
+        navigationController?.isNavigationBarHidden = true
 	}
 
 	override func loadView() {
 		self.loadData()
 		self.movieView.delegate = self
 		self.navigationController?.navigationBar.prefersLargeTitles = false
+        movieView.navBar.delegate = self
 		self.view = self.movieView
 	}
 
@@ -62,4 +65,10 @@ class MovieViewController: UIViewController, MovieViewDelegate {
 			}
 		}
 	}
+}
+
+extension MovieViewController: BlurNavigationBarDelegate {
+    func onBackTap() {
+        navigationController?.popViewController(animated: true)
+    }
 }

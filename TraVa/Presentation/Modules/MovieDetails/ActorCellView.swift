@@ -60,9 +60,9 @@ final class ActorCellView: UICollectionViewCell {
 		self.imageView.contentMode = .scaleAspectFill
 		self.imageView.clipsToBounds = true
 
-		self.imageView.layer.cornerRadius = 12
+		self.imageView.layer.cornerRadius = 16
 
-		self.layer.cornerRadius = 10
+		self.layer.cornerRadius = 16
 	}
 
 	private func addSubviews() {
