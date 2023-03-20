@@ -1,5 +1,5 @@
 # TraVa для iOS
-<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/develop/Images/TraVaImage1.jpeg" alt="[Main Logo]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage1.jpeg" alt="[Main Logo]" align="center"/>
 
 
 Приложение для тех, кто любит фильмы и сериалы. 
@@ -33,27 +33,37 @@ Swift, Java, C#-разработчик, дизайнер, Middle Project manager
 
 
 ## О проекте
-<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/develop/Images/TraVaImage3.jpeg" alt="[History]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage3.jpeg" alt="[History]" align="center"/>
    
 ## Сроки выхода проекта
-   1.0 - 28 дек. 2021 г.
+```
+   [1.0] - 28 дек. 2021 г.
    (Срок написания приложения - 1 неделя)
+```
+```
+   [2.0] - 20. мар. 2023 г.
+   (Срок написания обновления - 1 день)
+```
    
 ## Инструменты
 **API** - [TheMovieDataBase (TMDB)](https://www.themoviedb.org)
 
-**Вёрстка** - UIKit + [SnapKit](https://github.com/SnapKit/SnapKit)
+**Вёрстка** - NSLayoutConstraint + [SnapKit](https://github.com/SnapKit/SnapKit)
 
 **Архитектура** - MVC
 
 **Подключение библиотек** - Swift Package Manager (для SnapKit) + CocoaPods (Для SwiftLint)
    
 ## User flow
-<img src="https://github.com/prokyhouse/TraVa-iOS/blob/develop/Images/TraVaImage9.jpeg?raw=true" alt="[Upcoming screen]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage9.jpeg?raw=true" alt="[Upcoming screen]" align="center"/>
+
+## Обновление (2.0)
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImageVersion2.jpeg" alt="[UpdateChangelog]" align="center"/>
 
 ## Скриншоты
 <img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/develop/Images/TraVaImage4.jpeg" alt="[Main screen]" align="center"/>
-<img src="https://github.com/prokyhouse/TraVa-iOS/blob/develop/Images/TraVaImage5.jpeg?raw=true" alt="[Popular screen]" align="center"/>
-<img src="https://github.com/prokyhouse/TraVa-iOS/blob/develop/Images/TraVaImage6.jpeg?raw=true" alt="[Upcoming screen]" align="center"/>
-<img src="https://github.com/prokyhouse/TraVa-iOS/blob/develop/Images/TraVaImage7.jpeg?raw=true" alt="[Upcoming screen]" align="center"/>
-<img src="https://github.com/prokyhouse/TraVa-iOS/blob/develop/Images/TraVaImage8.jpeg?raw=true" alt="[Upcoming screen]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage5.jpeg?raw=true" alt="[Popular screen]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage6.jpeg?raw=true" alt="[Upcoming screen]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage7.jpeg?raw=true" alt="[About movie]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage8.jpeg?raw=true" alt="[Actors]" align="center"/>
+<img src="https://raw.githubusercontent.com/prokyhouse/TraVa-iOS/master/Images/TraVaImage8_1.jpeg?raw=true" alt="[Actors screen]" align="center"/>
