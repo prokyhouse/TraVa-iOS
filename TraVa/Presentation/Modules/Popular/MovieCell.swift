@@ -57,9 +57,10 @@ final class MovieCell: UICollectionViewCell {
 
 	private func setConfig() {
 		self.imageView.contentMode = .scaleAspectFill
-		self.imageView.clipsToBounds = true
-		self.imageView.layer.cornerRadius = 12
-
+        self.imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        self.imageView.layer.cornerRadius = 12
+        self.imageView.clipsToBounds = true
+    
 		self.overviewLabel.textColor = .systemGray
 		self.overviewLabel.numberOfLines = 2
 
