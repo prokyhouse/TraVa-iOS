@@ -22,12 +22,7 @@ public final class MovieView: UIView {
 
     public var movie: Movie? {
         didSet {
-            guard let movie = movie else { return }
-            let imagePath: String = movie.backdropPath ?? movie.posterPath
-            photoView.imageFromUrl(urlString: Constants.photoBaseUrl + imagePath)
-            photoView.clipsToBounds = true
-            navBar.title = movie.title ?? String()
-            descriptionLabel.text = movie.overview
+            setupUI(with: movie)
         }
     }
 
@@ -56,6 +51,7 @@ public final class MovieView: UIView {
     private let photoView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         return view
     }()
 
@@ -172,6 +168,16 @@ private extension MovieView {
         self.setConstraints()
     }
 
+    func setupUI(with movie: Movie?) {
+        guard let movie = movie else { return }
+
+        let imagePath: String = movie.backdropPath ?? movie.posterPath
+        setPhoto(from: imagePath)
+
+        navBar.title = movie.title
+        descriptionLabel.text = movie.overview
+    }
+
     func addDelegate() {
         self.actorsCollectionView.dataSource = self
         self.actorsCollectionView.delegate = self
@@ -259,6 +265,10 @@ private extension MovieView {
             actorsCollectionView.heightAnchor.constraint(equalToConstant: Constants.cellHeight),
             actorsCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.hSpacing)
         ])
+    }
+
+    func setPhoto(from path: String) {
+        photoView.imageFromUrl(urlString: Constants.photoBaseUrl + path)
     }
 }
 
