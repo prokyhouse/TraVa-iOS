@@ -1,26 +1,25 @@
 //
-//  UpcomingViewController.swift
+//  PopularViewController.swift
 //  TraVa
 //
 //  Created by Кирилл Прокофьев on 23.12.2021.
 //
 
-import UIKit
-
-import Foundation
+import Domain
+import Networking
 import UIKit
 import SnapKit
 
-final class UpcomingViewController: UIViewController {
+final class PopularViewController: UIViewController {
 
 	private let networkService = NetworkService()
 	private let activityIndicator = UIActivityIndicatorView(style: .medium)
 
 	private lazy var collectionView: UICollectionView = {
-		let flowLayout = UpcomingFlowLayout()
+		let flowLayout = FlowLayout()
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 		collectionView.alwaysBounceVertical = true
-		collectionView.register(UpcomingMovieCell.self, forCellWithReuseIdentifier: UpcomingMovieCell.identifier)
+		collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.identifier)
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		return collectionView
@@ -28,20 +27,21 @@ final class UpcomingViewController: UIViewController {
 
 	private var movies: [Movie]?
 
-	func loadUpcomingData() {
+	func loadData() {
 		self.activityIndicator.startAnimating()
 
-		self.networkService.loadUpcomingMovies { (result: Result<UpcomingMoviesPage, Error>) in
+		self.networkService.loadData { (result: Result<MoviesPage, Error>) in
 			switch result {
 			case .success(let model):
-				print("[NETWORK // UPCOMING] model is: \(model)")
+
+				print("[NETWORK] model is: \(model)")
 				self.movies = model.results
 				DispatchQueue.main.async {
 					self.activityIndicator.stopAnimating()
 					self.collectionView.reloadData()
 				}
 			case .failure(let error):
-				print("[NETWORK // UPCOMING] error is: \(error)")
+				print("[NETWORK] error is: \(error)")
 				DispatchQueue.main.async {
 					self.activityIndicator.stopAnimating()
 					print("Загрузка закончена с ошибкой \(error.localizedDescription)")
@@ -51,7 +51,7 @@ final class UpcomingViewController: UIViewController {
 	}
 
 	override func loadView() {
-		self.loadUpcomingData()
+		self.loadData()
 		self.view = self.collectionView
 		self.view.addSubview(activityIndicator)
 		activityIndicator.snp.makeConstraints { maker in
@@ -61,8 +61,10 @@ final class UpcomingViewController: UIViewController {
 	}
 
 	override func viewDidLoad() {
+
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.view.backgroundColor = UIColor.systemBackground
+
 		super.viewDidLoad()
 		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: "AccentColor") ?? .systemPurple]
 		self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "AccentColor") ?? .systemPurple]
@@ -75,7 +77,7 @@ final class UpcomingViewController: UIViewController {
 	}
 }
 
-extension UpcomingViewController: UICollectionViewDelegate {
+extension PopularViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		guard let movie = self.movies?[indexPath.item] else { return }
 		let movieVC = MovieViewController(movie: movie)
@@ -87,13 +89,13 @@ extension UpcomingViewController: UICollectionViewDelegate {
 	}
 }
 
-extension UpcomingViewController: UICollectionViewDataSource {
+extension PopularViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		self.movies?.count ?? 0
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMovieCell.identifier, for: indexPath) as! UpcomingMovieCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.identifier, for: indexPath) as! MovieCell
 		cell.movie = self.movies?[indexPath.item]
 		return cell
 	}

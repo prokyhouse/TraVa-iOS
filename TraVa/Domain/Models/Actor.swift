@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Actor {
+public class Actor {
 	var actorName: String
 	var actorCharacter: String
 	var actorProfilePath: String

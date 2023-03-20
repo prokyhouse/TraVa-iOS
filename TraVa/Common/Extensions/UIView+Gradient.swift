@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-extension UIView {
-	func setGradientBackground(colorTop: UIColor, colorBottom: UIColor, cornerRadius: CGFloat) {
+public extension UIView {
+    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor, cornerRadius: CGFloat) {
 
 		if let _ = (self.layer.sublayers?.compactMap { $0 as? CAGradientLayer })?.first {
 			removeSublayer(self, layerIndex: 0)
@@ -25,7 +25,7 @@ extension UIView {
 
 	}
 
-	func setGradientBackground(colorTop: UIColor, colorBottom: UIColor, startY: Double, endY: Double) {
+    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor, startY: Double, endY: Double) {
 		let gradientLayer = CAGradientLayer()
 		gradientLayer.frame = self.bounds
 		gradientLayer.colors = [colorTop.cgColor, colorBottom.cgColor]
@@ -34,7 +34,7 @@ extension UIView {
 		self.layer.insertSublayer(gradientLayer, at: 0)
 	}
 
-	func removeSublayer(_ view: UIView, layerIndex index: Int) {
+    func removeSublayer(_ view: UIView, layerIndex index: Int) {
 		guard let sublayers = view.layer.sublayers else { return }
 		if sublayers.count > index {
 			view.layer.sublayers?.remove(at: index)

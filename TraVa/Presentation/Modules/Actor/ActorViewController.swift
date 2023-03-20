@@ -5,6 +5,7 @@
 //  Created by Кирилл Прокофьев on 28.12.2021.
 //
 
+import Domain
 import Foundation
 import UIKit
 

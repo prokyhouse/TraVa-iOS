@@ -5,6 +5,8 @@
 //  Created by Кирилл Прокофьев on 22.12.2021.
 //
 
+import Domain
+import Networking
 import UIKit
 
 public final class MainViewController: UIViewController, MainViewDelegate {

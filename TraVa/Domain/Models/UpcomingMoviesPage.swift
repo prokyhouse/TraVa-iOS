@@ -8,11 +8,11 @@
 import Foundation
 
 // MARK: - UpcomingMoviesPage
-struct UpcomingMoviesPage: Decodable {
-	let dates: Dates
-	let page: Int
-	let results: [Movie]
-	let totalPages, totalResults: Int
+public struct UpcomingMoviesPage: Decodable {
+    public let dates: Dates
+    public let page: Int
+    public let results: [Movie]
+    public let totalPages, totalResults: Int
 
 	enum CodingKeys: String, CodingKey {
 		case dates, page, results
@@ -22,6 +22,6 @@ struct UpcomingMoviesPage: Decodable {
 }
 
 // MARK: - Dates
-struct Dates: Decodable {
-	let maximum, minimum: String
+public struct Dates: Decodable {
+    public let maximum, minimum: String
 }

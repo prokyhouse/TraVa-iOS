@@ -5,7 +5,8 @@
 //  Created by Кирилл Прокофьев on 25.12.2021.
 //
 
-import Foundation
+import Domain
+import Networking
 import UIKit
 import SnapKit
 

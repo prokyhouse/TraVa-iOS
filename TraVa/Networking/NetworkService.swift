@@ -1,5 +1,5 @@
 //
-//  Network.swift
+//  NetworkService.swift
 //  TraVa
 //
 //  Created by Кирилл Прокофьев on 23.12.2021.
@@ -13,7 +13,7 @@ import Foundation
 //	func loadRandomImage(completion: @escaping (Result<Data, Error>) -> Void)
 // }
 //
-final class NetworkService {
+public final class NetworkService {
 
 	static var API_KEY = "api_key=2e774b038b2dc15a1db7397f1b6b63a7"
 
@@ -30,7 +30,7 @@ final class NetworkService {
 	private let session: URLSession
 	private let upcomingSession: URLSession
 
-	init(configuration: URLSessionConfiguration? = nil) {
+	public init(configuration: URLSessionConfiguration? = nil) {
 		if let configuration = configuration {
 			self.session = URLSession(configuration: configuration)
 			self.upcomingSession = URLSession(configuration: configuration)
@@ -40,7 +40,7 @@ final class NetworkService {
 		}
 	}
 
-	func loadData<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
+	public func loadData<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
 		guard let url = URL(string: requestURL) else { fatalError("Некорректный URL") }
 
 		print("request is: " + requestURL)
@@ -62,7 +62,7 @@ final class NetworkService {
 		}.resume()
 	}
 
-	func loadUpcomingMovies<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
+	public func loadUpcomingMovies<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
 		guard let url = URL(string: upcomingRequestURL) else { fatalError("Некорректный URL") }
 
 		print("request is: " + requestURL)
@@ -84,11 +84,11 @@ final class NetworkService {
 		}.resume()
 	}
 
-	func setMovieUrl(id: Int) {
+	public func setMovieUrl(id: Int) {
 		NetworkService.MOVIE_URL = "https://api.themoviedb.org/3/movie/" + "\(id)?api_key=2e774b038b2dc15a1db7397f1b6b63a7&language=ru-RU&append_to_response=credits"
 	}
 
-	func loadActors<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
+	public func loadActors<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
 		guard let url = URL(string: NetworkService.MOVIE_URL) else { fatalError("Некорректный URL") }
 
 		print("Movie request is: " + requestURL)
