@@ -7,15 +7,22 @@
 
 import Common
 import Domain
+import DesignBook
 import UIKit
 import SnapKit
 
 public final class ActorView: UIView {
     // MARK: - Views
 
+    private(set) lazy var navBar: BlurNavigationBar = {
+        let navBar = BlurNavigationBar()
+        return navBar
+    }()
+
     private lazy var photoView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
 
         return view
     }()
@@ -34,13 +41,22 @@ public final class ActorView: UIView {
         let description = UILabel()
         description.textColor = .white
         description.numberOfLines = 4
-        description.textAlignment = .center
+        description.textAlignment = .left
         description.adjustsFontSizeToFitWidth = true
+        description.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)
 
         return description
     }()
 
-    private let contentView = UIView()
+    private lazy var infoView: UIView = {
+        let view = UIView()
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        view.layer.cornerRadius = 32.0
+        view.layer.cornerCurve = .continuous
+        view.clipsToBounds = true
+        view.backgroundColor = .black
+        return view
+    }()
 
     // MARK: - Lifecycle
 
@@ -55,10 +71,10 @@ public final class ActorView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.setGradientBackground(colorTop: .black ,
-                                               colorBottom: UIColor.clear,
-                                               startY: 0.4,
-                                               endY: .zero)
+        photoView.setGradientBackground(colorTop: .clear ,
+                                        colorBottom: .black,
+                                        startY: 0.6,
+                                        endY: 1.0)
     }
 
     // MARK: - Public methods
@@ -70,8 +86,38 @@ public final class ActorView: UIView {
             photoView.imageFromUrl(urlString: Constants.urlBase + actor.profilePath!)
         }
 
-        titleLabel.text = actor.name
-        descriptionLabel.text = actor.character
+        navBar.title = actor.name
+        descriptionLabel.attributedText = makeDescription(
+            id: actor.id,
+            gender: actor.gender,
+            character: actor.character
+        )
+    }
+
+    func makeDescription(id: Int?, gender: Gender?, character: String?) -> NSAttributedString {
+        let description = NSMutableAttributedString()
+        let boldAttributes:[NSAttributedString.Key : Any] = [
+            .foregroundColor: Appearance.accentColor,
+            .font : UIFont.systemFont(ofSize: 18, weight: .bold)
+        ]
+        let normalAttributes:[NSAttributedString.Key : Any] = [
+            .font : UIFont.systemFont(ofSize: 18, weight: .regular)
+        ]
+
+        if let id = id {
+            description.append(NSAttributedString(string: "ID: ", attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(id) \n", attributes: normalAttributes))
+        }
+        if let gender = gender {
+            description.append(NSAttributedString(string: "Пол: ", attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(gender.asString()) \n", attributes: normalAttributes))
+        }
+        if let character = character {
+            description.append(NSAttributedString(string: "Роль: ", attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(character) \n", attributes: normalAttributes))
+        }
+
+        return description
     }
 }
 
@@ -89,38 +135,42 @@ private extension ActorView {
     }
 
     private func addSubviews() {
+        addSubview(navBar)
         addSubview(photoView)
-        addSubview(contentView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(descriptionLabel)
+        addSubview(infoView)
+        infoView.addSubview(descriptionLabel)
+        bringSubviewToFront(navBar)
     }
 
     private func setConstraints() {
-        self.photoView.snp.makeConstraints { make in
-            make.centerX.equalTo(self.snp.centerX)
-            make.left.right.top.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-260)
-            make.height.lessThanOrEqualTo(Constants.maxPhotoHeight)
-        }
+        NSLayoutConstraint.useAndActivateConstraints([
+            navBar.leftAnchor.constraint(equalTo: leftAnchor),
+            navBar.rightAnchor.constraint(equalTo: rightAnchor),
+            navBar.topAnchor.constraint(equalTo: topAnchor)
+        ])
 
-        self.contentView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
-            make.top.equalTo(self.photoView.snp.bottom).offset(-170)
-        }
+        NSLayoutConstraint.useAndActivateConstraints([
+            photoView.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -32.0),
+            photoView.leftAnchor.constraint(equalTo: leftAnchor),
+            photoView.rightAnchor.constraint(equalTo: rightAnchor),
+            photoView.heightAnchor.constraint(equalToConstant: Constants.screenWidth)
+        ])
 
-        self.titleLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(Constants.spaceBetweenComponents)
-            make.top.equalTo(self.contentView.snp.top).offset(84)
-            make.height.equalTo(Constants.titleLabelHeight)
-            make.centerX.equalTo(self.contentView.snp.centerX)
-        }
+        NSLayoutConstraint.useAndActivateConstraints([
+            infoView.topAnchor.constraint(equalTo: photoView.bottomAnchor),
+            infoView.leftAnchor.constraint(equalTo: leftAnchor),
+            infoView.rightAnchor.constraint(equalTo: rightAnchor),
+            infoView.bottomAnchor.constraint(
+                equalTo: descriptionLabel.bottomAnchor,
+                constant: Constants.hSpacing / 2
+            )
+        ])
 
-        self.descriptionLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(self.contentView.snp.centerX)
-            make.left.right.equalTo(self.contentView).inset(Constants.spaceBetweenComponents)
-            make.top.equalTo(self.titleLabel.snp.bottom).offset(Constants.spaceBetweenComponents)
-        }
+        NSLayoutConstraint.useAndActivateConstraints([
+            descriptionLabel.topAnchor.constraint(equalTo: infoView.topAnchor),
+            descriptionLabel.leftAnchor.constraint(equalTo: infoView.leftAnchor, constant: Constants.hSpacing),
+            descriptionLabel.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -Constants.hSpacing),
+        ])
     }
 }
 
@@ -128,13 +178,13 @@ private extension ActorView {
 
 private extension ActorView {
     enum Constants {
-        static let spaceBetweenComponents: CGFloat = 20.0
-        static let viewHeight: CGFloat = 960.0
-        static let titleLabelHeight: CGFloat = 30.0
-        static let maxPhotoHeight: CGFloat = 650.0
-
+        static let hSpacing: CGFloat = 32.0
+        static let screenWidth = UIScreen.main.bounds.size.width
         static let templateImage: UIImage? = UIImage(named: "ActorTemplate")
-
         static let urlBase: String = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
+    }
+
+    enum Appearance {
+        static let accentColor: UIColor = UIColor(named: "AccentColor") ?? .systemPurple
     }
 }

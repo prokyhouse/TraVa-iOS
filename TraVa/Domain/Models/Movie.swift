@@ -86,7 +86,9 @@ public struct Credits: Codable {
 // MARK: - Cast
 public struct Cast: Codable {
     public let adult: Bool?
-    public let gender, id: Int?
+    public let gender: Gender?
+    public let biography: String?
+    public let id: Int?
     public let knownForDepartment: Department?
     public let name, originalName: String?
     public let popularity: Double?
@@ -99,7 +101,7 @@ public struct Cast: Codable {
     public let job: String?
 
 	enum CodingKeys: String, CodingKey {
-		case adult, gender, id
+		case adult, gender, biography, id
 		case knownForDepartment = "known_for_department"
 		case name
 		case originalName = "original_name"
