@@ -10,104 +10,131 @@ import Domain
 import UIKit
 import SnapKit
 
-final class ActorView: UIView {
+public final class ActorView: UIView {
+    // MARK: - Views
 
-	private enum Metrics {
-		static let spaceBetweenComponents: CGFloat = 20
-		static let viewHeight: CGFloat = 960
-		static let titleLabelHeight: CGFloat = 30
-		static let maxPhotoHeight: CGFloat = 650
-	}
+    private lazy var photoView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
 
-	private let photoView = UIImageView()
-	private let titleLabel = UILabel()
-	private let descriptionLabel = UILabel()
-	private let contentView = UIView()
+        return view
+    }()
 
-	public override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.configure()
-	}
+    private lazy var titleLabel: UILabel = {
+        let title = UILabel()
+        title.textColor = .white
+        title.textAlignment = .center
+        title.adjustsFontSizeToFitWidth = true
+        title.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
 
-	public required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+        return title
+    }()
 
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		self.contentView.setGradientBackground(colorTop: .black ,
-											   colorBottom: UIColor.clear,
-											   startY: 0.4,
-											   endY: 0)
-	}
+    private lazy var descriptionLabel: UILabel = {
+        let description = UILabel()
+        description.textColor = .white
+        description.numberOfLines = 4
+        description.textAlignment = .center
+        description.adjustsFontSizeToFitWidth = true
 
-	private func configure() {
-		self.setConfig()
-		self.addSubviews()
-		self.setConstraints()
-	}
+        return description
+    }()
 
-	private func setConfig() {
-		self.backgroundColor = .systemBackground
+    private let contentView = UIView()
 
-		self.titleLabel.textColor = .white
+    // MARK: - Lifecycle
 
-		self.photoView.contentMode = .scaleAspectFill
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.configure()
+    }
 
-		self.titleLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
-		self.titleLabel.textAlignment = .center
-		self.titleLabel.adjustsFontSizeToFitWidth = true
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-		self.descriptionLabel.textColor = .white
-		self.descriptionLabel.numberOfLines = 4
-		self.descriptionLabel.textAlignment = .center
-		self.descriptionLabel.adjustsFontSizeToFitWidth = true
-	}
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.setGradientBackground(colorTop: .black ,
+                                               colorBottom: UIColor.clear,
+                                               startY: 0.4,
+                                               endY: .zero)
+    }
 
-	func setContent(actor: Cast) {
-		print(actor)
-		if actor.profilePath == nil {
-			self.photoView.image = UIImage(named: "ActorTemplate")
-		} else {
-			self.photoView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + actor.profilePath!)
-		}
+    // MARK: - Public methods
 
-		self.titleLabel.text = actor.name
-		self.descriptionLabel.text = actor.character
-	}
+    func setContent(actor: Cast) {
+        if actor.profilePath == nil {
+            photoView.image = Constants.templateImage
+        } else {
+            photoView.imageFromUrl(urlString: Constants.urlBase + actor.profilePath!)
+        }
 
-	private func addSubviews() {
-		self.addSubview(self.photoView)
-		self.addSubview(self.contentView)
-		self.contentView.addSubview(self.titleLabel)
-		self.contentView.addSubview(self.descriptionLabel)
-	}
+        titleLabel.text = actor.name
+        descriptionLabel.text = actor.character
+    }
+}
 
-	private func setConstraints() {
-		self.photoView.snp.makeConstraints { make in
-			make.centerX.equalTo(self.snp.centerX)
-			make.left.right.top.equalToSuperview()
-			make.bottom.equalToSuperview().offset(-260)
-			make.height.lessThanOrEqualTo(Metrics.maxPhotoHeight)
-		}
+// MARK: - Private methods
 
-		self.contentView.snp.makeConstraints { make in
-			make.left.right.equalToSuperview()
-			make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
-			make.top.equalTo(self.photoView.snp.bottom).offset(-170)
-		}
+private extension ActorView {
+    private func configure() {
+        setConfig()
+        addSubviews()
+        setConstraints()
+    }
 
-		self.titleLabel.snp.makeConstraints { make in
-			make.left.right.equalToSuperview().inset(Metrics.spaceBetweenComponents)
-			make.top.equalTo(self.contentView.snp.top).offset(84)
-			make.height.equalTo(Metrics.titleLabelHeight)
-			make.centerX.equalTo(self.contentView.snp.centerX)
-		}
+    private func setConfig() {
+        backgroundColor = .systemBackground
+    }
 
-		self.descriptionLabel.snp.makeConstraints { make in
-			make.centerX.equalTo(self.contentView.snp.centerX)
-			make.left.right.equalTo(self.contentView).inset(Metrics.spaceBetweenComponents)
-			make.top.equalTo(self.titleLabel.snp.bottom).offset(Metrics.spaceBetweenComponents)
-		}
-	}
+    private func addSubviews() {
+        addSubview(photoView)
+        addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+    }
+
+    private func setConstraints() {
+        self.photoView.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-260)
+            make.height.lessThanOrEqualTo(Constants.maxPhotoHeight)
+        }
+
+        self.contentView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+            make.top.equalTo(self.photoView.snp.bottom).offset(-170)
+        }
+
+        self.titleLabel.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(Constants.spaceBetweenComponents)
+            make.top.equalTo(self.contentView.snp.top).offset(84)
+            make.height.equalTo(Constants.titleLabelHeight)
+            make.centerX.equalTo(self.contentView.snp.centerX)
+        }
+
+        self.descriptionLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(self.contentView.snp.centerX)
+            make.left.right.equalTo(self.contentView).inset(Constants.spaceBetweenComponents)
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(Constants.spaceBetweenComponents)
+        }
+    }
+}
+
+// MARK: - Constants
+
+private extension ActorView {
+    enum Constants {
+        static let spaceBetweenComponents: CGFloat = 20.0
+        static let viewHeight: CGFloat = 960.0
+        static let titleLabelHeight: CGFloat = 30.0
+        static let maxPhotoHeight: CGFloat = 650.0
+
+        static let templateImage: UIImage? = UIImage(named: "ActorTemplate")
+
+        static let urlBase: String = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
+    }
 }

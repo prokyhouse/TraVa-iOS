@@ -1124,7 +1124,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V4U2WRPNL2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TraVa/Info.plist;
+				INFOPLIST_FILE = TraVa/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TraVa;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1154,7 +1154,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V4U2WRPNL2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TraVa/Info.plist;
+				INFOPLIST_FILE = TraVa/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TraVa;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
