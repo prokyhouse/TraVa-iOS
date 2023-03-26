@@ -8,25 +8,29 @@
 import Foundation
 import UIKit
 
-final class UpcomingFlowLayout: UICollectionViewFlowLayout {
-	override func prepare() {
-		super.prepare()
+public final class UpcomingFlowLayout: UICollectionViewFlowLayout {
+    public override func prepare() {
+        super.prepare()
 
-		guard let cv = self.collectionView else { return }
+        guard let collectionView = self.collectionView else { return }
 
-		let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width / 2
+        let availableWidth = collectionView.bounds.inset(by: collectionView.layoutMargins).size.width / 2
+        let screen = UIScreen.main.bounds
+        let minColumnWidth = (screen.height > screen.width) ? availableWidth : availableWidth / 3
+        let maxNumColumns = Int(availableWidth / minColumnWidth)
+        let cellWidth = (availableWidth / CGFloat(maxNumColumns)).rounded(.down)
+        let cellHeight = (cellWidth / 2) * 3 + cellWidth / 3
 
-		let screen = UIScreen.main.bounds
-
-		let minColumnWidth = (screen.height > screen.width) ? availableWidth : availableWidth / 3
-		let maxNumColumns = Int(availableWidth / minColumnWidth)
-		let cellWidth = (availableWidth / CGFloat(maxNumColumns)).rounded(.down)
-
-		let cellHeight = (cellWidth / 2) * 3 + cellWidth / 3
-
-		self.itemSize = CGSize(width: cellWidth, height: cellHeight)
-
-		self.sectionInset = UIEdgeInsets(top: self.minimumInteritemSpacing, left: self.minimumInteritemSpacing, bottom: 0, right: self.minimumInteritemSpacing)
-		self.sectionInsetReference = .fromSafeArea
-	}
+        itemSize = CGSize(
+            width: cellWidth,
+            height: cellHeight
+        )
+        sectionInset = UIEdgeInsets(
+            top: minimumInteritemSpacing,
+            left: minimumInteritemSpacing,
+            bottom: .zero,
+            right: minimumInteritemSpacing
+        )
+        sectionInsetReference = .fromSafeArea
+    }
 }

@@ -77,64 +77,48 @@ public final class ActorView: UIView {
                                         endY: 1.0)
     }
 
-    // MARK: - Public methods
+    // MARK: View Props
 
-    func setContent(actor: Cast) {
-        if actor.profilePath == nil {
-            photoView.image = Constants.templateImage
-        } else {
-            photoView.imageFromUrl(urlString: Constants.urlBase + actor.profilePath!)
+    struct Props: Equatable {
+        public let actor: Cast
+
+        public init(actor: Cast) {
+            self.actor = actor
         }
-
-        navBar.title = actor.name
-        descriptionLabel.attributedText = makeDescription(
-            id: actor.id,
-            gender: actor.gender,
-            character: actor.character
-        )
     }
 
-    func makeDescription(id: Int?, gender: Gender?, character: String?) -> NSAttributedString {
-        let description = NSMutableAttributedString()
-        let boldAttributes:[NSAttributedString.Key : Any] = [
-            .foregroundColor: Appearance.accentColor,
-            .font : UIFont.systemFont(ofSize: 18, weight: .bold)
-        ]
-        let normalAttributes:[NSAttributedString.Key : Any] = [
-            .font : UIFont.systemFont(ofSize: 18, weight: .regular)
-        ]
+    // MARK: - Public methods
 
-        if let id = id {
-            description.append(NSAttributedString(string: "ID: ", attributes: boldAttributes))
-            description.append(NSAttributedString(string: "\(id) \n", attributes: normalAttributes))
-        }
-        if let gender = gender {
-            description.append(NSAttributedString(string: "Пол: ", attributes: boldAttributes))
-            description.append(NSAttributedString(string: "\(gender.asString()) \n", attributes: normalAttributes))
-        }
-        if let character = character {
-            description.append(NSAttributedString(string: "Роль: ", attributes: boldAttributes))
-            description.append(NSAttributedString(string: "\(character) \n", attributes: normalAttributes))
+    func render(props: Props) {
+        if props.actor.profilePath == nil {
+            photoView.image = Constants.templateImage
+        } else {
+            photoView.imageFromUrl(urlString: Constants.urlBase + props.actor.profilePath!)
         }
 
-        return description
+        navBar.title = props.actor.name
+        descriptionLabel.attributedText = makeDescription(
+            id: props.actor.id,
+            gender: props.actor.gender,
+            character: props.actor.character
+        )
     }
 }
 
 // MARK: - Private methods
 
 private extension ActorView {
-    private func configure() {
+    func configure() {
         setConfig()
         addSubviews()
         setConstraints()
     }
 
-    private func setConfig() {
+    func setConfig() {
         backgroundColor = .systemBackground
     }
 
-    private func addSubviews() {
+    func addSubviews() {
         addSubview(navBar)
         addSubview(photoView)
         addSubview(infoView)
@@ -142,7 +126,7 @@ private extension ActorView {
         bringSubviewToFront(navBar)
     }
 
-    private func setConstraints() {
+    func setConstraints() {
         NSLayoutConstraint.useAndActivateConstraints([
             navBar.leftAnchor.constraint(equalTo: leftAnchor),
             navBar.rightAnchor.constraint(equalTo: rightAnchor),
@@ -172,6 +156,32 @@ private extension ActorView {
             descriptionLabel.rightAnchor.constraint(equalTo: infoView.rightAnchor, constant: -Constants.hSpacing),
         ])
     }
+
+    func makeDescription(id: Int?, gender: Gender?, character: String?) -> NSAttributedString {
+        let description = NSMutableAttributedString()
+        let boldAttributes:[NSAttributedString.Key : Any] = [
+            .foregroundColor: Appearance.accentColor,
+            .font : UIFont.systemFont(ofSize: 18, weight: .bold)
+        ]
+        let normalAttributes:[NSAttributedString.Key : Any] = [
+            .font : UIFont.systemFont(ofSize: 18, weight: .regular)
+        ]
+
+        if let id = id {
+            description.append(NSAttributedString(string: Constants.id, attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(id) \n", attributes: normalAttributes))
+        }
+        if let gender = gender {
+            description.append(NSAttributedString(string: Constants.gender, attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(gender.asString()) \n", attributes: normalAttributes))
+        }
+        if let character = character {
+            description.append(NSAttributedString(string: Constants.role, attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(character) \n", attributes: normalAttributes))
+        }
+
+        return description
+    }
 }
 
 // MARK: - Constants
@@ -182,6 +192,10 @@ private extension ActorView {
         static let screenWidth = UIScreen.main.bounds.size.width
         static let templateImage: UIImage? = UIImage(named: "ActorTemplate")
         static let urlBase: String = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
+
+        static let id: String = "ID: "
+        static let gender: String = "Пол: "
+        static let role: String = "Роль: "
     }
 
     enum Appearance {

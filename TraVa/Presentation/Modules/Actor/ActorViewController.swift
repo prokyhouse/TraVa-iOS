@@ -28,7 +28,7 @@ public final class ActorViewController: UIViewController {
     }
 
     public override func loadView() {
-        self.actorView.setContent(actor: self.actor)
+        self.actorView.render(props: .init(actor: actor))
         actorView.navBar.delegate = self
         self.view = self.actorView
     }

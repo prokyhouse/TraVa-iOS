@@ -13,6 +13,7 @@ import SnapKit
 
 protocol MovieViewDelegate {
     func pushActorVC(vc: UIViewController)
+    func pushTrailerVC(vc: UIViewController)
 }
 
 public final class MovieView: UIView {
@@ -28,7 +29,6 @@ public final class MovieView: UIView {
 
     // MARK: - Private properties
 
-    private let networkService = NetworkService()
     private var actors: [Cast]?
 
     // MARK: - Views
@@ -71,6 +71,7 @@ public final class MovieView: UIView {
         button.setTitleColor(.black, for: .highlighted)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.layer.cornerRadius = Constants.buttonHeight / 2
+        button.addTarget(self, action: #selector(onTrailerTap), for: .touchUpInside)
         return button
     }()
 
@@ -269,6 +270,12 @@ private extension MovieView {
 
     func setPhoto(from path: String) {
         photoView.imageFromUrl(urlString: Constants.photoBaseUrl + path)
+    }
+
+    @objc
+    func onTrailerTap() {
+        let trailerVC = TrailerViewController()
+        delegate?.pushTrailerVC(vc: trailerVC)
     }
 }
 

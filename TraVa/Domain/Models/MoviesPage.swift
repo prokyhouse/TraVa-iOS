@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - MoviesPage
-public struct MoviesPage: Decodable {
+public struct MoviesPage: Codable {
 	public let page: Int
     public let results: [Movie]
     public let totalPages, totalResults: Int

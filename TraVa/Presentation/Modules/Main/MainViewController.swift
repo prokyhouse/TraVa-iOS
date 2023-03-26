@@ -15,7 +15,7 @@ public final class MainViewController: UIViewController, MainViewDelegate {
     }
 
     private var mainView: MainView = MainView()
-    private let networkService = NetworkService()
+    private let networkService: Networkable = NetworkService()
     private var movies: [Movie]?
 
     public override func viewDidLoad() {
@@ -39,39 +39,31 @@ public final class MainViewController: UIViewController, MainViewDelegate {
 
 private extension MainViewController {
     func loadData() {
-        networkService.loadData { [weak self] (result: Result<MoviesPage, Error>) in
+        networkService.fetchPopularMovies(page: 1){ [weak self] (result: Result<[Movie], Error>) in
             switch result {
-            case .success(let model):
-                print("[NETWORK] model is: \(model)")
-                self?.movies = model.results
+            case .success(let movies):
+                self?.movies = movies
                 DispatchQueue.main.async {
-                    self?.mainView.setPopularMovies(popularMovies: self?.movies)
+                    self?.mainView.setPopularMovies(popularMovies: movies)
                     self?.mainView.popularCollectionView.reloadData()
                 }
 
-            case .failure(let error):
-                print("[NETWORK] error is: \(error)")
-                DispatchQueue.main.async {
-                    print("\(Constants.errorDescription) \(error.localizedDescription)")
-                }
+            case .failure(_):
+                break
             }
         }
 
-        self.networkService.loadUpcomingMovies { [weak self] (result: Result<MoviesPage, Error>) in
+        networkService.fetchUpcomingMovies(page: 1){ [weak self] (result: Result<[Movie], Error>) in
             switch result {
-            case .success(let model):
-                print("[NETWORK] model is: \(model)")
-                self?.movies = model.results
+            case .success(let movies):
+                self?.movies = movies
                 DispatchQueue.main.async {
-                    self?.mainView.setUpcomingMovies(upcomingMovies: self?.movies)
+                    self?.mainView.setUpcomingMovies(upcomingMovies: movies)
                     self?.mainView.upcomingCollectionView.reloadData()
                 }
-                
-            case .failure(let error):
-                print("[NETWORK] error is: \(error)")
-                DispatchQueue.main.async {
-                    print("\(Constants.errorDescription) \(error.localizedDescription)")
-                }
+
+            case .failure(_):
+                break
             }
         }
     }
