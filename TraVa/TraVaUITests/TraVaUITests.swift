@@ -1,0 +1,93 @@
+//
+//  TraVaUITests.swift
+//  TraVaUITests
+//
+//  Created by Кирилл Прокофьев on 27.03.2023.
+//
+
+import XCTest
+
+final class TraVaUITests: XCTestCase {
+
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        // In UI tests it is usually best to stop immediately when a failure occurs.
+        continueAfterFailure = false
+
+        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testTabbarItems() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let popularTabName: String = "Популярное"
+        let upcomingTabName: String = "Скоро"
+        let mainTabName: String = "Главная"
+        let tabBar = XCUIApplication().tabBars["Панель вкладок"]
+
+        let popularTab = tabBar.buttons[popularTabName]
+        let upcomingTab = tabBar.buttons[upcomingTabName]
+        let mainTab = tabBar.buttons[mainTabName]
+
+        XCTAssertTrue(popularTab.exists)
+        popularTab.tap()
+        XCTAssertTrue(popularTab.isSelected)
+
+        XCTAssertTrue(upcomingTab.exists)
+        upcomingTab.tap()
+        XCTAssertTrue(upcomingTab.isSelected)
+
+        XCTAssertTrue(mainTab.exists)
+        mainTab.tap()
+        XCTAssertTrue(mainTab.isSelected)
+    }
+
+    func testMainMovieListsTapFlow() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let elementsQuery = app
+            .scrollViews
+            .otherElements
+            .containing(.staticText, identifier:"Популярное")
+        let backarrowButton = app
+            .buttons["backArrow"]
+
+        let popularCell = elementsQuery
+            .children(matching: .collectionView)
+            .element(boundBy: 0)
+            .children(matching: .cell)
+            .element(boundBy: 0)
+
+        popularCell.tap()
+        XCTAssertTrue(popularCell.exists)
+        XCTAssertTrue(backarrowButton.exists)
+        backarrowButton.tap()
+
+        let upcomingCell = elementsQuery
+            .children(matching: .collectionView)
+            .element(boundBy: 1)
+            .children(matching: .cell)
+            .element(boundBy: 0)
+
+        upcomingCell.tap()
+        XCTAssertTrue(upcomingCell.exists)
+        XCTAssertTrue(backarrowButton.exists)
+        backarrowButton.tap()
+    }
+
+    func testLaunchPerformance() throws {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
+                XCUIApplication().launch()
+            }
+        }
+    }
+}

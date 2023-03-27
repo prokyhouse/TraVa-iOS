@@ -29,6 +29,7 @@ public struct NetworkService: Network {
 
 extension NetworkService: Networkable {
     public func fetchMovie(movie: Int, completion: @escaping (Result<Movie, Error>) -> ()) {
+        print(movie)
         provider.request(.movie(id: movie)) { result in
             switch result {
             case let .success(response):

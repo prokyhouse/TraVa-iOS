@@ -5,16 +5,20 @@
 //  Created by Кирилл Прокофьев on 25.12.2021.
 //
 
+import DesignBook
 import Domain
 import Networking
 import UIKit
-import DesignBook
 
 public final class MovieViewController: UIViewController {
     public var presenter: MovieViewPresenter?
 
+    // MARK: - Private properties
+
     private var movieView: MovieView = MovieView()
     private let networkService = NetworkService()
+
+    // MARK: - Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,8 @@ public final class MovieViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Private methods
 
     private func loadData() {
         presenter?.fetchMovie()

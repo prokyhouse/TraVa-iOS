@@ -29,6 +29,7 @@ public struct Movie: Codable {
     public let voteAverage: Double
     public let voteCount: Int
     public let credits: Credits?
+    public let videos: Videos?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -49,6 +50,7 @@ public struct Movie: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case credits
+        case videos
     }
 }
 
@@ -80,7 +82,19 @@ public extension Movie {
             video: false,
             voteAverage: 8.6,
             voteCount: 2025,
-            credits: Credits(cast: [], crew: [])
+            credits: Credits(cast: [], crew: []),
+            videos: Videos(results: [Video(
+                iso639_1: nil,
+                iso3166_1: nil,
+                name: nil,
+                key: "JfVOs4VSpmA",
+                site: "YouTube",
+                size: nil,
+                type: nil,
+                official: nil,
+                publishedAt: nil,
+                id: nil)
+            ])
         )
 
         return [movie]
@@ -187,6 +201,29 @@ public struct SpokenLanguage: Codable {
         case englishName = "english_name"
         case iso639_1 = "iso_639_1"
         case name
+    }
+}
+
+// MARK: - Videos
+public struct Videos: Codable {
+    public let results: [Video]?
+}
+
+// MARK: - Video
+public struct Video: Codable {
+    public let iso639_1, iso3166_1, name, key: String?
+    public let site: String?
+    public let size: Int?
+    public let type: String?
+    public let official: Bool?
+    public let publishedAt, id: String?
+
+    enum CodingKeys: String, CodingKey {
+        case iso639_1 = "iso_639_1"
+        case iso3166_1 = "iso_3166_1"
+        case name, key, site, size, type, official
+        case publishedAt = "published_at"
+        case id
     }
 }
 

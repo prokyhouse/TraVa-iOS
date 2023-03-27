@@ -75,7 +75,6 @@
 		F018DEF929C833B800325BC5 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F018DE7E29C80F2900325BC5 /* Common.framework */; platformFilter = ios; };
 		F018DEFA29C833B800325BC5 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F018DE7E29C80F2900325BC5 /* Common.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F018DEFF29C8509C00325BC5 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018DEFE29C8509C00325BC5 /* Gender.swift */; };
-		F018DF7729CAD5C500325BC5 /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018DF7629CAD5C500325BC5 /* TrailerViewController.swift */; };
 		F018DF7A29CAD66900325BC5 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = F018DF7929CAD66900325BC5 /* YouTubeiOSPlayerHelper */; };
 		F018DF7C29CAD6E600325BC5 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = F018DF7B29CAD6E600325BC5 /* YouTubeiOSPlayerHelper */; };
 		F05A377127747C46000F3033 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F05A377027747C46000F3033 /* SnapKit */; };
@@ -84,6 +83,8 @@
 		F0A4194E27730512007112E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194D27730512007112E4 /* SceneDelegate.swift */; };
 		F0A4195527730514007112E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195427730514007112E4 /* Assets.xcassets */; };
 		F0A4195827730514007112E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195627730514007112E4 /* LaunchScreen.storyboard */; };
+		F0EBDCE829D1B1BC0075A0E1 /* TraVaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EBDCE729D1B1BC0075A0E1 /* TraVaUITests.swift */; };
+		F0EBDCEA29D1B1BC0075A0E1 /* TraVaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EBDCE929D1B1BC0075A0E1 /* TraVaUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F018DE7D29C80F2900325BC5;
 			remoteInfo = Common;
+		};
+		F0EBDCEB29D1B1BC0075A0E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A4194027730512007112E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0A4194727730512007112E4;
+			remoteInfo = TraVa;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -222,7 +230,6 @@
 		F018DEF129C81BA600325BC5 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		F018DEF329C81BCC00325BC5 /* NSLayoutConstraint+Mask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Mask.swift"; sourceTree = "<group>"; };
 		F018DEFE29C8509C00325BC5 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
-		F018DF7629CAD5C500325BC5 /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 		F05A376027745A3C000F3033 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F05A376227745AFE000F3033 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		F05A376927746A41000F3033 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +259,9 @@
 		F0C7ABDD277AF29F00FB4662 /* ActorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorView.swift; sourceTree = "<group>"; };
 		F0C7ABDF277AF2AD00FB4662 /* ActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewController.swift; sourceTree = "<group>"; };
 		F0C7ABE1277B0DAD00FB4662 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F0EBDCE529D1B1BC0075A0E1 /* TraVaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TraVaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0EBDCE729D1B1BC0075A0E1 /* TraVaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraVaUITests.swift; sourceTree = "<group>"; };
+		F0EBDCE929D1B1BC0075A0E1 /* TraVaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraVaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +323,13 @@
 				F018DE8429C80F2900325BC5 /* Common.framework in Frameworks */,
 				F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */,
 				F05A377127747C46000F3033 /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0EBDCE229D1B1BC0075A0E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +540,6 @@
 			isa = PBXGroup;
 			children = (
 				F05A3765277469A6000F3033 /* Main */,
-				F018DF7529CAD5A400325BC5 /* Trailer */,
 				F05A3766277469B3000F3033 /* Popular */,
 				F05A3767277469BC000F3033 /* Upcoming */,
 				F0790F602776E8AD00ECA372 /* MovieDetails */,
@@ -574,14 +590,6 @@
 				F018DEF129C81BA600325BC5 /* BlurView.swift */,
 			);
 			path = ReusableViews;
-			sourceTree = "<group>";
-		};
-		F018DF7529CAD5A400325BC5 /* Trailer */ = {
-			isa = PBXGroup;
-			children = (
-				F018DF7629CAD5C500325BC5 /* TrailerViewController.swift */,
-			);
-			path = Trailer;
 			sourceTree = "<group>";
 		};
 		F05A376427745BA4000F3033 /* Models */ = {
@@ -645,6 +653,7 @@
 				F018DE9029C8101200325BC5 /* Networking */,
 				F018DEE429C819F700325BC5 /* DesignBook */,
 				F018DEB129C8116300325BC5 /* Presentation */,
+				F0EBDCE629D1B1BC0075A0E1 /* TraVaUITests */,
 				F0A4194927730512007112E4 /* Products */,
 				F018DED229C8125C00325BC5 /* Frameworks */,
 			);
@@ -659,6 +668,7 @@
 				F018DEA029C8114200325BC5 /* Domain.framework */,
 				F018DEB029C8116300325BC5 /* Presentation.framework */,
 				F018DEE329C819F700325BC5 /* DesignBook.framework */,
+				F0EBDCE529D1B1BC0075A0E1 /* TraVaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -691,6 +701,15 @@
 				F00936CF29D141C900826263 /* Presenter */,
 			);
 			path = Actor;
+			sourceTree = "<group>";
+		};
+		F0EBDCE629D1B1BC0075A0E1 /* TraVaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F0EBDCE729D1B1BC0075A0E1 /* TraVaUITests.swift */,
+				F0EBDCE929D1B1BC0075A0E1 /* TraVaUITestsLaunchTests.swift */,
+			);
+			path = TraVaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -874,6 +893,24 @@
 			productReference = F0A4194827730512007112E4 /* TraVa.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F0EBDCE429D1B1BC0075A0E1 /* TraVaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0EBDCEF29D1B1BC0075A0E1 /* Build configuration list for PBXNativeTarget "TraVaUITests" */;
+			buildPhases = (
+				F0EBDCE129D1B1BC0075A0E1 /* Sources */,
+				F0EBDCE229D1B1BC0075A0E1 /* Frameworks */,
+				F0EBDCE329D1B1BC0075A0E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0EBDCEC29D1B1BC0075A0E1 /* PBXTargetDependency */,
+			);
+			name = TraVaUITests;
+			productName = TraVaUITests;
+			productReference = F0EBDCE529D1B1BC0075A0E1 /* TraVaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -881,7 +918,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					F018DE7D29C80F2900325BC5 = {
@@ -902,6 +939,10 @@
 					};
 					F0A4194727730512007112E4 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					F0EBDCE429D1B1BC0075A0E1 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = F0A4194727730512007112E4;
 					};
 				};
 			};
@@ -932,6 +973,7 @@
 				F018DE8E29C8101200325BC5 /* Networking */,
 				F018DEE229C819F700325BC5 /* DesignBook */,
 				F018DEAF29C8116300325BC5 /* Presentation */,
+				F0EBDCE429D1B1BC0075A0E1 /* TraVaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -978,6 +1020,13 @@
 			files = (
 				F0A4195827730514007112E4 /* LaunchScreen.storyboard in Resources */,
 				F0A4195527730514007112E4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0EBDCE329D1B1BC0075A0E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1033,7 +1082,6 @@
 				F018DEC429C811E700325BC5 /* UpcomingViewController.swift in Sources */,
 				F018DEC029C811DA00325BC5 /* PopularViewController.swift in Sources */,
 				F00936D829D145C900826263 /* PopularViewPresenter.swift in Sources */,
-				F018DF7729CAD5C500325BC5 /* TrailerViewController.swift in Sources */,
 				F018DEC329C811E700325BC5 /* UpcomingMovieCell.swift in Sources */,
 				F00936C129D0B39D00826263 /* TabBarPageState.swift in Sources */,
 				F018DEBF29C811D300325BC5 /* MovieCellView.swift in Sources */,
@@ -1065,6 +1113,15 @@
 			files = (
 				F0A4194C27730512007112E4 /* AppDelegate.swift in Sources */,
 				F0A4194E27730512007112E4 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0EBDCE129D1B1BC0075A0E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0EBDCE829D1B1BC0075A0E1 /* TraVaUITests.swift in Sources */,
+				F0EBDCEA29D1B1BC0075A0E1 /* TraVaUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,6 +1173,11 @@
 			platformFilter = ios;
 			target = F018DE7D29C80F2900325BC5 /* Common */;
 			targetProxy = F018DEFB29C833B800325BC5 /* PBXContainerItemProxy */;
+		};
+		F0EBDCEC29D1B1BC0075A0E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0A4194727730512007112E4 /* TraVa */;
+			targetProxy = F0EBDCEB29D1B1BC0075A0E1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1661,6 +1723,42 @@
 			};
 			name = Release;
 		};
+		F0EBDCED29D1B1BC0075A0E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.proko.TraVa.TraVaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TraVa;
+			};
+			name = Debug;
+		};
+		F0EBDCEE29D1B1BC0075A0E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.proko.TraVa.TraVaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TraVa;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1723,6 +1821,15 @@
 			buildConfigurations = (
 				F0A4195D27730514007112E4 /* Debug */,
 				F0A4195E27730514007112E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0EBDCEF29D1B1BC0075A0E1 /* Build configuration list for PBXNativeTarget "TraVaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0EBDCED29D1B1BC0075A0E1 /* Debug */,
+				F0EBDCEE29D1B1BC0075A0E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

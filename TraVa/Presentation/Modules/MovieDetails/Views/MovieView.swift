@@ -8,8 +8,9 @@
 import Domain
 import DesignBook
 import Networking
-import UIKit
 import SnapKit
+import UIKit
+import YouTubeiOSPlayerHelper
 
 public protocol MovieViewDelegate {
     func showActorDetails(_ actor: Cast)
@@ -46,7 +47,7 @@ public final class MovieView: UIView {
 
     private let contentView = UIView()
 
-    private let photoView: UIImageView = {
+    private lazy var photoView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
@@ -80,7 +81,7 @@ public final class MovieView: UIView {
         return description
     }()
 
-    private let castLabel: UILabel = {
+    private lazy var castLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold)
         label.text = Constants.castTitle
@@ -95,6 +96,29 @@ public final class MovieView: UIView {
         view.clipsToBounds = true
         view.backgroundColor = Appearance.accentColor
         return view
+    }()
+
+    private lazy var trailerView: YTPlayerView = {
+        let youtubeView = YTPlayerView()
+        youtubeView.delegate = self
+        youtubeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        youtubeView.layer.cornerCurve = .continuous
+        youtubeView.layer.cornerRadius = 32.0
+        youtubeView.clipsToBounds = true
+        let playerVars = [
+            "playsinline" : 1,
+            "showinfo" : 1,
+            "rel" : 0,
+            "modestbranding" : 1,
+            "controls" : 1,
+            "iv_load_policy": 3
+        ] as [AnyHashable : Any]?
+        youtubeView.load(withPlayerParams:playerVars)
+        youtubeView.webView?.uiDelegate = self
+        youtubeView.webView?.allowsBackForwardNavigationGestures = true
+        youtubeView.webView?.allowsLinkPreview = true
+        youtubeView.webView?.navigationDelegate = self
+        return youtubeView
     }()
 
     private lazy var actorsFlowLayout: UICollectionViewFlowLayout = {
@@ -172,9 +196,21 @@ private extension MovieView {
 
         let imagePath: String = movie.backdropPath ?? movie.posterPath
         setPhoto(from: imagePath)
-
+        setupTrailers(movie.videos?.results)
         navBar.title = movie.title
         descriptionLabel.text = movie.overview
+    }
+
+    func setupTrailers(_ trailers: [Video]?) {
+        if
+            let trailer = trailers?.first(where: { $0.site == "YouTube" }),
+            let key = trailer.key
+        {
+            trailerView.load(withVideoId: key)
+        } else {
+            trailerButton.isHidden = true
+            trailerView.isHidden = true
+        }
     }
 
     func addDelegate() {
@@ -197,6 +233,7 @@ private extension MovieView {
         contentView.addSubview(castLabel)
         contentView.addSubview(actorsCollectionView)
         contentView.addSubview(trailerButton)
+        contentView.addSubview(trailerView)
         infoView.addSubview(descriptionLabel)
     }
 
@@ -251,7 +288,14 @@ private extension MovieView {
         ])
 
         NSLayoutConstraint.useAndActivateConstraints([
-            castLabel.topAnchor.constraint(equalTo: infoView.bottomAnchor, constant: Constants.hSpacing / 2),
+            trailerView.topAnchor.constraint(equalTo: infoView.bottomAnchor, constant: Constants.hSpacing),
+            trailerView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            trailerView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            trailerView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width / 16) * 9)
+        ])
+
+        NSLayoutConstraint.useAndActivateConstraints([
+            castLabel.topAnchor.constraint(equalTo: trailerView.bottomAnchor, constant: Constants.hSpacing / 2),
             castLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.hSpacing),
             castLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.hSpacing),
             castLabel.heightAnchor.constraint(equalToConstant: Constants.hSpacing * 2)
@@ -272,9 +316,23 @@ private extension MovieView {
 
     @objc
     func onTrailerTap() {
-       // TODO: - воспроизведение видео
+        if let origin = trailerView.superview {
+            let childStartPoint = origin.convert(trailerView.frame.origin, to: scrollView)
+            scrollView.scrollRectToVisible(
+                CGRect(
+                    x: 0,
+                    y: childStartPoint.y,
+                    width: 1,
+                    height: scrollView.frame.height
+                ),
+                animated: true
+            )
+        }
+        trailerView.playVideo()
     }
 }
+
+// MARK: - UICollectionView
 
 extension MovieView: UICollectionViewDelegate {
     public func collectionView(
@@ -324,6 +382,14 @@ extension MovieView: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - YouTube trailer's view Delegates
+
+extension MovieView: YTPlayerViewDelegate, WKNavigationDelegate, WKUIDelegate {
+    public func playerViewDidBecomeReady(_ playerView: YTPlayerView) { }
+}
+
+// MARK: - Constants
 
 private extension MovieView {
     enum Constants {
