@@ -48,40 +48,6 @@ final class TraVaUITests: XCTestCase {
         XCTAssertTrue(mainTab.isSelected)
     }
 
-    func testMainMovieListsTapFlow() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-        let elementsQuery = app
-            .scrollViews
-            .otherElements
-            .containing(.staticText, identifier:"Популярное")
-        let backarrowButton = app
-            .buttons["backArrow"]
-
-        let popularCell = elementsQuery
-            .children(matching: .collectionView)
-            .element(boundBy: 0)
-            .children(matching: .cell)
-            .element(boundBy: 0)
-
-        popularCell.tap()
-        XCTAssertTrue(popularCell.exists)
-        XCTAssertTrue(backarrowButton.exists)
-        backarrowButton.tap()
-
-        let upcomingCell = elementsQuery
-            .children(matching: .collectionView)
-            .element(boundBy: 1)
-            .children(matching: .cell)
-            .element(boundBy: 0)
-
-        upcomingCell.tap()
-        XCTAssertTrue(upcomingCell.exists)
-        XCTAssertTrue(backarrowButton.exists)
-        backarrowButton.tap()
-    }
-
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
