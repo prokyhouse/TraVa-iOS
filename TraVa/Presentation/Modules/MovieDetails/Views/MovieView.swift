@@ -267,7 +267,7 @@ private extension MovieView {
     }
 
     func setPhoto(from path: String) {
-        photoView.imageFromUrl(urlString: Constants.photoBaseUrl + path)
+        photoView.download(from: Constants.photoBaseUrl + path)
     }
 
     @objc

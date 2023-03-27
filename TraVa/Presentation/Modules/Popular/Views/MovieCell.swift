@@ -24,7 +24,7 @@ final class MovieCell: UICollectionViewCell {
 	var movie: Movie? {
 		didSet {
 			guard let movie = movie else { return }
-			self.imageView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + movie.posterPath)
+			self.imageView.download(from: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + movie.posterPath)
 			self.imageView.clipsToBounds = true
 			self.nameLabel.text = movie.title
 			self.overviewLabel.text = movie.overview

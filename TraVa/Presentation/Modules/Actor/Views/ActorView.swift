@@ -93,7 +93,7 @@ public final class ActorView: UIView {
         if props.actor.profilePath == nil {
             photoView.image = Constants.templateImage
         } else {
-            photoView.imageFromUrl(urlString: Constants.urlBase + props.actor.profilePath!)
+            photoView.download(from: Constants.urlBase + props.actor.profilePath!)
         }
 
         navBar.title = props.actor.name

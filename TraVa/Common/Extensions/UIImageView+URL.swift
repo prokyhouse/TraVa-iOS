@@ -7,18 +7,23 @@
 
 import UIKit
 
-extension UIImageView {
-    public func imageFromUrl(urlString: String) {
-        if let url = NSURL(string: urlString) {
-            let request = NSURLRequest(url: url as URL)
-            NSURLConnection.sendAsynchronousRequest(
-                request as URLRequest,
-                queue: OperationQueue.main
-            ) { (_: URLResponse?, data: Data?, _: Error?) -> Void in
-                if let imageData = data as NSData? {
-                    self.image = UIImage(data: imageData as Data)
-                }
+public extension UIImageView {
+    func download(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+            else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
             }
-        }
+        }.resume()
+    }
+
+    func download(from link: String) {
+        guard let url = URL(string: link) else { return }
+        download(from: url)
     }
 }

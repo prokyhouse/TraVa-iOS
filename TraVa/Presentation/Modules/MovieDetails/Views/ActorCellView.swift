@@ -25,7 +25,7 @@ final class ActorCellView: UICollectionViewCell {
 			if actor.profilePath == nil {
 				self.imageView.image = UIImage(named: "ActorTemplate")
 			} else {
-				self.imageView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + actor.profilePath!)
+				self.imageView.download(from: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + actor.profilePath!)
 			}
 			self.imageView.clipsToBounds = true
 		}
