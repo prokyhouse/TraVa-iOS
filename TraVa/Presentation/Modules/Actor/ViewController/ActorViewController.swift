@@ -11,11 +11,11 @@ import UIKit
 import DesignBook
 
 public final class ActorViewController: UIViewController {
-    private let actorView = ActorView()
-    private let actor: Cast
+    public var presenter: ActorPresenter?
 
-    init(actor: Cast) {
-        self.actor = actor
+    private let actorView = ActorView()
+
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -25,12 +25,16 @@ public final class ActorViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.fetchActor()
     }
 
     public override func loadView() {
-        self.actorView.render(props: .init(actor: actor))
         actorView.navBar.delegate = self
         self.view = self.actorView
+    }
+
+    public func setActor(_ actor: Cast) {
+        actorView.render(props: .init(actor: actor))
     }
 }
 

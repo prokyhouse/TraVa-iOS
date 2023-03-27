@@ -11,16 +11,14 @@ import Networking
 import UIKit
 import SnapKit
 
-protocol MovieViewDelegate {
-    func pushActorVC(vc: UIViewController)
-    func pushTrailerVC(vc: UIViewController)
+public protocol MovieViewDelegate {
+    func showActorDetails(_ actor: Cast)
 }
 
 public final class MovieView: UIView {
     // MARK: - Public properties
 
-    internal var delegate: MovieViewDelegate?
-
+    public var delegate: MovieViewDelegate?
     public var movie: Movie? {
         didSet {
             setupUI(with: movie)
@@ -274,8 +272,7 @@ private extension MovieView {
 
     @objc
     func onTrailerTap() {
-        let trailerVC = TrailerViewController()
-        delegate?.pushTrailerVC(vc: trailerVC)
+       // TODO: - воспроизведение видео
     }
 }
 
@@ -285,8 +282,7 @@ extension MovieView: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         guard let actor = self.actors?[indexPath.item] else { return }
-        let actorVC = ActorViewController(actor: actor)
-        delegate?.pushActorVC(vc: actorVC)
+        delegate?.showActorDetails(actor)
     }
 
     public func collectionView(

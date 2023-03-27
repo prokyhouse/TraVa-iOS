@@ -11,9 +11,10 @@ import UIKit
 import SnapKit
 
 public final class PopularViewController: UIViewController {
+    public var presenter: PopularPresenter?
+
     // MARK: - Private properties
 
-    private let networkService = NetworkService()
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
     private var movies: [Movie]?
 
@@ -54,27 +55,20 @@ public final class PopularViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+
+    public func setPopularMovies(_ movies: [Movie]) {
+        self.movies = movies
+        activityIndicator.stopAnimating()
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - Private methods
 
 private extension PopularViewController {
     func loadData() {
-        self.activityIndicator.startAnimating()
-
-        networkService.fetchPopularMovies(page: 1){ [weak self] (result: Result<[Movie], Error>) in
-            switch result {
-            case .success(let movies):
-                self?.movies = movies
-                DispatchQueue.main.async {
-                    self?.activityIndicator.stopAnimating()
-                    self?.collectionView.reloadData()
-                }
-
-            case .failure(_):
-                self?.activityIndicator.stopAnimating()
-            }
-        }
+        activityIndicator.startAnimating()
+        presenter?.fetchPopularMovies()
     }
 }
 
@@ -84,8 +78,7 @@ extension PopularViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         guard let movie = self.movies?[indexPath.item] else { return }
-        let movieVC = MovieViewController(movie: movie)
-        self.navigationController?.pushViewController(movieVC, animated: true)
+        presenter?.showMovieDetails(movie.id)
     }
 
     public func collectionView(

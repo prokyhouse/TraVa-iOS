@@ -12,6 +12,8 @@ import UIKit
 import SnapKit
 
 public final class UpcomingViewController: UIViewController {
+    public var presenter: UpcomingPresenter?
+
     // MARK: - Private properties
 
     private let networkService = NetworkService()
@@ -54,27 +56,20 @@ public final class UpcomingViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+
+    public func setUpcomingMovies(_ movies: [Movie]) {
+        self.movies = movies
+        activityIndicator.stopAnimating()
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - Private methods
 
 private extension UpcomingViewController {
     func loadUpcomingData() {
-        self.activityIndicator.startAnimating()
-
-        networkService.fetchUpcomingMovies(page: 1){ [weak self] (result: Result<[Movie], Error>) in
-            switch result {
-            case .success(let movies):
-                self?.movies = movies
-                DispatchQueue.main.async {
-                    self?.activityIndicator.stopAnimating()
-                    self?.collectionView.reloadData()
-                }
-
-            case .failure(_):
-                self?.activityIndicator.stopAnimating()
-            }
-        }
+        activityIndicator.startAnimating()
+        presenter?.fetchUpcomingMovies()
     }
 }
 
@@ -84,8 +79,7 @@ extension UpcomingViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         guard let movie = self.movies?[indexPath.item] else { return }
-        let movieVC = MovieViewController(movie: movie)
-        self.navigationController?.pushViewController(movieVC, animated: true)
+        presenter?.showMovieDetails(movie.id)
     }
 
     public func collectionView(

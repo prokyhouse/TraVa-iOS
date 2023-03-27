@@ -17,7 +17,7 @@ final class TrailerViewController: UIViewController {
                          "modestbranding" : 1,
                          "controls" : 1,
                          "iv_load_policy": 3,
-                         "origin": "https:starmediafilm.com"
+                         "origin": "https://wwww.example.com"
     ] as [AnyHashable : Any]?
 
 
