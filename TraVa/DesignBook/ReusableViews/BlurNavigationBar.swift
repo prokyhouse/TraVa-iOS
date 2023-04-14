@@ -31,15 +31,15 @@ public final class BlurNavigationBar: UIView {
         let button = UIButton()
         button.setImage(Constants.backIcon?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(backButtonWasTapped), for: .touchUpInside)
-        button.tintColor = UIColor(named: "AccentColor") ?? .systemPurple
+        button.tintColor = AppResources.colors.accent
 
         return button
     }()
 
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
-        titleLabel.textColor = UIColor(named: "AccentColor") ?? .systemPurple
+        titleLabel.font = AppResources.fonts.ssPro.bold.ofSize(30)
+        titleLabel.textColor = AppResources.colors.accent
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 3
         titleLabel.lineBreakMode = .byTruncatingTail

@@ -56,18 +56,18 @@ public final class MovieView: UIView {
 
     private lazy var trailerButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        let icon = Constants.trailerIcon?.withTintColor(.white, renderingMode: .alwaysTemplate)
+        button.backgroundColor = AppResources.colors.textOnSecond
+        let icon = Constants.trailerIcon?.withTintColor(AppResources.colors.accent, renderingMode: .alwaysTemplate)
         button.setImage(icon, for: .normal)
         button.setTitle(Constants.trailerTitle, for: .normal)
-        button.setTitleColor(Appearance.accentColor, for: .normal)
+        button.setTitleColor(AppResources.colors.accent, for: .normal)
         button.titleEdgeInsets = UIEdgeInsets(
             top: .zero,
             left: 10.0,
             bottom: .zero,
             right: .zero
         )
-        button.setTitleColor(.black, for: .highlighted)
+        button.setTitleColor(AppResources.colors.text, for: .highlighted)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.layer.cornerRadius = Constants.buttonHeight / 2
         button.addTarget(self, action: #selector(onTrailerTap), for: .touchUpInside)
@@ -83,7 +83,7 @@ public final class MovieView: UIView {
 
     private lazy var castLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold)
+        label.font = AppResources.fonts.ssPro.semibold.ofSize(24)
         label.text = Constants.castTitle
         return label
     }()

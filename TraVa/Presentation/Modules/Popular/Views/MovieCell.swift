@@ -5,6 +5,7 @@
 //  Created by Кирилл Прокофьев on 23.12.2021.
 //
 
+import DesignBook
 import Domain
 import UIKit
 import SnapKit
@@ -63,9 +64,15 @@ final class MovieCell: UICollectionViewCell {
     
 		self.overviewLabel.textColor = .systemGray
 		self.overviewLabel.numberOfLines = 2
+        self.overviewLabel.font = AppResources.fonts.ssPro.light.ofSize(13)
 
-		self.nameLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
-		self.nameLabel.numberOfLines = 2
+        //        title = ssProFonts.bold.ofSize(30)
+        //        subtitle = ssProFonts.semibold.ofSize(24)
+        //        text = ssProFonts.regular.ofSize(18)
+        //        caption = ssProFonts.light.ofSize(13)
+
+        self.nameLabel.font = AppResources.fonts.ssPro.semibold.ofSize(22)
+		self.nameLabel.numberOfLines = 1
 
 		self.backgroundColor = UIColor(named: "SecondColor")
 		self.layer.cornerRadius = 12
@@ -91,13 +98,14 @@ final class MovieCell: UICollectionViewCell {
 			make.width.equalTo(60)
 		}
 		self.nameLabel.snp.makeConstraints { make in
-			make.top.right.equalToSuperview().inset(Metrics.spaceBetweenComponents)
+            make.top.equalToSuperview().inset(Metrics.spaceBetweenComponents).dividedBy(2)
+			make.right.equalToSuperview().inset(Metrics.spaceBetweenComponents)
 			make.left.equalTo(self.imageView.snp.right).offset(Metrics.spaceBetweenComponents)
 		}
 		self.overviewLabel.snp.makeConstraints { make in
 			make.right.equalToSuperview().inset(Metrics.spaceBetweenComponents)
 			make.left.equalTo(self.imageView.snp.right).offset(Metrics.spaceBetweenComponents)
-			make.top.equalTo(self.nameLabel.snp.bottom).offset(3)
+			make.top.equalTo(self.nameLabel.snp.bottom)
 			make.bottom.equalToSuperview().inset(Metrics.spaceBetweenComponents)
 		}
 	}

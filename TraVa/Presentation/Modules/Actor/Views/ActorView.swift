@@ -32,7 +32,7 @@ public final class ActorView: UIView {
         title.textColor = .white
         title.textAlignment = .center
         title.adjustsFontSizeToFitWidth = true
-        title.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.bold)
+        title.font = AppResources.fonts.ssPro.bold.ofSize(30)
 
         return title
     }()
@@ -43,7 +43,7 @@ public final class ActorView: UIView {
         description.numberOfLines = 4
         description.textAlignment = .left
         description.adjustsFontSizeToFitWidth = true
-        description.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)
+        description.font = AppResources.fonts.ssPro.regular.ofSize(18)
 
         return description
     }()
@@ -161,10 +161,10 @@ private extension ActorView {
         let description = NSMutableAttributedString()
         let boldAttributes:[NSAttributedString.Key : Any] = [
             .foregroundColor: Appearance.accentColor,
-            .font : UIFont.systemFont(ofSize: 18, weight: .bold)
+            .font : AppResources.fonts.ssPro.bold.ofSize(18)
         ]
         let normalAttributes:[NSAttributedString.Key : Any] = [
-            .font : UIFont.systemFont(ofSize: 18, weight: .regular)
+            .font : AppResources.fonts.ssPro.regular.ofSize(18)
         ]
 
         if let id = id {

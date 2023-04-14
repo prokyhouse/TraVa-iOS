@@ -5,6 +5,7 @@
 //  Created by Кирилл Прокофьев on 23.12.2021.
 //
 
+import DesignBook
 import UIKit
 import Domain
 import SnapKit
@@ -32,30 +33,21 @@ public final class MainView: UIView {
     private lazy var popularLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.popular
-        label.font = UIFont.systemFont(
-            ofSize: Constants.titleSize,
-            weight: Constants.titleWeight
-        )
+        label.font = AppResources.fonts.ssPro.bold.ofSize(30)
         return label
     }()
 
     let upcomingLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.soon
-        label.font = UIFont.systemFont(
-            ofSize: Constants.titleSize,
-            weight: Constants.titleWeight
-        )
+        label.font = AppResources.fonts.ssPro.bold.ofSize(30)
         return label
     }()
 
     let recommendationLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.recommendation
-        label.font = UIFont.systemFont(
-            ofSize: Constants.titleSize,
-            weight: Constants.titleWeight
-        )
+        label.font = AppResources.fonts.ssPro.bold.ofSize(30)
         return label
     }()
 
@@ -397,12 +389,9 @@ private extension MainView {
         static let soon: String = "Скоро в кино"
         static let popular: String = "Популярное"
         static let recommendation: String = "Может быть интересно"
-
         static let cellWidth: CGFloat = 120.0
-        static let titleSize: CGFloat = 28.0
         static let titleHeight: CGFloat = 33.0
         static let chevroneSize: CGFloat = titleHeight
-        static let titleWeight: UIFont.Weight = .bold
         static let verticalSpacing: CGFloat = 11.0
         static let horizontalSpacing: CGFloat = 9.0
         static let collectionsHeight: CGFloat = 190.0

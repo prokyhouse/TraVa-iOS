@@ -5,6 +5,7 @@
 //  Created by Кирилл Прокофьев on 23.12.2021.
 //
 
+import DesignBook
 import Domain
 import UIKit
 import SnapKit
@@ -61,7 +62,7 @@ final class MovieCellView: UICollectionViewCell {
 		self.rateLabel.textColor = UIColor.white
 		self.rateLabel.numberOfLines = 1
 		self.rateLabel.textAlignment = .center
-		self.rateLabel.font = roundedFont(ofSize: 13, weight: .semibold)
+		self.rateLabel.font = AppResources.fonts.ssPro.bold.ofSize(13)
 		self.rateLabel.adjustsFontSizeToFitWidth = true
 
 		self.imageView.layer.cornerRadius = 12
