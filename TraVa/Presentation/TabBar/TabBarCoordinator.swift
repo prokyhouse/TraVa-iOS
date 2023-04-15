@@ -18,6 +18,8 @@ public protocol TabBarCoordinatorProtocol: BaseNavigationCoordinator {
     func goToMovieDetails(_ id: Int)
     func goToActorDetails(_ actor: Cast)
     func goBack()
+
+    func openSettings()
 }
 
 public final class TabBarCoordinator: BaseNavigationCoordinator, TabBarCoordinatorProtocol {
@@ -79,6 +81,10 @@ public final class TabBarCoordinator: BaseNavigationCoordinator, TabBarCoordinat
 
     public func goBack() {
         navigationController.popViewController(animated: true)
+    }
+
+    public func openSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
     }
 }
 

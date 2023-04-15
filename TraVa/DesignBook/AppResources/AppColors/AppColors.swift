@@ -10,13 +10,16 @@ import UIKit
 public struct AppColors {
     // MARK: - Colors
 
-    public let cell: UIColor
-    public let text: UIColor
     public let accent: UIColor
-    public let second: UIColor
-    public let textOnSecond: UIColor
     public let background: UIColor
+    public let cell: UIColor
+    public let error: UIColor
     public let inactive: UIColor
+    public let overlay: UIColor
+    public let second: UIColor
+    public let text: UIColor
+    public let textOnSecond: UIColor
+    public let warning: UIColor
 
     // MARK: - Color Assets
 
@@ -36,18 +39,28 @@ public struct AppColors {
     private let lightGray: UIColor = AppColor(rawValue: "#D9C8E3").get()
     /// 9875AC
     private let darkGray: UIColor = AppColor(rawValue: "#9875AC").get()
+    /// D6150D
+    private let red: UIColor = AppColor(rawValue: "#D6150D").get()
+    /// ED791A
+    private let orange: UIColor = AppColor(rawValue: "#ED791A").get()
 
 
     // MARK: - Initialization
 
     internal init() {
-        text = .dynamicColor(light: black, dark: white)
-        textOnSecond = .dynamicColor(light: white, dark: white)
-        second = .dynamicColor(light: purple, dark: darkPurple)
         accent = .dynamicColor(light: purple, dark: lightPurple)
-        inactive = .dynamicColor(light: lightGray, dark: darkGray)
         background = .dynamicColor(light: white, dark: darkestPurple)
         cell = .dynamicColor(light: lightGray, dark: darkGray)
+        error = .dynamicColor(light: red, dark: red)
+        inactive = .dynamicColor(light: lightGray, dark: darkGray)
+        overlay = .dynamicColor(
+            light: black.withAlphaComponent(0.8),
+            dark: black.withAlphaComponent(0.7)
+        )
+        second = .dynamicColor(light: purple, dark: darkPurple)
+        text = .dynamicColor(light: black, dark: white)
+        textOnSecond = .dynamicColor(light: white, dark: white)
+        warning = .dynamicColor(light: orange, dark: orange)
     }
 }
 

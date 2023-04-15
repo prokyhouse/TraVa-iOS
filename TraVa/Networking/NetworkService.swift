@@ -18,6 +18,8 @@ public protocol Networkable {
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<[Movie], Error>) -> ())
     func fetchPopularMovies(page: Int, completion: @escaping (Result<[Movie], Error>) -> ())
     func fetchMovie(movie: Int, completion: @escaping (Result<Movie, Error>) -> ())
+
+    var isVPN: Bool { get }
 }
 
 public struct NetworkService: Network {
@@ -28,6 +30,8 @@ public struct NetworkService: Network {
 }
 
 extension NetworkService: Networkable {
+    public var isVPN: Bool { VPNChecker.isVpnActive() }
+
     public func fetchMovie(movie: Int, completion: @escaping (Result<Movie, Error>) -> ()) {
         print(movie)
         provider.request(.movie(id: movie)) { result in

@@ -49,7 +49,7 @@ extension UpcomingViewPresenter: UpcomingPresenter {
                 }
 
             case .failure(_):
-                break
+                self?.showNetworkError()
             }
         }
     }
@@ -61,11 +61,43 @@ extension UpcomingViewPresenter: UpcomingPresenter {
 
 // MARK: - Private Methods
 
-private extension UpcomingViewPresenter { }
+private extension UpcomingViewPresenter {
+    func showNetworkError() {
+        viewController.displayNetworkError()
+
+        let isVPN: Bool = networkService.isVPN
+        let fromRussia: Bool = Locale.current.languageCode == "ru"
+        if !isVPN && fromRussia {
+            viewController.showDialog(
+                with: .init(
+                    title: Constants.VPNDialog.title,
+                    subtitle: Constants.VPNDialog.subtitle,
+                    buttons: [
+                        .init(
+                            text: "Настройки",
+                            style: .filled,
+                            action: coordinator.openSettings
+                        )
+                    ]
+                )
+            )
+        } else {
+            viewController.showMessage(
+                with: .error(text: "При загрузке контента произошла ошибка. Попробуйте позднее.")
+            )
+        }
+    }
+}
 
 // MARK: - Constants
 
 private extension UpcomingViewPresenter {
-    enum Constants { }
+    enum Constants {
+        enum VPNDialog {
+            static let title: String = "Пожалуйста, включите VPN."
+            static let subtitle: String = "К сожалению, сервис TMDB, предоставляющий контент, перестал работать на территории России."
+            static let buttonTitle: String = "Настройки"
+        }
+    }
 }
 

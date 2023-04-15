@@ -63,10 +63,11 @@ extension MainViewPresenter: MainPresenter {
             case .success(let movies):
                 DispatchQueue.main.async {
                     self?.viewController.setPopularMovies(movies)
+                    self?.showNetworkError()
                 }
 
-            case .failure(_):
-                break
+            case .failure(let error):
+                self?.showNetworkError()
             }
         }
     }
@@ -77,10 +78,11 @@ extension MainViewPresenter: MainPresenter {
             case .success(let movies):
                 DispatchQueue.main.async {
                     self?.viewController.setUpcomingMovies(movies)
+                    self?.showNetworkError()
                 }
 
-            case .failure(_):
-                break
+            case .failure(let error):
+                self?.showNetworkError()
             }
         }
     }
@@ -92,11 +94,41 @@ extension MainViewPresenter: MainPresenter {
 
 // MARK: - Private Methods
 
-private extension MainViewPresenter { }
+private extension MainViewPresenter {
+    func showNetworkError() {
+        let isVPN: Bool = networkService.isVPN
+        let fromRussia: Bool = Locale.current.languageCode == "ru"
+        if !isVPN && fromRussia {
+            viewController.showDialog(
+                with: .init(
+                    title: Constants.VPNDialog.title,
+                    subtitle: Constants.VPNDialog.subtitle,
+                    buttons: [
+                        .init(
+                            text: "Настройки",
+                            style: .filled,
+                            action: coordinator.openSettings
+                        )
+                    ]
+                )
+            )
+        } else {
+            viewController.showMessage(
+                with: .error(text: "При загрузке контента произошла ошибка. Попробуйте позднее.")
+            )
+        }
+    }
+}
 
 // MARK: - Constants
 
 private extension MainViewPresenter {
-    enum Constants { }
+    enum Constants {
+        enum VPNDialog {
+            static let title: String = "Пожалуйста, включите VPN."
+            static let subtitle: String = "К сожалению, сервис TMDB, предоставляющий контент, перестал работать на территории России."
+            static let buttonTitle: String = "Настройки"
+        }
+    }
 }
 

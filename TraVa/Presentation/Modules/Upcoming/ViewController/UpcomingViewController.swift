@@ -62,6 +62,11 @@ public final class UpcomingViewController: UIViewController {
         activityIndicator.stopAnimating()
         collectionView.reloadData()
     }
+
+    public func displayNetworkError() {
+        activityIndicator.stopAnimating()
+        //TODO: Полноэкранная ошибка
+    }
 }
 
 // MARK: - Private methods

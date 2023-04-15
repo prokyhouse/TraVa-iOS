@@ -61,6 +61,11 @@ public final class PopularViewController: UIViewController {
         activityIndicator.stopAnimating()
         collectionView.reloadData()
     }
+
+    public func displayNetworkError() {
+        activityIndicator.stopAnimating()
+        //TODO: Полноэкранная ошибка
+    }
 }
 
 // MARK: - Private methods

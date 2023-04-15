@@ -5,6 +5,7 @@
 //  Created by Кирилл Прокофьев on 22.12.2021.
 //
 
+import DesignBook
 import Domain
 import Networking
 import UIKit
@@ -19,7 +20,7 @@ public final class MainViewController: UIViewController {
         navigationController?
             .navigationBar
             .titleTextAttributes = [
-                .foregroundColor: UIColor(named: "AccentColor") ?? .systemPurple
+                .foregroundColor: AppResources.colors.accent
             ]
     }
 

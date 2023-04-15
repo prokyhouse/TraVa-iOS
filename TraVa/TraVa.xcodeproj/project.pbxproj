@@ -84,6 +84,12 @@
 		F04B324F29D6EEDF00F208B1 /* SourceSansProFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04B324E29D6EEDF00F208B1 /* SourceSansProFonts.swift */; };
 		F04B325129D6EFD800F208B1 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F04B325029D6EFD800F208B1 /* SourceSansPro-Light.ttf */; };
 		F056EE2F29E91E3500C6EC7A /* ActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056EE2E29E91E3500C6EC7A /* ActorViewController.swift */; };
+		F056EE3229E92A3C00C6EC7A /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = F056EE3129E92A3C00C6EC7A /* SwiftMessages */; };
+		F056EE3929E94ADF00C6EC7A /* SandwichView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056EE3529E94ADF00C6EC7A /* SandwichView.swift */; };
+		F056EE3A29E94ADF00C6EC7A /* SnackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056EE3729E94ADF00C6EC7A /* SnackView.swift */; };
+		F056EE3B29E94ADF00C6EC7A /* MessageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056EE3829E94ADF00C6EC7A /* MessageDisplayable.swift */; };
+		F056EE3D29E94B1900C6EC7A /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056EE3C29E94B1900C6EC7A /* PrimaryButton.swift */; };
+		F056EE3F29E950A000C6EC7A /* VPNChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056EE3E29E950A000C6EC7A /* VPNChecker.swift */; };
 		F05A377127747C46000F3033 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F05A377027747C46000F3033 /* SnapKit */; };
 		F05AF4A12782EBCD00BC0572 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F05AF4A02782EBCD00BC0572 /* SkeletonView */; };
 		F0A4194C27730512007112E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194B27730512007112E4 /* AppDelegate.swift */; };
@@ -253,6 +259,11 @@
 		F04B324E29D6EEDF00F208B1 /* SourceSansProFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceSansProFonts.swift; sourceTree = "<group>"; };
 		F04B325029D6EFD800F208B1 /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 		F056EE2E29E91E3500C6EC7A /* ActorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorViewController.swift; sourceTree = "<group>"; };
+		F056EE3529E94ADF00C6EC7A /* SandwichView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandwichView.swift; sourceTree = "<group>"; };
+		F056EE3729E94ADF00C6EC7A /* SnackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackView.swift; sourceTree = "<group>"; };
+		F056EE3829E94ADF00C6EC7A /* MessageDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDisplayable.swift; sourceTree = "<group>"; };
+		F056EE3C29E94B1900C6EC7A /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		F056EE3E29E950A000C6EC7A /* VPNChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNChecker.swift; sourceTree = "<group>"; };
 		F05A376027745A3C000F3033 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F05A376227745AFE000F3033 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		F05A376927746A41000F3033 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F056EE3229E92A3C00C6EC7A /* SwiftMessages in Frameworks */,
 				F018DEF929C833B800325BC5 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +554,7 @@
 				F018DE9129C8101200325BC5 /* Networking.h */,
 				F009369629CD62F200826263 /* MovieAPI.swift */,
 				F009369E29CD736F00826263 /* NetworkService.swift */,
+				F056EE3E29E950A000C6EC7A /* VPNChecker.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -618,8 +631,10 @@
 		F018DEEE29C81A2400325BC5 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
+				F056EE3329E94ADF00C6EC7A /* Messages */,
 				F018DEEF29C81A5C00325BC5 /* BlurNavigationBar.swift */,
 				F018DEF129C81BA600325BC5 /* BlurView.swift */,
+				F056EE3C29E94B1900C6EC7A /* PrimaryButton.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -658,6 +673,32 @@
 				F04B325029D6EFD800F208B1 /* SourceSansPro-Light.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		F056EE3329E94ADF00C6EC7A /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				F056EE3429E94ADF00C6EC7A /* Sandwich */,
+				F056EE3629E94ADF00C6EC7A /* Snack */,
+				F056EE3829E94ADF00C6EC7A /* MessageDisplayable.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		F056EE3429E94ADF00C6EC7A /* Sandwich */ = {
+			isa = PBXGroup;
+			children = (
+				F056EE3529E94ADF00C6EC7A /* SandwichView.swift */,
+			);
+			path = Sandwich;
+			sourceTree = "<group>";
+		};
+		F056EE3629E94ADF00C6EC7A /* Snack */ = {
+			isa = PBXGroup;
+			children = (
+				F056EE3729E94ADF00C6EC7A /* SnackView.swift */,
+			);
+			path = Snack;
 			sourceTree = "<group>";
 		};
 		F05A376427745BA4000F3033 /* Models */ = {
@@ -968,6 +1009,9 @@
 				F018DEFC29C833B800325BC5 /* PBXTargetDependency */,
 			);
 			name = DesignBook;
+			packageProductDependencies = (
+				F056EE3129E92A3C00C6EC7A /* SwiftMessages */,
+			);
 			productName = DesignBook;
 			productReference = F018DEE329C819F700325BC5 /* DesignBook.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1072,6 +1116,7 @@
 				F018DF7829CAD66900325BC5 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				F009369929CD728400826263 /* XCRemoteSwiftPackageReference "Moya" */,
 				F00936A629CD797000826263 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F056EE3029E92A3C00C6EC7A /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 			);
 			productRefGroup = F0A4194927730512007112E4 /* Products */;
 			projectDirPath = "";
@@ -1168,6 +1213,7 @@
 			files = (
 				F009369F29CD736F00826263 /* NetworkService.swift in Sources */,
 				F009369729CD62F200826263 /* MovieAPI.swift in Sources */,
+				F056EE3F29E950A000C6EC7A /* VPNChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,14 +1265,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0EDF86C29D698FC00511307 /* ColorResourceConvertible.swift in Sources */,
+				F056EE3929E94ADF00C6EC7A /* SandwichView.swift in Sources */,
+				F056EE3B29E94ADF00C6EC7A /* MessageDisplayable.swift in Sources */,
 				F04B324F29D6EEDF00F208B1 /* SourceSansProFonts.swift in Sources */,
 				F0EDF86E29D6992B00511307 /* ResourceConvertible.swift in Sources */,
 				F04B324129D6ED1900F208B1 /* AppFont.swift in Sources */,
 				F018DEF029C81A5C00325BC5 /* BlurNavigationBar.swift in Sources */,
+				F056EE3A29E94ADF00C6EC7A /* SnackView.swift in Sources */,
 				F04B324D29D6EE7C00F208B1 /* AppFonts.swift in Sources */,
 				F0EDF86629D6983A00511307 /* AppColor.swift in Sources */,
 				F018DEF229C81BA600325BC5 /* BlurView.swift in Sources */,
 				F0EDF86929D6986C00511307 /* AppColors.swift in Sources */,
+				F056EE3D29E94B1900C6EC7A /* PrimaryButton.swift in Sources */,
 				F0EDF86029D5AB5700511307 /* AppResources.swift in Sources */,
 				F0EDF86329D5ABE200511307 /* AppAppearance.swift in Sources */,
 			);
@@ -1634,6 +1684,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1672,6 +1723,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1993,6 +2045,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		F056EE3029E92A3C00C6EC7A /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -2051,6 +2111,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F018DF7829CAD66900325BC5 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
+		};
+		F056EE3129E92A3C00C6EC7A /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F056EE3029E92A3C00C6EC7A /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
 		};
 		F05A377027747C46000F3033 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
