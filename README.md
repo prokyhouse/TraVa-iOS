@@ -18,7 +18,7 @@ Android версия (Java) на [GitHub](https://github.com/prokyhouse/TraVa)
 
 **Кирилл Прокофьев**  
 *Студент ФИТ НГУ 2023 | Compuer Science and System design*  
-* Инженер-программист iOS в 65apps*  
+*Инженер-программист iOS в 65apps*  
 *Призер чемпионата кибербезопасности Kaspersky CyberHeroes 2016*  
 *Победитель регионального тура конкурса проектов «IT ШКОЛА SAMSUNG» в 2017 году*   
 *Победитель конкурса «Школа VR 360» 2018*   
