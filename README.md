@@ -17,8 +17,15 @@ Android версия (Java) на [GitHub](https://github.com/prokyhouse/TraVa)
 <img src="https://habrastorage.org/webt/xn/wq/r_/xnwqr_c12neoliwun446oljbewq.png" alt="Кирилл Прокофьев" align="left" width="150"/>
 
 **Кирилл Прокофьев**  
-*Студент ФИТ НГУ 2023 | Compuer Science and System design*  
-*Инженер-программист iOS в 65apps*  
+Бакалавр ФИТ НГУ 2023 | Compuer Science and System design  
+Старший инженер-программист iOS в Whoosh | ex-65apps, ex-Sportmaster 
+
+E-mail:  k.prokofev1@alumni.nsu.ru
+
+Telegram: [@kprokofyev](https://t.me/kprokofyev)
+
+#### Обо мне:
+
 *Призер чемпионата кибербезопасности Kaspersky CyberHeroes 2016*  
 *Победитель регионального тура конкурса проектов «IT ШКОЛА SAMSUNG» в 2017 году*   
 *Победитель конкурса «Школа VR 360» 2018*   
@@ -26,11 +33,7 @@ Android версия (Java) на [GitHub](https://github.com/prokyhouse/TraVa)
 *Выпускник ЦФТ ШИФТ FocusStart 2021 по направлению iOS Development*  
 *Призёр (3 место) Хакатона Альфа-Банка x НГУ по мобильной разработке*  
 
-E-mail:  k.prokofev1@g.nsu.ru
-
-Telegram: [@proko23](https://t.me/proko23)
-
-Swift, Java, C#-разработчик, дизайнер, Middle Project manager
+On June 2024: Middle iOS Developer
 
 
 ## О проекте
