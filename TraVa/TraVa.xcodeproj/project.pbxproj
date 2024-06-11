@@ -1734,24 +1734,24 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.0;
+				kind = exactVersion;
+				version = 15.0.3;
 			};
 		};
 		F00936A629CD797000826263 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 5.9.1;
 			};
 		};
 		F018DF7829CAD66900325BC5 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = exactVersion;
+				version = 1.0.4;
 			};
 		};
 		F05A376F27747C45000F3033 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1759,7 +1759,7 @@
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.0.1;
+				version = 5.7.1;
 			};
 		};
 		F05AF49F2782EBCD00BC0572 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
@@ -1767,7 +1767,7 @@
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
 			requirement = {
 				kind = exactVersion;
-				version = 1.9.0;
+				version = 1.31.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
