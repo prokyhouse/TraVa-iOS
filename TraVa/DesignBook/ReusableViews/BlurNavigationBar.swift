@@ -87,8 +87,8 @@ private extension BlurNavigationBar {
             contentView.leftAnchor.constraint(equalTo: blurView.leftAnchor, constant: Constants.horizontalSpacing),
             contentView.rightAnchor.constraint(equalTo: blurView.rightAnchor, constant: -Constants.horizontalSpacing),
             contentView.topAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.topAnchor, constant: 12.0),
-            contentView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor, constant: -20.0),
-            //contentView.heightAnchor.constraint(equalToConstant: 36.0)
+            contentView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor, constant: -20.0)
+            // contentView.heightAnchor.constraint(equalToConstant: 36.0)
         ])
 
         NSLayoutConstraint.useAndActivateConstraints([

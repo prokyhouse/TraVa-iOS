@@ -50,17 +50,16 @@ extension MovieViewPresenter: MoviePresenter {
         coordinator.goBack()
     }
 
-
-    public func fetchMovie(){
+    public func fetchMovie() {
         networkService.fetchMovie(movie: movieID) { [weak self] (result: Result<Movie, Error>) in
             switch result {
-            case .success(let movie):
-                DispatchQueue.main.async {
-                    self?.viewController.setMovie(movie)
-                }
+                case .success(let movie):
+                    DispatchQueue.main.async {
+                        self?.viewController.setMovie(movie)
+                    }
 
-            case .failure(_):
-                break
+                case .failure:
+                    break
             }
         }
     }
@@ -79,4 +78,3 @@ private extension MovieViewPresenter { }
 private extension MovieViewPresenter {
     enum Constants { }
 }
-

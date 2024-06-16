@@ -94,14 +94,14 @@ private extension TabBarCoordinator {
         var viewController: UIViewController
 
         switch tab {
-        case .main:
-            viewController = makeMain()
+            case .main:
+                viewController = makeMain()
 
-        case .popular:
-            viewController = makePopular()
+            case .popular:
+                viewController = makePopular()
 
-        case .upcoming:
-            viewController = makeUpcoming()
+            case .upcoming:
+                viewController = makeUpcoming()
         }
 
         viewController.title = tab.getTitle(full: true)

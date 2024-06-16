@@ -41,15 +41,15 @@ public final class PopularViewPresenter {
 
 extension PopularViewPresenter: PopularPresenter {
     public func fetchPopularMovies() {
-        networkService.fetchPopularMovies(page: 1){ [weak self] (result: Result<[Movie], Error>) in
+        networkService.fetchPopularMovies(page: 1) { [weak self] (result: Result<[Movie], Error>) in
             switch result {
-            case .success(let movies):
-                DispatchQueue.main.async {
-                    self?.viewController.setPopularMovies(movies)
-                }
+                case .success(let movies):
+                    DispatchQueue.main.async {
+                        self?.viewController.setPopularMovies(movies)
+                    }
 
-            case .failure(_):
-                break
+                case .failure:
+                    break
             }
         }
     }
@@ -68,4 +68,3 @@ private extension PopularViewPresenter { }
 private extension PopularViewPresenter {
     enum Constants { }
 }
-

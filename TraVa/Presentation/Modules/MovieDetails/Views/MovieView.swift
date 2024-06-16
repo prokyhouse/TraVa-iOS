@@ -140,7 +140,7 @@ public final class MovieView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        photoView.setGradientBackground(colorTop: .clear ,
+        photoView.setGradientBackground(colorTop: .clear,
                                         colorBottom: Appearance.accentColor,
                                         startY: 0.6,
                                         endY: 1.0)
@@ -170,8 +170,9 @@ private extension MovieView {
     func setupUI(with movie: Movie?) {
         guard let movie = movie else { return }
 
-        let imagePath: String = movie.backdropPath ?? movie.posterPath
-        setPhoto(from: imagePath)
+        if let imagePath: String = movie.backdropPath ?? movie.posterPath {
+            setPhoto(from: imagePath)
+        }
 
         navBar.title = movie.title
         descriptionLabel.text = movie.overview
@@ -272,7 +273,7 @@ private extension MovieView {
 
     @objc
     func onTrailerTap() {
-       // TODO: - воспроизведение видео
+        // TODO: - воспроизведение видео
     }
 }
 

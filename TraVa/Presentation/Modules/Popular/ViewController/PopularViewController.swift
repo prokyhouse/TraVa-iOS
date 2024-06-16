@@ -78,7 +78,9 @@ extension PopularViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         guard let movie = self.movies?[indexPath.item] else { return }
-        presenter?.showMovieDetails(movie.id)
+        guard let movieId = movie.id else { return }
+
+        presenter?.showMovieDetails(movieId)
     }
 
     public func collectionView(

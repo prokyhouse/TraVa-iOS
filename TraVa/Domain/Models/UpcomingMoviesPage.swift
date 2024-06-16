@@ -13,7 +13,7 @@ public struct UpcomingMoviesPage: Decodable {
     public let page: Int
     public let results: [Movie]
     public let totalPages, totalResults: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case dates, page, results
         case totalPages = "total_pages"

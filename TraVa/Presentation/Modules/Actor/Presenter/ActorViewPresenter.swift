@@ -44,7 +44,7 @@ extension ActorViewPresenter: ActorPresenter {
         coordinator.goBack()
     }
 
-    public func fetchActor(){
+    public func fetchActor() {
         viewController.setActor(actor)
     }
 }
@@ -58,4 +58,3 @@ private extension ActorViewPresenter { }
 private extension ActorViewPresenter {
     enum Constants { }
 }
-

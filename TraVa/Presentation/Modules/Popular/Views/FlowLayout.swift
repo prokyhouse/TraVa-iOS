@@ -19,7 +19,7 @@ public final class FlowLayout: UICollectionViewFlowLayout {
         let minColumnWidth = (screen.height > screen.width) ? availableWidth : availableWidth / 3
         let maxNumColumns = Int(availableWidth / minColumnWidth)
         let cellWidth = (availableWidth / CGFloat(maxNumColumns)).rounded(.down)
-
+        
         itemSize = CGSize(
             width: cellWidth,
             height: 90.0

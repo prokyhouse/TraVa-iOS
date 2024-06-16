@@ -9,25 +9,25 @@ import Foundation
 
 // MARK: - Movie
 public struct Movie: Codable {
-    public let adult: Bool
+    public let adult: Bool?
     public let backdropPath: String?
     public let belongsToCollection: BelongsToCollection?
     public let budget: Int?
     public let genres: [Genre]?
     public let homepage: String?
-    public let id: Int
+    public let id: Int?
     public let imdbID, originalLanguage, originalTitle, overview: String?
-    public let popularity: Double
-    public let posterPath: String
+    public let popularity: Double?
+    public let posterPath: String?
     public let productionCompanies: [ProductionCompany]?
     public let productionCountries: [ProductionCountry]?
     public let releaseDate: String?
     public let revenue, runtime: Int?
     public let spokenLanguages: [SpokenLanguage]?
     public let status, tagline, title: String?
-    public let video: Bool
-    public let voteAverage: Double
-    public let voteCount: Int
+    public let video: Bool?
+    public let voteAverage: Double?
+    public let voteCount: Int?
     public let credits: Credits?
 
     enum CodingKeys: String, CodingKey {
@@ -89,8 +89,8 @@ public extension Movie {
 
 // MARK: - Genre
 public struct Genre: Codable {
-    public let id: Int
-    public let name: String
+    public let id: Int?
+    public let name: String?
 }
 
 // MARK: - BelongsToCollection
@@ -157,9 +157,9 @@ public enum Department: String, Codable {
 
 // MARK: - ProductionCompany
 public struct ProductionCompany: Codable {
-    public let id: Int
+    public let id: Int?
     public let logoPath: String?
-    public let name, originCountry: String
+    public let name, originCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -171,7 +171,7 @@ public struct ProductionCompany: Codable {
 
 // MARK: - ProductionCountry
 public struct ProductionCountry: Codable {
-    public let iso3166_1, name: String
+    public let iso3166_1, name: String?
 
     enum CodingKeys: String, CodingKey {
         case iso3166_1 = "iso_3166_1"
@@ -181,7 +181,7 @@ public struct ProductionCountry: Codable {
 
 // MARK: - SpokenLanguage
 public struct SpokenLanguage: Codable {
-    public let englishName, iso639_1, name: String
+    public let englishName, iso639_1, name: String?
 
     enum CodingKeys: String, CodingKey {
         case englishName = "english_name"

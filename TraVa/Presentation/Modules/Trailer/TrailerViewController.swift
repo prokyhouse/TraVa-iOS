@@ -11,15 +11,14 @@ final class TrailerViewController: UIViewController {
     private let trailerView = YTPlayerView()
 
     let playerVars = [
-                         "playsinline" : 1,
-                         "showinfo" : 1,
-                         "rel" : 0,
-                         "modestbranding" : 1,
-                         "controls" : 1,
-                         "iv_load_policy": 3,
-                         "origin": "https://wwww.example.com"
-    ] as [AnyHashable : Any]?
-
+        "playsinline": 1,
+        "showinfo": 1,
+        "rel": 0,
+        "modestbranding": 1,
+        "controls": 1,
+        "iv_load_policy": 3,
+        "origin": "https://wwww.example.com"
+    ] as [AnyHashable: Any]?
 
     // MARK: - Initialization
 
@@ -59,12 +58,12 @@ private extension TrailerViewController {
 
     func setupViews() {
         view.backgroundColor = .white
-        trailerView.load(withPlayerParams:playerVars)
+        trailerView.load(withPlayerParams: playerVars)
         trailerView.load(withVideoId: "9LLOLEBlVIA", playerVars: playerVars)
         trailerView.layer.cornerRadius = 32.0
         trailerView.clipsToBounds = true
         trailerView.delegate = self
-       // trailerView.playVideo()
+        // trailerView.playVideo()
 
     }
 }
@@ -77,6 +76,6 @@ extension TrailerViewController: TrailerView { }
 
 extension TrailerViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        //trailerView.playVideo()
+        // trailerView.playVideo()
     }
 }

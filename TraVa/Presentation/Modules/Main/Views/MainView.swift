@@ -331,12 +331,14 @@ extension MainView: UICollectionViewDelegate {
     ) {
         if collectionView == self.popularCollectionView {
             guard let movie = self.popularMovies?[indexPath.item] else { return }
+            guard let movieId = movie.id else { return }
 
-            delegate?.onMovieTap(with: movie.id)
+            delegate?.onMovieTap(with: movieId)
         } else {
             guard let movie = self.upcomingMovies?[indexPath.item] else { return }
+            guard let movieId = movie.id else { return }
 
-            delegate?.onMovieTap(with: movie.id)
+            delegate?.onMovieTap(with: movieId)
         }
     }
 

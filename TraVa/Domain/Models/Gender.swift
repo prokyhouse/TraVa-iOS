@@ -14,14 +14,14 @@ public enum Gender: Int, Codable {
 
     public func asString() -> String {
         switch self {
-        case .male:
-            return "Мужской"
+            case .male:
+                return "Мужской"
 
-        case .female:
-            return "Женский"
-
-        case .unknown:
-            return "Неизвестно"
+            case .female:
+                return "Женский"
+                
+            case .unknown:
+                return "Неизвестно"
         }
     }
 }

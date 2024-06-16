@@ -41,15 +41,15 @@ public final class UpcomingViewPresenter {
 
 extension UpcomingViewPresenter: UpcomingPresenter {
     public func fetchUpcomingMovies() {
-        networkService.fetchUpcomingMovies(page: 1){ [weak self] (result: Result<[Movie], Error>) in
+        networkService.fetchUpcomingMovies(page: 1) { [weak self] (result: Result<[Movie], Error>) in
             switch result {
-            case .success(let movies):
-                DispatchQueue.main.async {
-                    self?.viewController.setUpcomingMovies(movies)
-                }
+                case .success(let movies):
+                    DispatchQueue.main.async {
+                        self?.viewController.setUpcomingMovies(movies)
+                    }
 
-            case .failure(_):
-                break
+                case .failure:
+                    break
             }
         }
     }
@@ -68,4 +68,3 @@ private extension UpcomingViewPresenter { }
 private extension UpcomingViewPresenter {
     enum Constants { }
 }
-

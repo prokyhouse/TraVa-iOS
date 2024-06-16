@@ -18,11 +18,11 @@ public enum TabBarPage: Int, CaseIterable {
 
     public func getIcon(for state: TabBarPageState) -> UIImage? {
         switch state {
-        case .selected:
-            return selectedIcon
+            case .selected:
+                return selectedIcon
 
-        case .unselected:
-            return unselectedIcon
+            case .unselected:
+                return unselectedIcon
         }
     }
 }
@@ -32,53 +32,53 @@ public enum TabBarPage: Int, CaseIterable {
 private extension TabBarPage {
     var title: String {
         switch self {
-        case .main:
-            return "Главная"
+            case .main:
+                return "Главная"
 
-        case .popular:
-            return "Популярное"
+            case .popular:
+                return "Популярное"
 
-        case .upcoming:
-            return "Скоро"
+            case .upcoming:
+                return "Скоро"
         }
     }
 
     var fullTitle: String {
         switch self {
-        case .main:
-            return "Главная"
+            case .main:
+                return "Главная"
 
-        case .popular:
-            return "Популярно сейчас"
+            case .popular:
+                return "Популярно сейчас"
 
-        case .upcoming:
-            return "Скоро доступно"
+            case .upcoming:
+                return "Скоро доступно"
         }
     }
 
     var unselectedIcon: UIImage? {
         switch self {
-        case .main:
-            return UIImage(systemName: "house")
+            case .main:
+                return UIImage(systemName: "house")
 
-        case .popular:
-            return UIImage(systemName: "hand.thumbsup")
+            case .popular:
+                return UIImage(systemName: "hand.thumbsup")
 
-        case .upcoming:
-            return UIImage(systemName: "hourglass.bottomhalf.filled")
+            case .upcoming:
+                return UIImage(systemName: "hourglass.bottomhalf.filled")
         }
     }
 
     var selectedIcon: UIImage? {
         switch self {
-        case .main:
-            return UIImage(systemName: "house.fill")
+            case .main:
+                return UIImage(systemName: "house.fill")
 
-        case .popular:
-            return UIImage(systemName: "hand.thumbsup.fill")
+            case .popular:
+                return UIImage(systemName: "hand.thumbsup.fill")
 
-        case .upcoming:
-            return UIImage(systemName: "hourglass.tophalf.filled")
+            case .upcoming:
+                return UIImage(systemName: "hourglass.tophalf.filled")
         }
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 import Networking
 import Domain
-import UIKit
 import SnapKit
 
 public final class UpcomingViewController: UIViewController {
@@ -79,7 +78,9 @@ extension UpcomingViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         guard let movie = self.movies?[indexPath.item] else { return }
-        presenter?.showMovieDetails(movie.id)
+        guard let movieId = movie.id else { return }
+
+        presenter?.showMovieDetails(movieId)
     }
 
     public func collectionView(
