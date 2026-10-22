@@ -12,7 +12,7 @@ import SnapKit
 protocol MainViewDelegate {
     func onPopularSectionTap()
     func onUpcomingSectionTap()
-    func onMovieTap(with id: Int)
+    func onMovieTap(with id: Movie.ID)
 }
 
 public final class MainView: UIView {
@@ -331,14 +331,12 @@ extension MainView: UICollectionViewDelegate {
     ) {
         if collectionView == self.popularCollectionView {
             guard let movie = self.popularMovies?[indexPath.item] else { return }
-            guard let movieId = movie.id else { return }
 
-            delegate?.onMovieTap(with: movieId)
+            delegate?.onMovieTap(with: movie.id)
         } else {
             guard let movie = self.upcomingMovies?[indexPath.item] else { return }
-            guard let movieId = movie.id else { return }
 
-            delegate?.onMovieTap(with: movieId)
+            delegate?.onMovieTap(with: movie.id)
         }
     }
 

@@ -11,7 +11,7 @@ import Domain
 
 public protocol UpcomingPresenter: AnyObject {
     /// Обработка перехода на экран фильма
-    func showMovieDetails(_ id: Int)
+    func showMovieDetails(_ id: Movie.ID)
 
     /// Получение новых фильмов
     func fetchUpcomingMovies()
@@ -54,7 +54,7 @@ extension UpcomingViewPresenter: UpcomingPresenter {
         }
     }
 
-    public func showMovieDetails(_ id: Int) {
+    public func showMovieDetails(_ id: Movie.ID) {
         coordinator.goToMovieDetails(id)
     }
 }

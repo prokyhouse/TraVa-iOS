@@ -17,7 +17,7 @@ public protocol MainPresenter: AnyObject {
     func showUpcoming()
     
     /// Обработка перехода на экран фильма
-    func showMovieDetails(_ id: Int)
+    func showMovieDetails(_ id: Movie.ID)
     
     /// Получение популярных фильмов
     func fetchPopularMovies()
@@ -85,7 +85,7 @@ extension MainViewPresenter: MainPresenter {
         }
     }
     
-    public func showMovieDetails(_ id: Int) {
+    public func showMovieDetails(_ id: Movie.ID) {
         coordinator.goToMovieDetails(id)
     }
 }

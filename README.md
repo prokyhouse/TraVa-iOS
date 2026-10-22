@@ -3,13 +3,13 @@
 
 
 Приложение для тех, кто любит фильмы и сериалы. 
-[Клиент-серверное приложение дл iPhone (ранее написанное под Android)](https://play.google.com/store/apps/details?id=ru.myitschool.travamd&hl), которое позволяет просматривать даты выходов фильмов, коллекции, рейтинги (IMDb, TMDB и т.д.), описания фильмов, а также список актеров.
+[Клиент-серверное приложение дл iPhone (ранее написанное под Android)](https://play.google.com/store/apps/details?id=ru.myitschool.travamd&hl), которое позволяет просматривать даты выходов фильмов, коллекции, рейтинги (IMDb, Rotten Tomatoes, Metacritic), описания фильмов, а также список актеров.
 
 [Скачать в Google Play](https://play.google.com/store/apps/details?id=ru.myitschool.travamd&hl) версию для Android.
 Android версия (Java) на [GitHub](https://github.com/prokyhouse/TraVa)
 
 
-` #movies #themoviedatabase #tmdb #themoviedb #swift #ios `
+` #movies #omdb #imdb #swift #ios `
 
 
 ## Авторы
@@ -50,7 +50,14 @@ On June 2024: Middle iOS Developer
 ```
    
 ## Инструменты
-**API** - [TheMovieDataBase (TMDB)](https://www.themoviedb.org)
+**API** - [OMDb API](https://www.omdbapi.com) (ранее — [TMDB](https://www.themoviedb.org))
+
+## API-ключ
+Ключ OMDb не хранится в репозитории. Получите бесплатный ключ на [omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx) и положите его в локальный конфиг:
+```
+cp TraVa/Configs/Secrets.xcconfig.example TraVa/Configs/Secrets.xcconfig
+# впишите OMDB_API_KEY = <ваш ключ>
+```
 
 **Вёрстка** - NSLayoutConstraint + [SnapKit](https://github.com/SnapKit/SnapKit)
 

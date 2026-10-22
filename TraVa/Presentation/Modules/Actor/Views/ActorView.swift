@@ -90,18 +90,14 @@ public final class ActorView: UIView {
     // MARK: - Public methods
     
     func render(props: Props) {
-        if props.actor.profilePath == nil {
-            photoView.image = Constants.templateImage
+        if let profileURL = props.actor.profileURL {
+            photoView.imageFromUrl(urlString: profileURL.absoluteString)
         } else {
-            photoView.imageFromUrl(urlString: Constants.urlBase + props.actor.profilePath!)
+            photoView.image = Constants.templateImage
         }
         
         navBar.title = props.actor.name
-        descriptionLabel.attributedText = makeDescription(
-            id: props.actor.id,
-            gender: props.actor.gender,
-            character: props.actor.character
-        )
+        descriptionLabel.attributedText = makeDescription(for: props.actor)
     }
 }
 
@@ -157,7 +153,7 @@ private extension ActorView {
         ])
     }
     
-    func makeDescription(id: Int?, gender: Gender?, character: String?) -> NSAttributedString {
+    func makeDescription(for actor: Cast) -> NSAttributedString {
         let description = NSMutableAttributedString()
         let boldAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Appearance.accentColor,
@@ -167,15 +163,20 @@ private extension ActorView {
             .font: UIFont.systemFont(ofSize: 18, weight: .regular)
         ]
         
-        if let id = id {
-            description.append(NSAttributedString(string: Constants.id, attributes: boldAttributes))
-            description.append(NSAttributedString(string: "\(id) \n", attributes: normalAttributes))
+        if let department = actor.department {
+            let job = actor.job.map { " (\($0))" } ?? ""
+            description.append(NSAttributedString(string: Constants.department, attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(department.asString())\(job) \n", attributes: normalAttributes))
         }
-        if let gender = gender {
+        if let movieTitle = actor.movieTitle {
+            description.append(NSAttributedString(string: Constants.movie, attributes: boldAttributes))
+            description.append(NSAttributedString(string: "\(movieTitle) \n", attributes: normalAttributes))
+        }
+        if let gender = actor.gender {
             description.append(NSAttributedString(string: Constants.gender, attributes: boldAttributes))
             description.append(NSAttributedString(string: "\(gender.asString()) \n", attributes: normalAttributes))
         }
-        if let character = character {
+        if let character = actor.character {
             description.append(NSAttributedString(string: Constants.role, attributes: boldAttributes))
             description.append(NSAttributedString(string: "\(character) \n", attributes: normalAttributes))
         }
@@ -191,9 +192,9 @@ private extension ActorView {
         static let hSpacing: CGFloat = 32.0
         static let screenWidth = UIScreen.main.bounds.size.width
         static let templateImage: UIImage? = UIImage(named: "ActorTemplate")
-        static let urlBase: String = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
         
-        static let id: String = "ID: "
+        static let department: String = "Амплуа: "
+        static let movie: String = "Фильм: "
         static let gender: String = "Пол: "
         static let role: String = "Роль: "
     }

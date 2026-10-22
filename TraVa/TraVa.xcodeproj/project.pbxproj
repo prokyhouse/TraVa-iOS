@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00E64D7BA8351516C1E620B9 /* OMDbResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF13CB8DF25876A9DCC581 /* OMDbResponses.swift */; };
+		25DFAA5205410F7C2992E687 /* APIKeyPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B21102B00A2F5DE3103554 /* APIKeyPlugin.swift */; };
+		6F2818DE64BD5E64A4D0CBC4 /* MovieCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D043FA0E58D26DBC5E4FA3 /* MovieCatalog.swift */; };
+		7878869E61CC36E28311357A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611197104C918F8763F55249 /* NetworkError.swift */; };
+		872AD20A9F8FE094745C4676 /* OMDbSecrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862E4B4C08485A89556C167 /* OMDbSecrets.generated.swift */; };
+		9BB955FC792641CECB1B7B2A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F018DEA029C8114200325BC5 /* Domain.framework */; };
+		DE2935BC3C2EEE3868C2EA65 /* OMDbMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8932F66113F6CA9B93E1890 /* OMDbMapper.swift */; };
 		F009369729CD62F200826263 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F009369629CD62F200826263 /* MovieAPI.swift */; };
 		F009369B29CD728400826263 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F009369A29CD728400826263 /* Moya */; };
 		F009369D29CD732D00826263 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F009369C29CD732D00826263 /* Moya */; };
@@ -53,8 +60,6 @@
 		F018DEC829C811F200325BC5 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F652777735E00ECA372 /* MovieViewController.swift */; };
 		F018DEC929C811F700325BC5 /* ActorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7ABDD277AF29F00FB4662 /* ActorView.swift */; };
 		F018DECA29C811F700325BC5 /* ActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7ABDF277AF2AD00FB4662 /* ActorViewController.swift */; };
-		F018DECB29C8120400325BC5 /* MoviesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F542774AE2400ECA372 /* MoviesPage.swift */; };
-		F018DECC29C8120400325BC5 /* UpcomingMoviesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0790F5E2774FC8000ECA372 /* UpcomingMoviesPage.swift */; };
 		F018DECD29C8120400325BC5 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376227745AFE000F3033 /* Actor.swift */; };
 		F018DECE29C8120400325BC5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A376027745A3C000F3033 /* Movie.swift */; };
 		F018DECF29C8121000325BC5 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05AF4A227856E8A00BC0572 /* UIImageView+URL.swift */; };
@@ -84,9 +89,17 @@
 		F0A4194E27730512007112E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4194D27730512007112E4 /* SceneDelegate.swift */; };
 		F0A4195527730514007112E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195427730514007112E4 /* Assets.xcassets */; };
 		F0A4195827730514007112E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A4195627730514007112E4 /* LaunchScreen.storyboard */; };
+		FD988935E59E64B2E3361E60 /* APIKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0EE84B684F54D5B3D52B9 /* APIKeyProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		00BBD158374A17A0B12BFC73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A4194027730512007112E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F018DE9F29C8114200325BC5;
+			remoteInfo = Domain;
+		};
 		F00936AD29CD79A400826263 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0A4194027730512007112E4 /* Project object */;
@@ -195,6 +208,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50EF13CB8DF25876A9DCC581 /* OMDbResponses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMDbResponses.swift; sourceTree = "<group>"; };
+		510A2C47279798FE6E4649A7 /* Secrets.xcconfig.example */ = {isa = PBXFileReference; includeInIndex = 1; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
+		5862E4B4C08485A89556C167 /* OMDbSecrets.generated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMDbSecrets.generated.swift; sourceTree = DERIVED_FILE_DIR; };
+		5A06765703B54AA881189678 /* generate-secrets.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "generate-secrets.sh"; sourceTree = "<group>"; };
+		611197104C918F8763F55249 /* NetworkError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		65C674C7ED9DA8F97EAF4439 /* Networking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Networking.xcconfig; sourceTree = "<group>"; };
+		BFF0EE84B684F54D5B3D52B9 /* APIKeyProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIKeyProvider.swift; sourceTree = "<group>"; };
+		C8932F66113F6CA9B93E1890 /* OMDbMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMDbMapper.swift; sourceTree = "<group>"; };
+		D1B21102B00A2F5DE3103554 /* APIKeyPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIKeyPlugin.swift; sourceTree = "<group>"; };
+		E6D043FA0E58D26DBC5E4FA3 /* MovieCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovieCatalog.swift; sourceTree = "<group>"; };
 		F009369629CD62F200826263 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
 		F009369E29CD736F00826263 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F00936B229D0B26B00826263 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
@@ -230,12 +253,10 @@
 		F05A376D27747BF3000F3033 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F05A377427747DD1000F3033 /* MovieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellView.swift; sourceTree = "<group>"; };
 		F05AF4A227856E8A00BC0572 /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
-		F0790F542774AE2400ECA372 /* MoviesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPage.swift; sourceTree = "<group>"; };
 		F0790F562774C20D00ECA372 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		F0790F582774C23700ECA372 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		F0790F5A2774EF5D00ECA372 /* UpcomingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingFlowLayout.swift; sourceTree = "<group>"; };
 		F0790F5C2774EFCC00ECA372 /* UpcomingMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieCell.swift; sourceTree = "<group>"; };
-		F0790F5E2774FC8000ECA372 /* UpcomingMoviesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesPage.swift; sourceTree = "<group>"; };
 		F0790F612776E8CD00ECA372 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		F0790F632776E98A00ECA372 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		F0790F652777735E00ECA372 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +289,7 @@
 			files = (
 				F00936AA29CD797F00826263 /* Alamofire in Frameworks */,
 				F009369B29CD728400826263 /* Moya in Frameworks */,
+				9BB955FC792641CECB1B7B2A /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +341,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14B279529F8FC1BA66702F9C /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				50EF13CB8DF25876A9DCC581 /* OMDbResponses.swift */,
+				C8932F66113F6CA9B93E1890 /* OMDbMapper.swift */,
+			);
+			name = DTO;
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		7FA4B19B350F023463F93FFF /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				65C674C7ED9DA8F97EAF4439 /* Networking.xcconfig */,
+				510A2C47279798FE6E4649A7 /* Secrets.xcconfig.example */,
+			);
+			name = Configs;
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		B5628BE7A2E37676BB8755EC /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				BFF0EE84B684F54D5B3D52B9 /* APIKeyProvider.swift */,
+				D1B21102B00A2F5DE3103554 /* APIKeyPlugin.swift */,
+				5862E4B4C08485A89556C167 /* OMDbSecrets.generated.swift */,
+			);
+			name = Security;
+			path = Security;
+			sourceTree = "<group>";
+		};
+		E0703595FA3BE6EEDD18B3E9 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				5A06765703B54AA881189678 /* generate-secrets.sh */,
+			);
+			name = Scripts;
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		F00936AF29D0B21100826263 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +557,10 @@
 				F018DE9129C8101200325BC5 /* Networking.h */,
 				F009369629CD62F200826263 /* MovieAPI.swift */,
 				F009369E29CD736F00826263 /* NetworkService.swift */,
+				14B279529F8FC1BA66702F9C /* DTO */,
+				B5628BE7A2E37676BB8755EC /* Security */,
+				611197104C918F8763F55249 /* NetworkError.swift */,
+				E6D043FA0E58D26DBC5E4FA3 /* MovieCatalog.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -589,8 +655,6 @@
 			children = (
 				F05A376027745A3C000F3033 /* Movie.swift */,
 				F05A376227745AFE000F3033 /* Actor.swift */,
-				F0790F542774AE2400ECA372 /* MoviesPage.swift */,
-				F0790F5E2774FC8000ECA372 /* UpcomingMoviesPage.swift */,
 				F018DEFE29C8509C00325BC5 /* Gender.swift */,
 			);
 			path = Models;
@@ -647,6 +711,8 @@
 				F018DEB129C8116300325BC5 /* Presentation */,
 				F0A4194927730512007112E4 /* Products */,
 				F018DED229C8125C00325BC5 /* Frameworks */,
+				7FA4B19B350F023463F93FFF /* Configs */,
+				E0703595FA3BE6EEDD18B3E9 /* Scripts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -762,6 +828,7 @@
 			buildConfigurationList = F018DE9729C8101200325BC5 /* Build configuration list for PBXNativeTarget "Networking" */;
 			buildPhases = (
 				F018DE8A29C8101200325BC5 /* Headers */,
+				9EF7AF2CBD5C5D284E9920C4 /* Generate OMDb Secrets */,
 				F018DE8B29C8101200325BC5 /* Sources */,
 				F018DE8C29C8101200325BC5 /* Frameworks */,
 				F018DE8D29C8101200325BC5 /* Resources */,
@@ -769,6 +836,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258AD2641311F6A09E1F9EE0 /* PBXTargetDependency */,
 			);
 			name = Networking;
 			packageProductDependencies = (
@@ -983,6 +1051,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9EF7AF2CBD5C5D284E9920C4 /* Generate OMDb Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Scripts/generate-secrets.sh",
+			);
+			name = "Generate OMDb Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/OMDbSecrets.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/generate-secrets.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F018DE7A29C80F2900325BC5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1003,6 +1096,13 @@
 			files = (
 				F009369F29CD736F00826263 /* NetworkService.swift in Sources */,
 				F009369729CD62F200826263 /* MovieAPI.swift in Sources */,
+				7878869E61CC36E28311357A /* NetworkError.swift in Sources */,
+				6F2818DE64BD5E64A4D0CBC4 /* MovieCatalog.swift in Sources */,
+				00E64D7BA8351516C1E620B9 /* OMDbResponses.swift in Sources */,
+				DE2935BC3C2EEE3868C2EA65 /* OMDbMapper.swift in Sources */,
+				FD988935E59E64B2E3361E60 /* APIKeyProvider.swift in Sources */,
+				25DFAA5205410F7C2992E687 /* APIKeyPlugin.swift in Sources */,
+				872AD20A9F8FE094745C4676 /* OMDbSecrets.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,9 +1112,7 @@
 			files = (
 				F018DECD29C8120400325BC5 /* Actor.swift in Sources */,
 				F018DEFF29C8509C00325BC5 /* Gender.swift in Sources */,
-				F018DECB29C8120400325BC5 /* MoviesPage.swift in Sources */,
 				F018DECE29C8120400325BC5 /* Movie.swift in Sources */,
-				F018DECC29C8120400325BC5 /* UpcomingMoviesPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,6 +1169,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		258AD2641311F6A09E1F9EE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Domain;
+			target = F018DE9F29C8114200325BC5 /* Domain */;
+			targetProxy = 00BBD158374A17A0B12BFC73 /* PBXContainerItemProxy */;
+		};
 		F00936AE29CD79A400826263 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F018DE8E29C8101200325BC5 /* Networking */;
@@ -1146,7 +1250,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1181,7 +1285,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1204,6 +1308,7 @@
 		};
 		F018DE9829C8101200325BC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C674C7ED9DA8F97EAF4439 /* Networking.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
@@ -1216,7 +1321,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1239,6 +1344,7 @@
 		};
 		F018DE9929C8101200325BC5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C674C7ED9DA8F97EAF4439 /* Networking.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
@@ -1251,7 +1357,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1286,7 +1392,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1321,7 +1427,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1356,7 +1462,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1391,7 +1497,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1427,7 +1533,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1464,7 +1570,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1619,6 +1725,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1648,6 +1755,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

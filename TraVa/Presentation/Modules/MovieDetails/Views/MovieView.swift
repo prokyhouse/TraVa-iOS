@@ -170,8 +170,8 @@ private extension MovieView {
     func setupUI(with movie: Movie?) {
         guard let movie = movie else { return }
 
-        if let imagePath: String = movie.backdropPath ?? movie.posterPath {
-            setPhoto(from: imagePath)
+        if let imageURL = movie.backdropURL ?? movie.largePosterURL ?? movie.posterURL {
+            setPhoto(from: imageURL)
         }
 
         navBar.title = movie.title
@@ -267,8 +267,8 @@ private extension MovieView {
         ])
     }
 
-    func setPhoto(from path: String) {
-        photoView.imageFromUrl(urlString: Constants.photoBaseUrl + path)
+    func setPhoto(from url: URL) {
+        photoView.imageFromUrl(urlString: url.absoluteString)
     }
 
     @objc
@@ -337,7 +337,6 @@ private extension MovieView {
         static let castTitle: String = "В ролях"
         static let trailerTitle: String = "Трейлер"
         static let trailerIcon: UIImage? = UIImage(systemName: "livephoto.play")
-        static let photoBaseUrl: String = "https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/"
     }
 
     enum Appearance {

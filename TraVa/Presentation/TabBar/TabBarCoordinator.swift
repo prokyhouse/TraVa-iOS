@@ -15,7 +15,7 @@ public protocol TabBarCoordinatorProtocol: BaseNavigationCoordinator {
     var onCompleted: (() -> Void)? { get set }
     func goToPopular()
     func goToUpcoming()
-    func goToMovieDetails(_ id: Int)
+    func goToMovieDetails(_ id: Movie.ID)
     func goToActorDetails(_ actor: Cast)
     func goBack()
 }
@@ -54,7 +54,7 @@ public final class TabBarCoordinator: BaseNavigationCoordinator, TabBarCoordinat
         tabBarController.selectedIndex = TabBarPage.upcoming.rawValue
     }
 
-    public func goToMovieDetails(_ id: Int) {
+    public func goToMovieDetails(_ id: Movie.ID) {
         let viewController = MovieViewController()
         let presenter = MovieViewPresenter(
             viewController: viewController,

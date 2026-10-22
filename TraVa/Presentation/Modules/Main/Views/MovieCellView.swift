@@ -24,14 +24,14 @@ final class MovieCellView: UICollectionViewCell {
     var movie: Movie? {
         didSet {
             guard let movie else { return }
-            guard let posterPath = movie.posterPath else { return }
 
-            self.imageView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + posterPath)
+            self.rateLabel.text = movie.voteAverage.map { String($0) } ?? "—"
+
+            guard let posterURL = movie.posterURL else { return }
+
+            self.imageView.imageFromUrl(urlString: posterURL.absoluteString)
 
             self.imageView.clipsToBounds = true
-
-            guard let voteAverage = movie.voteAverage else { return }
-            self.rateLabel.text = String(voteAverage)
         }
     }
 

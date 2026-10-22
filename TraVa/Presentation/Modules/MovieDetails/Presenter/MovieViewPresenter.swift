@@ -26,7 +26,7 @@ public final class MovieViewPresenter {
     private unowned let viewController: MovieViewController
     private let coordinator: TabBarCoordinator
     private let networkService: Networkable
-    private let movieID: Int
+    private let movieID: Movie.ID
 
     // MARK: - Initialization
 
@@ -34,7 +34,7 @@ public final class MovieViewPresenter {
         viewController: MovieViewController,
         coordinator: TabBarCoordinator,
         networkService: Networkable,
-        movieID: Int
+        movieID: Movie.ID
     ) {
         self.viewController = viewController
         self.coordinator = coordinator

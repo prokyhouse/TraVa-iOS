@@ -24,12 +24,14 @@ final class MovieCell: UICollectionViewCell {
     var movie: Movie? {
         didSet {
             guard let movie = movie else { return }
-            guard let posterPath = movie.posterPath else { return }
 
-            self.imageView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + posterPath)
-            self.imageView.clipsToBounds = true
             self.nameLabel.text = movie.title
             self.overviewLabel.text = movie.overview
+
+            guard let posterURL = movie.posterURL else { return }
+
+            self.imageView.imageFromUrl(urlString: posterURL.absoluteString)
+            self.imageView.clipsToBounds = true
         }
     }
     

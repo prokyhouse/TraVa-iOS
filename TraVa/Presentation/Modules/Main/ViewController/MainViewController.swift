@@ -61,7 +61,7 @@ extension MainViewController: MainViewDelegate {
         presenter?.showUpcoming()
     }
 
-    func onMovieTap(with id: Int) {
+    func onMovieTap(with id: Movie.ID) {
         presenter?.showMovieDetails(id)
     }
 }

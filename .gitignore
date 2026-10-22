@@ -132,3 +132,5 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos,xcode
+# Secrets (API keys)
+TraVa/Configs/Secrets.xcconfig

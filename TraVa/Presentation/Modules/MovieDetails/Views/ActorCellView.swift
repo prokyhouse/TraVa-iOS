@@ -13,19 +13,22 @@ final class ActorCellView: UICollectionViewCell {
     
     private enum Metrics {
         static let spaceBetweenComponents: CGFloat = 9
+        static let nameHeight: CGFloat = 36
     }
     
     static let identifier = "ActorCell"
     
     private let imageView = UIImageView()
+    private let nameLabel = UILabel()
     
     var actor: Cast? {
         didSet {
             guard let actor = actor else { return }
-            if actor.profilePath == nil {
-                self.imageView.image = UIImage(named: "ActorTemplate")
+            self.nameLabel.text = actor.name
+            if let profileURL = actor.profileURL {
+                self.imageView.imageFromUrl(urlString: profileURL.absoluteString)
             } else {
-                self.imageView.imageFromUrl(urlString: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + actor.profilePath!)
+                self.imageView.image = UIImage(named: "ActorTemplate")
             }
             self.imageView.clipsToBounds = true
         }
@@ -61,12 +64,20 @@ final class ActorCellView: UICollectionViewCell {
         self.imageView.clipsToBounds = true
         
         self.imageView.layer.cornerRadius = 16
+
+        self.nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        self.nameLabel.textColor = .white
+        self.nameLabel.textAlignment = .center
+        self.nameLabel.numberOfLines = 2
+        self.nameLabel.adjustsFontSizeToFitWidth = true
+        self.nameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.55)
         
         self.layer.cornerRadius = 16
     }
     
     private func addSubviews() {
         self.addSubview(imageView)
+        self.imageView.addSubview(nameLabel)
     }
     
     private func setConstraints() {
@@ -75,6 +86,11 @@ final class ActorCellView: UICollectionViewCell {
             make.left.right.top.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(self.imageView.snp.width).multipliedBy(1.5)
+        }
+
+        self.nameLabel.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.greaterThanOrEqualTo(Metrics.nameHeight)
         }
     }
 }

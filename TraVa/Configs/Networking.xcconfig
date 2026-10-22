@@ -1,0 +1,13 @@
+//
+//  Networking.xcconfig
+//  Networking
+//
+//  Базовая конфигурация таргета Networking.
+//  Секреты подключаются из Secrets.xcconfig, который НЕ хранится в git
+//  (см. Secrets.xcconfig.example). `#include?` — опциональный include:
+//  без файла проект собирается, но в Debug будет предупреждение, а Release упадёт.
+//
+
+OMDB_API_KEY =
+
+#include? "Secrets.xcconfig"

@@ -11,7 +11,7 @@ import Domain
 
 public protocol PopularPresenter: AnyObject {
     /// Обработка перехода на экран фильма
-    func showMovieDetails(_ id: Int)
+    func showMovieDetails(_ id: Movie.ID)
 
     /// Получение новых фильмов
     func fetchPopularMovies()
@@ -54,7 +54,7 @@ extension PopularViewPresenter: PopularPresenter {
         }
     }
 
-    public func showMovieDetails(_ id: Int) {
+    public func showMovieDetails(_ id: Movie.ID) {
         coordinator.goToMovieDetails(id)
     }
 }
